@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="liste_factureclient_vaovao" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f94f7e48-a89d-459b-bb88-91391d7dcb67">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1" uuid="5d8f68c4-21cb-4873-991d-9a895af049cd">
+		<field name="designation" class="java.lang.String"/>
+		<field name="montantstring" class="java.lang.String"/>
+		<field name="creditstring" class="java.lang.String"/>
+		<field name="montant" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="total" class="java.lang.Double"/>
+	<parameter name="nbr" class="java.lang.Integer"/>
+	<parameter name="list_table" class="java.util.List"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="montantstring" class="java.lang.String"/>
+	<field name="creditstring" class="java.lang.String"/>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="7db30c53-fe3b-46a6-b388-2bca859ccf9c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="15" width="75" height="15" uuid="02413a25-6a2c-4c8d-9c6b-d82d10d0d89e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ancien cumul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="300" height="15" uuid="a557150a-cd94-4280-908d-c681e27113f6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mouvement du mois anterieur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="15" width="75" height="15" uuid="a45fbf10-8080-43ec-9915-98ef27a618ef"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regul 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="15" width="75" height="15" uuid="27d3e09b-96b8-482f-a6b4-093f4bd4ece7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regul E & P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="15" width="75" height="15" uuid="b73ef5a8-c368-437d-b850-508821df16e5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A. Cum. Regul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="300" height="15" uuid="fa0a17da-73a2-46e3-9e02-3b21b2856c27"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mouvement du mois en cours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="15" width="75" height="15" uuid="f144a806-6f41-46b4-8242-d789cb00b294"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avoir E & P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="15" width="75" height="15" uuid="54e0950d-ea8e-4b55-bb0f-7c3698b6e942"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="15" width="75" height="15" uuid="be24a55c-3a29-4ae4-b38f-d9c6cf32fa1e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comptant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="625" y="15" width="75" height="15" uuid="b047d9a0-6243-4d93-8e1a-38f983f503e0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="102" height="30" uuid="6566e634-d82f-42f7-86fa-bf7272572574"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.Cumul]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="26" uuid="c0bb7446-13f0-4ac4-87a1-5e8e2550b6d3"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="0e2c89e9-5cce-4e8c-af00-0ca2fe7b85fa">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{list_table})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="100" uuid="cd051ca6-5f26-4a9e-9f5a-a0072159695b">
+						<jr:detailCell height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="30" uuid="89a0af4a-6b45-4c0d-a829-e973330a1297"/>
+								<textElement verticalAlignment="Middle">
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="4ebefafe-1650-48f9-be1e-f4f4046fd1e5">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="75" uuid="31d02f4a-1147-4bc6-9029-4077d18e891a">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="75" uuid="fb4cf02f-d065-4de2-85c9-d638b348ca1b">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="75" uuid="43514ab9-c86d-4f80-9222-fe97997460ee">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="75" uuid="391a7349-99b8-49c9-ad3b-a72dece14b5e">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="75" uuid="e298c2ed-b9dd-4531-85e5-974edd5d4de0">
+						<jr:detailCell height="30" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="75" height="30" uuid="fbbc85cd-72cd-4c5c-b4db-51a0157e366a"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{montantstring}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="5c412d6e-0da7-4b05-a44d-7dae18519e32">
+						<jr:detailCell height="30" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="75" height="30" uuid="9a0a4e5a-cb5f-4850-9415-af320b828285"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{creditstring}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="c12d42cd-731d-4d0a-bf54-1ab946984f68">
+						<jr:detailCell height="30" rowSpan="1">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="75" height="30" uuid="c59a89eb-50c3-42cb-af3b-96bc4527865a"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="102" uuid="629c9bdf-7b94-47e3-aa1f-15c198fb1da7">
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<summary>
+		<band height="146">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="100" y="26" width="120" height="20" uuid="8091d575-f310-4255-a868-0c5ace4d46fd"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="26" width="100" height="20" uuid="2bee8552-7691-44c4-80d5-277de08abe7d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL ....................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="100" height="20" uuid="387c048c-8c2d-458b-962c-e96c3769dffc"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nombres de factures:]]></text>
+			</staticText>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement x="100" y="46" width="70" height="20" uuid="5e809afe-c78d-4dc3-994d-8056bba9dbd9"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nbr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

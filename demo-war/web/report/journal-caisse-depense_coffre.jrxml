@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="journal-caisse-depense_coffre" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="113cfc85-1daa-4c8d-9432-c10cbb47f72b">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="0" width="266" height="15" uuid="97b7194e-c0f5-4cc1-914c-0c69ede459e6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LIBELLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="75" height="15" uuid="1b1a1190-9da5-48c7-a156-2f37252adc73"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NUM PIECE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="0" width="107" height="15" uuid="65681010-715f-4a87-8d3f-dcbef71f0bc8"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DEBIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="0" width="107" height="15" uuid="031e2f79-afc1-4593-a904-eb497e778b66"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CREDIT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="0" width="266" height="45" uuid="8bccdc72-d7cb-406c-95d4-f022f4e4e74d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="0" width="266" height="15" uuid="780ae97f-5ed7-4cb8-85b5-a4dceb35a03d"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Espèces en coffre BMOI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="15" width="266" height="15" uuid="990e3a4f-f5cf-4852-a575-183263fcd25e"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Entrée coffre BMOI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="30" width="266" height="15" uuid="68135066-fa25-47bd-8bbd-a0328072095f"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Sortie coffre BMOI
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="75" height="45" uuid="dc1dbd2f-c856-4fd9-b1cd-6464fa5eed97"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="0" width="107" height="45" uuid="44264a77-4d06-4964-ba22-2003a12e0bb0"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="0" width="107" height="45" uuid="0c2a0a75-a0b8-49f5-a67f-31a3bbca15cb"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="45" width="266" height="15" uuid="5b66612e-95a2-42a1-8079-52b39192ee91"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="45" width="107" height="15" uuid="19dcf743-203f-46d3-b2a8-df1ed50e570f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[0,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="45" width="107" height="15" uuid="2774dc24-d344-403f-ac00-c31f0ff1f903"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[0,00]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="341" y="0" width="107" height="15" uuid="14ac494f-a084-4d3e-86c5-99533d0bfc15"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="15" width="107" height="15" uuid="6c4b0e28-3cf5-43d5-a9f2-33906586b0d1"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="30" width="107" height="15" uuid="6233a95c-f461-4a69-a9ff-bcebbadf3c59"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="0" width="107" height="15" uuid="4777aedb-3e98-4044-9765-ccca6838d912"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="30" width="107" height="15" uuid="0cdee377-a6e1-46ec-bcf0-a561d8613227"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="15" width="107" height="15" uuid="d9dfb25b-a574-4aa8-9ff7-97be9cacfdd3"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="75" y="60" width="266" height="15" uuid="a534a86d-b8c5-4d0d-9346-bdd1904e8605"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[COFFRE BMOI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="60" width="107" height="15" uuid="7931885b-d73d-442a-83cb-dfa2ef3670e3"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[0,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="94" width="107" height="15" uuid="75c3e36f-68ca-4c52-825c-2e8c14d4e9cb"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Verifié par :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="94" width="266" height="15" uuid="564206cd-338c-4526-9385-988e76a781c5"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Etabli par :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

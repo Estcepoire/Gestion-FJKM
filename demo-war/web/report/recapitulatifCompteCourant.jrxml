@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recapitulatifCompteCourant" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f52a8b3a-651a-4d35-8d73-5a61821124fa">
+	<property name="ireport.zoom" value="1.0000000000000044"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["H:\\win-Project\\SPATT\\spat\\gallois-war\\web\\report\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.Double"/>
+	<parameter name="daty" class="java.lang.String"/>
+	<field name="recapitulatifComptes" class="java.util.List"/>
+	<field name="recapitulatifPlacement" class="java.util.List"/>
+	<field name="situationCompteCourant" class="java.util.List"/>
+	<field name="situationCompteBanqueDevise" class="java.util.List"/>
+	<field name="placementAr" class="java.util.List"/>
+	<field name="placementDevise" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="b8b8b071-343a-4f50-87a0-7bc228b0568b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[SOCIETE DU PORT A GESTION AUTONOME DE TOAMASINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="20" uuid="25e876dd-824d-4fc5-ab90-acc165bdbc23"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[BP : 492]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="274" height="20" uuid="f25ba4f4-bbca-422c-ba44-2c6c2a957f33"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTION ADMINISTRATIF ET FINANCIER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="274" height="20" uuid="667ea3b4-e369-4055-ad81-28f1b6105ad3"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTEMENT FINANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="179" height="20" uuid="3a4e9439-df05-4190-9c6f-f6069e38daf6"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[SERVICE TRESORERIE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="483" y="-20" width="72" height="82" uuid="294c495d-ecf8-4c08-87f6-c24b05c3cbb2"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="101" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="e24353cb-4704-4728-83dc-a603f8c09266"/>
+				<subreportParameter name="comptes">
+					<subreportParameterExpression><![CDATA["COURANTS"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="daty">
+					<subreportParameterExpression><![CDATA[$P{daty}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{situationCompteCourant}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_situation.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="b87a5d58-762a-46fe-9ce5-c21797d5146e"/>
+				<subreportParameter name="comptes">
+					<subreportParameterExpression><![CDATA["BANQUES EN DEVISE"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="daty">
+					<subreportParameterExpression><![CDATA[$P{daty}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{situationCompteBanqueDevise}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_situation.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="98">
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="78" uuid="f999e3f8-3116-4e2c-a407-978135d4e37e"/>
+				<subreportParameter name="placement">
+					<subreportParameterExpression><![CDATA["ARIARY"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="devise">
+					<subreportParameterExpression><![CDATA[""]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{placementAr}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_placemenentAr.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="a8831373-034f-4ebe-90e9-6c89ee0faee8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Placement]]></text>
+			</staticText>
+		</band>
+		<band height="86">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="78" uuid="be049ca2-bd0a-48e8-820b-ecfd0faae266"/>
+				<subreportParameter name="placement">
+					<subreportParameterExpression><![CDATA["DEVISE"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="devise">
+					<subreportParameterExpression><![CDATA[" EN EURO"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{placementDevise}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_placemenentAr.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="105">
+			<staticText>
+				<reportElement x="0" y="20" width="370" height="15" uuid="55da6d52-8611-49a2-8bae-b08a72fe5c2c"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[RECAPITULATIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="20" width="185" height="15" uuid="e709dc30-56a3-4239-9348-b9426c174f20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MONTANT EN ARIARY]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="35" width="555" height="70" uuid="09f022c2-de10-4293-bc18-79a55e5e85eb"/>
+				<subreportParameter name="type">
+					<subreportParameterExpression><![CDATA["TRESORERIE"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{recapitulatifComptes}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_courant.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="cb12e6be-efa4-48bc-bb50-aa4478b300fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Récapitulatif des comptes courants]]></text>
+			</staticText>
+		</band>
+		<band height="90">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="70" uuid="32f06027-381b-452d-a25c-239517a36571"/>
+				<subreportParameter name="type">
+					<subreportParameterExpression><![CDATA["PLACEMENT"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{recapitulatifPlacement}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["recapitulatifCompteCourant_courant.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="70" width="370" height="20" uuid="47d14442-26e5-4708-ab9c-cfb3701e9b60"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="370" y="70" width="185" height="20" uuid="af76e274-da5b-47ff-9b4b-3a70854f3535"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

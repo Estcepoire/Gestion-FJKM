@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="journal-caisse-depense" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b938efd-0d68-4a5e-ab67-7affdbcfa660">
+	<property name="ireport.zoom" value="0.7513148009015789"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="186"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["H:\\win-Project\\SPATT\\spat\\gallois-war\\web\\report\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOLIO" class="java.lang.String"/>
+	<parameter name="DATY" class="java.util.Date"/>
+	<parameter name="SoldeAnterieur" class="java.lang.Double"/>
+	<parameter name="SoldeActuel" class="java.lang.Double"/>
+	<field name="journal" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="d0afff26-d1cd-4494-b5f9-4c7106bedbcd"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOCIETE DU PORT A GESTION AUTONOME DE TOAMASINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="20" width="55" height="20" uuid="35654102-5554-4288-aa12-400e542d617f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[FOLIO N°]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="449" y="20" width="106" height="20" uuid="743513bc-4108-412b-9372-430a3ef58c75"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FOLIO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="414" y="47" width="141" height="20" uuid="9db5a231-819e-4828-abbf-5f02da2dcad2"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="333" y="47" width="81" height="20" uuid="1626ae98-6ed3-4627-a6fc-beb7d46de57f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[JOURNEE DU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="47" width="333" height="20" uuid="5fafb328-d19e-4e27-b1eb-019858e37f88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JOURNAL DE CAISSE
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="333" height="20" uuid="d026a62f-4dd2-4795-9afc-0d0b2b3287cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAISSE DEPENSE
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="300" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="300" uuid="855dd2d8-33c3-4806-9f5f-0b365261fee0"/>
+				<subreportParameter name="SoldeAnterieur">
+					<subreportParameterExpression><![CDATA[$P{SoldeAnterieur}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SoldeActuel">
+					<subreportParameterExpression><![CDATA[$P{SoldeActuel}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource$F{journal}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["journal-caisse-depense_caisse.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="247">
+			<subreport>
+				<reportElement x="0" y="50" width="555" height="197" uuid="e9f4d9d2-d149-4090-aba3-f4d9566d84c9"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["journal-caisse-depense_coffre.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="20" width="333" height="20" uuid="4217a27c-2206-4800-9128-a7c6ce095427"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COFFRE BMOI]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="414" y="0" width="141" height="20" uuid="e8b7a9a3-d390-4bc0-805b-fef128b5d869"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="333" height="20" uuid="37ea6ed7-6679-4e8c-b728-e36d412b4ff3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JOURNAL DE CAISSE
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="81" height="20" uuid="6699776f-6827-4262-8e25-15349f1407b1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[JOURNEE DU]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

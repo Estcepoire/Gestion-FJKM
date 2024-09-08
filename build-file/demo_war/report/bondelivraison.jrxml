@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bondelivraison" pageWidth="630" pageHeight="842" columnWidth="620" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" uuid="c57f38f1-1dad-4633-abfd-bdae4ab0196b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="numBL" class="java.lang.String"/>
+	<parameter name="daty" class="java.util.Date"/>
+	<parameter name="numBC" class="java.lang.String"/>
+	<parameter name="totalMontantHT" class="java.lang.Double"/>
+	<parameter name="totalmontanttva" class="java.lang.Double"/>
+	<parameter name="totalMontantttc" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String"/>
+	<field name="quantite" class="java.lang.Double"/>
+	<field name="pu" class="java.lang.Double"/>
+	<field name="montantHT" class="java.lang.Double"/>
+	<field name="montanttva" class="java.lang.Double"/>
+	<field name="remise" class="java.lang.Double"/>
+	<field name="montanttc" class="java.lang.Double"/>
+	<field name="observation" class="java.lang.String"/>
+	<field name="produit" class="java.lang.String"/>
+	<variable name="num" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{num}+1]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="490" height="20" uuid="3db317a1-a42a-4e66-bad8-b9beb08f8e5c"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BON DE RECEPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="58" height="20" uuid="b43daca5-35eb-4a68-8041-c69e844915ff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Num BL :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="58" height="20" uuid="1b948cce-de8e-4def-a152-5f6572538e3e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="58" height="20" uuid="8e0fe973-568f-49cd-ae37-8ea3ba37020f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Num BC :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="58" y="20" width="432" height="20" uuid="2d1dbc56-bddb-4428-b16f-568affb7e99b"/>
+				<textFieldExpression><![CDATA[$P{numBL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="58" y="40" width="432" height="20" uuid="0df96f20-83fa-4eb9-a00f-814a200d22c3"/>
+				<textFieldExpression><![CDATA[$P{daty}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="58" y="60" width="432" height="20" uuid="1346929e-fdad-4e9e-b439-6992ea8be314"/>
+				<textFieldExpression><![CDATA[$P{numBC}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="561" y="2" width="59" height="82" uuid="20415931-5f84-4a38-9e30-3be76831b63a"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="25" uuid="d42091af-bb50-425b-8a83-b24cb590b53d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="0" width="265" height="25" uuid="ca3ec960-33f0-412c-959a-0eb800bb1da2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Désignation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="0" width="132" height="25" uuid="e5f9508c-af54-4778-9f9d-7495a48e01e4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="0" width="183" height="25" uuid="71b50f83-3219-4d98-8164-7588cda26d86"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observation "DA"]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="265" height="25" uuid="01ae3a4c-714d-4c1b-bb2b-9eef0347eacb"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{produit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="0" width="132" height="25" uuid="c8bb210d-cb5e-49b4-992c-e18a15d3456b"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{quantite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="437" y="0" width="183" height="25" uuid="cb52a590-345c-4112-b18c-6feace681083"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{observation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="40" height="25" uuid="f98de6b5-d06d-4ed2-b2b5-add2df4dc594"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{num}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="50"/>
+	</summary>
+</jasperReport>
