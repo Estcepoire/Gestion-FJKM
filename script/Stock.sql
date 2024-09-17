@@ -274,3 +274,6 @@ CREATE OR REPLACE VIEW PRODUITLIB AS
         ON TYPEPRODUIT.id = PRODUIT.idTypeProduit
         JOIN UNITE 
         ON UNITE.id = PRODUIT.idUnite
+
+
+--
