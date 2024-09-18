@@ -23,7 +23,7 @@
         out.println(pi.getFormu().getHtmlInsert());
     %>
     <input name="acte" type="hidden" id="nature" value="insert">
-    <input name="bute" type="hidden" id="bute" value="annexe/details/unite-fiche.jsp">
+    <input name="bute" type="hidden" id="bute" value="annexe/details/unite-liste.jsp">
     <input name="classe" type="hidden" id="classe" value="annexe.details.Unite">
     <input name="nomtable" type="hidden" id="nomtable" value="unite">
     
