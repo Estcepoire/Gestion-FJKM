@@ -8,7 +8,7 @@
 <%
     try{
         Produit produit = new Produit();
-        produit.setId();
+        produit.setId(request.getParameter("id"));
         produit.setNomTable("Produit");
         PageConsulte pc = new PageConsulte(produit, request, (user.UserEJB) session.getValue("u"));
         String id=pc.getBase().getTuppleID( );
@@ -36,7 +36,6 @@
                             <!--<a href="<%= lien + "?but=apresTarif.jsp&id=" + id+"&acte=delete&bute=#&classe="+classe %>"><button class="btn btn-danger">Supprimer</button></a>-->
                         </div>
                         <br/>
-
                     </div>
                 </div>
             </div>
