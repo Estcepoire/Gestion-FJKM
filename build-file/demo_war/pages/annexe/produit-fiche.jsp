@@ -9,7 +9,7 @@
     try{
         Produit produit = new Produit();
         produit.setId(request.getParameter("id"));
-        produit.setNomTable("v_Produitlib");
+        produit.setNomTable("Produit");
         PageConsulte pc = new PageConsulte(produit, request, (user.UserEJB) session.getValue("u"));
         String id=pc.getBase().getTuppleID( );
         pc.setTitre("Fiche Produit");
