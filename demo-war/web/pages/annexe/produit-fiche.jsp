@@ -13,6 +13,12 @@
         PageConsulte pc = new PageConsulte(produit, request, (user.UserEJB) session.getValue("u"));
         String id=pc.getBase().getTuppleID( );
         pc.setTitre("Fiche Produit");
+
+        pc.getChampByName("unitelib").setLibelle("Unite");
+        pc.getChampByName("typeProduitlib").setLibelle("Type");
+        pc.getChampByName("idUnite").setVisible(false);
+        pc.getChampByName("idTypeProduit").setVisible(false);
+
         String lien = (String) session.getValue("lien");
         String pageModif = "update/update-simple.jsp";
         String classe = "boutique.article.Article";

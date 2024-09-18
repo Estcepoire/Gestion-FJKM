@@ -1,11 +1,12 @@
 <%@page import="annexe.*"%>
+<%@page import="annexe.details.*"%>
 <%@ page import="user.*" %>
 <%@ page import="bean.*" %>
 <%@ page import="utilitaire.*" %>
 <%@ page import="affichage.*" %>
 <%
     try{
-        TypeObjet  a = new TypeObjet();
+        TypeProduit  a = new TypeProduit();
         a.setNomTable("TYPEPRODUIT");
         PageInsert pi = new PageInsert(a, request, (user.UserEJB) session.getValue("u"));
         pi.setLien((String) session.getValue("lien"));
@@ -23,7 +24,7 @@
     %>
     <input name="acte" type="hidden" id="nature" value="insert">
     <input name="bute" type="hidden" id="bute" value="annexe/details/unite-fiche.jsp">
-    <input name="classe" type="hidden" id="classe" value="bean.TypeObjet">
+    <input name="classe" type="hidden" id="classe" value="annexe.details.TypeProduit">
     <input name="nomtable" type="hidden" id="nomtable" value="TYPEPRODUIT">
     
     </form>

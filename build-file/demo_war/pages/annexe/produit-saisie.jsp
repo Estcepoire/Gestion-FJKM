@@ -15,7 +15,7 @@
         liste[0] = new Liste("idUnite", unite, "val", "id");        
         TypeObjet type = new TypeObjet();
         type.setNomTable("TYPEPRODUIT");
-        liste[1] = new Liste("idTypeProduit", type, "VAL", "id");       
+        liste[1] = new Liste("idTypeProduit", type, "val", "id");       
         pi.getFormu().changerEnChamp(liste);
         pi.getFormu().getChamp("etat").setVisible(false);      
         pi.getFormu().getChamp("val").setLibelle("Designation");      
