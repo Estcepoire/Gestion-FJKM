@@ -5,7 +5,13 @@ import bean.ClassFille;
 public class MvtStockFille extends ClassFille {
     String id, idMere, idProduit;
     String val, desce, remarque;
-    double entre, sortie, quantite;
+    double entre, sortie, quantite, prixUnitaire;
+
+    public MvtStockFille() throws Exception {
+        this.setNomTable("MvtStockFille");
+        this.setLiaisonMere("idMere");
+        this.setNomClasseMere("stock.MvtStock");
+    }
 
     public String getIdProduit() {
         return idProduit;
@@ -63,11 +69,6 @@ public class MvtStockFille extends ClassFille {
         this.quantite = quantite;
     }
 
-    public MvtStockFille() {
-        this.setNomTable("MvtStockFille");
-        this.setLiaisonMere("idMere");
-    }
-
     @Override
     public String getAttributIDName() {
         return "id";
@@ -92,6 +93,14 @@ public class MvtStockFille extends ClassFille {
 
     public void setIdMere(String idMere) {
         this.idMere = idMere;
+    }
+
+    public double getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
 }
