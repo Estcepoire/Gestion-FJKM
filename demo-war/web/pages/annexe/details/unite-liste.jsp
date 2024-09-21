@@ -1,44 +1,58 @@
-
+<%@page import="annexe.*"%>
 <%@page import="annexe.details.*"%>
-<%@page import="bean.*, user.*, utilitaire.*, affichage.*"%>
+<%@ page import="user.*" %>
+<%@ page import="bean.*" %>
+<%@page import="affichage.*"%>
+
 <% 
-    Unite modele = new Unite(); 
-    String listeCrt[] = {"id", "val", "desce"};
-    String listeInt[] = null;
-    String libEntete[] = {"id", "val", "desce"};
-
-    PageRecherche pr = new PageRecherche(modele, request, listeCrt, listeInt, 5, libEntete, 5);
-    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
-    pr.setLien((String) session.getValue("lien"));
-
-    pr.getFormu().getChamp("val").setLibelle("Designation");
-    pr.getFormu().getChamp("desce").setLibelle("Description");
-
-    pr.setApres("annexe/details/unite-liste.jsp");
-    pr.creerObjetPage(libEntete);
-    
+    try {
+	    Unite t = new Unite();
+        t.setNomTable("Unite");
+	    String listeCrt[] = {"id", "val", "desce"};
+	    String listeInt[] = {};
+	    String libEntete[] = {"id", "val", "desce"};
+	    PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
+	    pr.setTitre("Liste des Unit&eacute;");
+	    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
+	    pr.setLien((String) session.getValue("lien"));
+	    pr.setApres("annexe/details/unite-liste.jsp");
+	    pr.getFormu().getChamp("val").setLibelle("D&eacute;signation");
+        pr.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
+        String[] colSomme = null;
+        pr.creerObjetPage(libEntete, colSomme);
+        String libEnteteAffiche[] = {"ID", "D&eacute;signation", "D&eacute;scription"};
+        pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 %>
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>Mod&egrave;le</h1>
+        <h1><%= pr.getTitre() %></h1>
     </section>
     <section class="content">
-        <form action="<%=pr.getLien()%>?but=annexe/details/unite-liste.jsp" method="post" name="modele" id="modele">
+        <form action="<%=pr.getLien()%>?but=<%= pr.getApres() %>" method="post">
             <%
-                pr.getFormu().makeHtml();
-                out.println(pr.getFormu().getHtml());
-            %>   
-        </form>
-            <%  
-               out.println(pr.getTableauRecap().getHtmlRecap());
+                out.println(pr.getFormu().getHtmlEnsemble());
             %>
+        </form>
+        <br>
         <br>
         <%
-            String libEnteteAffiche[] = {"id", "Designation", "Description"};
-            pr.getTableau().setLibelleAffiche(libEnteteAffiche);
-            out.println(pr.getHtmlEnsemble());
+            out.println(pr.getTableauRecap().getHtml());%>
+        <br>
+        <br>
+        <%
+            out.println(pr.getTableau().getHtml());
         %>
+        <br>
     </section>
+
 </div>
+
+<%	
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
+
+
 
