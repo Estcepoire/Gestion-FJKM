@@ -1,11 +1,9 @@
 package annexe.details;
 
-import bean.CGenUtil;
 import bean.ClassMAPTable;
-import bean.ClassEtat;
 import java.sql.Connection;
 
-public class Unite  extends ClassMAPTable{
+public class Unite extends ClassMAPTable {
     String id, val, desce;
 
     public String getId() {
@@ -31,22 +29,25 @@ public class Unite  extends ClassMAPTable{
     public void setDesce(String desce) {
         this.desce = desce;
     }
+
     public Unite() {
         this.setNomTable("UNITE");
     }
-    
+
     @Override
-     public void construirePK(Connection c) throws Exception {
+    public void construirePK(Connection c) throws Exception {
         this.preparePk("UNIT", "GET_SEQUNITE");
         this.setId(makePK(c));
     }
+
     @Override
     public String getAttributIDName() {
         return "id";
     }
+
     @Override
     public String getTuppleID() {
         return this.getId();
     }
-    
+
 }
