@@ -20,8 +20,8 @@
         pc.getChampByName("idTypeProduit").setVisible(false);
 
         String lien = (String) session.getValue("lien");
-        String pageModif = "update/update-simple.jsp";
-        String classe = "boutique.article.Article";
+        String pageModif = "annexe/produit-modif.jsp";
+        String classe = "anexe.Produit";
 %>
 <div class="content-wrapper">
     <div class="row">

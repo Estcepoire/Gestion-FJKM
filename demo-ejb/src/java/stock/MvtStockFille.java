@@ -4,8 +4,8 @@ import bean.ClassFille;
 
 public class MvtStockFille extends ClassFille {
     String id, idMere, idProduit;
-    String val, desce, remarque;
-    double entre, sortie, quantite, prixUnitaire;
+    String val, designation, remarque;
+    double entree, sortie, quantites, prixUnitaire;
 
     public MvtStockFille() throws Exception {
         this.setNomTable("MvtStockFille");
@@ -29,13 +29,6 @@ public class MvtStockFille extends ClassFille {
         this.val = val;
     }
 
-    public String getDesce() {
-        return desce;
-    }
-
-    public void setDesce(String desce) {
-        this.desce = desce;
-    }
 
     public String getRemarque() {
         return remarque;
@@ -45,12 +38,20 @@ public class MvtStockFille extends ClassFille {
         this.remarque = remarque;
     }
 
-    public double getEntre() {
-        return entre;
+    public double getEntree() {
+        return entree;
     }
 
-    public void setEntre(double entre) {
-        this.entre = entre;
+    public void setEntree(double entree) {
+        this.entree = entree;
+    }
+
+    public double getQuantites() {
+        return quantites;
+    }
+
+    public void setQuantites(double quantites) {
+        this.quantites = quantites;
     }
 
     public double getSortie() {
@@ -61,13 +62,6 @@ public class MvtStockFille extends ClassFille {
         this.sortie = sortie;
     }
 
-    public double getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(double quantite) {
-        this.quantite = quantite;
-    }
 
     @Override
     public String getAttributIDName() {
@@ -101,6 +95,14 @@ public class MvtStockFille extends ClassFille {
 
     public void setPrixUnitaire(double prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
 }

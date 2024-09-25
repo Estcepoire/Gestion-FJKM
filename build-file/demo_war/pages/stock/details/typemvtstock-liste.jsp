@@ -1,21 +1,20 @@
-<%@page import="annexe.*"%>
-<%@page import="annexe.details.*"%>
+<%@page import="stock.*"%>
+<%@page import="stock.details.*"%>
 <%@ page import="user.*" %>
 <%@ page import="bean.*" %>
 <%@page import="affichage.*"%>
 
 <% 
     try {
-	    Unite t = new Unite();
-        t.setNomTable("Unite");
+	    TypeMvtStock t = new TypeMvtStock();
 	    String listeCrt[] = {"id", "val", "desce"};
 	    String listeInt[] = {};
 	    String libEntete[] = {"id", "val", "desce"};
 	    PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
-	    pr.setTitre("Liste des Unit&eacute;");
+	    pr.setTitre("Liste des Types de Mouvement de stock");
 	    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
 	    pr.setLien((String) session.getValue("lien"));
-	    pr.setApres("annexe/details/unite-liste.jsp");
+	    pr.setApres("stock/details/typemvtstock-liste.jsp");
 	    pr.getFormu().getChamp("val").setLibelle("D&eacute;signation");
         pr.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
         String[] colSomme = null;
@@ -46,7 +45,9 @@
         <br>
     </section>
 
+
 </div>
+
 
 <%	
     } catch (Exception e) {
