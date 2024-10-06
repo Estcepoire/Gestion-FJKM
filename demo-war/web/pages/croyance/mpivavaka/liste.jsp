@@ -3,6 +3,7 @@
     Created on : Oct 6, 2024, 8:36:07 AM
     Author     : sarobidy
 --%>
+<%@page import="annexe.Faritra"%>
 <%@page import="croyance.MpivavakaLib"%>
 <%@page import="croyance.Mpivavaka" %>
 <%@page import="affichage.*" %>
@@ -14,9 +15,9 @@
             UserEJB user = (UserEJB) session.getValue("u");
             String lien = (String) session.getValue("lien");
 
-            String[] criteres = {"nom", "prenom", "datenaissance", "genre", "addresse", "ageActuelle"};
+            String[] criteres = {"nom", "prenom", "datenaissance", "genre", "addresse", "ageActuelle", "nomFaritra"};
             String[] intervalles = { "ageActuelle", "datenaissance"};
-            String[] whatToShow = {"nom", "prenom", "datenaissance", "lieuDeNaissance" , "genre", "addresse", "ageActuelle"};
+            String[] whatToShow = {"nom", "prenom", "datenaissance", "lieuDeNaissance" , "genre", "addresse", "ageActuelle", "nomFaritra"};
 
             PageRecherche pr = new PageRecherche( mapping, request, criteres, intervalles, 3, whatToShow, whatToShow.length );
             pr.setTitre("Liste des Croyants");
@@ -31,12 +32,6 @@
             
 
             String[] colSomme = null;
-            pr.creerObjetPage(whatToShow, colSomme);
-            
-            pr.getTableau().setLien(liens);
-            pr.getTableau().setColonneLien(colonne);            
-            pr.getTableau().setAttLien(attributLien);            
-            pr.getTableau().setValeurLien(valeursLien);
             
             // Inona no atao manaraka
             // mila ovaina ny libelle
@@ -52,16 +47,25 @@
             String[] sexesValeurs = {"","Homme", "Femme"};
 
             
-            Liste[] list = { new Liste("genre", sexes, sexesValeurs) };
+            Liste[] list = { new Liste("genre", sexes, sexesValeurs), new Liste("nomFaritra", new Faritra(), "nomFaritra", "nomFaritra") };
             
             pr.getFormu().changerEnChamp(list);
             
             pr.getFormu().getChamp("genre").setLibelle("Genre");
+            pr.getFormu().getChamp("nomFaritra").setLibelle("Faritra");
             pr.getFormu().getChamp("addresse").setLibelle("Adresse");            
             pr.getFormu().getChamp("ageActuelle1").setLibelle("Age min");            
             pr.getFormu().getChamp("ageActuelle2").setLibelle("Age max");
+            
+            pr.creerObjetPage(whatToShow, colSomme);
+            
+            pr.getTableau().setLien(liens);
+            pr.getTableau().setColonneLien(colonne);            
+            pr.getTableau().setAttLien(attributLien);            
+            pr.getTableau().setValeurLien(valeursLien);
+            
 
-            String[] labels = {"Nom", "Pr&eacute;nom", "N&eacute;e le", "Lieu de Naissance", "Genre", "Adresse", "Age"};
+            String[] labels = {"Nom", "Pr&eacute;nom", "N&eacute;e le", "Lieu de Naissance", "Genre", "Adresse", "Age", "Faritra"};
             pr.getTableau().setLibelleAffiche(labels);
        
 %>

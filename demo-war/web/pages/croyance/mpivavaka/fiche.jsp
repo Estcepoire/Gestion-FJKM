@@ -27,6 +27,7 @@
           pc.getChampByName("lieuDeNaissance").setLibelle("Lieu de Naissance");
           pc.getChampByName("addresse").setLibelle("Adresse");
           pc.getChampByName("nomFaritra").setLibelle("Faritra");
+          pc.getChampByName("idFaritra").setVisible(false);
           
           pc.setLien(lien);
           

@@ -4,6 +4,7 @@
     Author     : sarobidy
 --%>
 
+<%@page import="annexe.Faritra"%>
 <%@page import="user.UserEJB"%>
 <%@page import="affichage.*"%>
 <%@page import="croyance.Mpivavaka"%>
@@ -16,10 +17,12 @@
     mpivavaka = (Mpivavaka) pi.getBase();
     pi.setTitre("Modification Croyant : " + mpivavaka.getPrenom());
     
-    Liste[] list = new Liste[1];
+    Liste[] list = new Liste[2];
     String[] sexes = {"Homme", "Femme"};
     String[] values = { "1", "0" };
     list[0] = new Liste("sexe", sexes,  values);
+    list[1] = new Liste("idFaritra", new Faritra(), "nomFaritra", "idFaritra");
+
     
     pi.getFormu().changerEnChamp(list);
     
@@ -33,6 +36,7 @@
     pi.getFormu().getChamp("lieuDeNaissance").setLibelle("&agrave;");
     pi.getFormu().getChamp("contact").setLibelle("Contact");
     pi.getFormu().getChamp("addresse").setLibelle("Adresse");
+    pi.getFormu().getChamp("idFaritra").setLibelle("Faritra");
     
     pi.preparerDataFormu();
     
