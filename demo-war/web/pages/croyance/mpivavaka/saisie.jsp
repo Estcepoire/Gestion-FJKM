@@ -3,6 +3,7 @@
     Created on : Oct 6, 2024, 8:07:27 AM
     Author     : sarobidy
 --%>
+<%@page import="annexe.Faritra"%>
 <%@page import="croyance.Mpivavaka" %>
 <%@page import="affichage.*" %>
 <%@page import="user.UserEJB" %>
@@ -17,10 +18,11 @@
     PageInsert pi = new PageInsert( mapping, request, user );
     pi.setLien(lien);
     
-    Liste[] list = new Liste[1];
+    Liste[] list = new Liste[2];
     String[] sexes = {"Homme", "Femme"};
     String[] values = { "1", "0" };
     list[0] = new Liste("sexe", sexes,  values);
+    list[1] = new Liste("idFaritra", new Faritra(), "nomFaritra", "idFaritra");
     
     pi.getFormu().changerEnChamp(list);
     
@@ -33,6 +35,7 @@
     pi.getFormu().getChamp("lieuDeNaissance").setLibelle("&agrave;");
     pi.getFormu().getChamp("contact").setLibelle("Contact");
     pi.getFormu().getChamp("addresse").setLibelle("Adresse");
+    pi.getFormu().getChamp("idFaritra").setLibelle("Faritra");
     
     pi.setTitre("Ajouter un nouveau Croyant");
     

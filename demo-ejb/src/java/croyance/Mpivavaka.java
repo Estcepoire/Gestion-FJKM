@@ -22,6 +22,7 @@ public class Mpivavaka extends ClassEtat {
           int sexe;
           String contact;
           String addresse;
+          String idFaritra;
           
           public Mpivavaka(){
                     this.setNomTable("mpivavaka");
@@ -107,6 +108,15 @@ public class Mpivavaka extends ClassEtat {
                     String pk = this.makePK(c);
                     this.setIdMpivavaka(pk);
           }
+
+          public String getIdFaritra() {
+                    return idFaritra;
+          }
+
+          public void setIdFaritra(String idFaritra) {
+                    this.idFaritra = idFaritra;
+          }
+          
           
           
 }
