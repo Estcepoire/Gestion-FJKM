@@ -13,6 +13,15 @@ public class MpivavakaLib extends Mpivavaka {
           int ageActuelle;
           String nomFaritra;
           String genre;
+          String nomComplet;
+
+          public String getNomComplet() {
+                    return nomComplet;
+          }
+
+          public void setNomComplet(String nomComplet) {
+                    this.nomComplet = nomComplet;
+          }
           
           public MpivavakaLib(){
                     this.setNomTable("v_mpivavaka_lib");

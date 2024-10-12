@@ -16,6 +16,7 @@
           PageConsulte pc = new PageConsulte( mapping, request, user );
           mapping = (MpivavakaLib) pc.getBase();
           
+          
           pc.setTitre( "Fiche du croyant : "  + mapping.getPrenom());
           
           pc.getChampByName("idMpivavaka").setLibelle("Identifiant");
