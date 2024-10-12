@@ -12,5 +12,5 @@
 <script src="${pageContext.request.contextPath}/assets/js/apj-script.js"></script>
 <!-- -->
 
-<!--<link href="${pageContext.request.contextPath}/dist/css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/dist/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />-->
+<link href="${pageContext.request.contextPath}/dist/css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/dist/css/jquery-ui.css" rel="stylesheet" type="text/css" />
