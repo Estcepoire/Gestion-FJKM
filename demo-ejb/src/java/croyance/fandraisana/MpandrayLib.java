@@ -11,13 +11,13 @@ package croyance.fandraisana;
 public class MpandrayLib extends Mpandray {
           
           String nomPromotion;
-          int etatMpandray;
+          String etatMpandray;
 
-          public int getEtatMpandray() {
+          public String getEtatMpandray() {
                     return etatMpandray;
           }
 
-          public void setEtatMpandray(int etatMpandray) {
+          public void setEtatMpandray(String etatMpandray) {
                     this.etatMpandray = etatMpandray;
           }
           

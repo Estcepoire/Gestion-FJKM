@@ -4,6 +4,7 @@
     Author     : sarobidy
 --%>
 
+<%@page import="bean.CGenUtil"%>
 <%@page import="croyance.promotion.Promotion"%>
 <%@page import="affichage.Liste"%>
 <%@page import="user.UserEJB"%>
@@ -12,6 +13,8 @@
 <%
           
          Mpandray mpandray = new Mpandray();
+         String idMpivavaka = (String) request.getParameter("idMpivavaka");
+         
          UserEJB user = (UserEJB) session.getValue("u");
          String lien = (String) session.getValue("lien");
          PageInsert pi = new PageInsert( mpandray , request, user);
@@ -22,8 +25,17 @@
          pi.getFormu().getChamp("numeroMpandray").setAutre("readonly");
          pi.getFormu().getChamp("dateNandraisana").setLibelle("Date Nandraisana");
          pi.getFormu().getChamp("idMpivavaka").setLibelle("Mpivavaka");
+         pi.getFormu().getChamp("idMpivavaka").setPageAppelComplete("croyance.MpivavakaLib", "idMpivavaka", "v_mpivavaka_lib");
          
-         pi.getFormu().getChamp("idMpivavaka").setPageAppelComplete("croyance.Mpivavaka", "idMpivavaka", "mpivavaka");
+         if( idMpivavaka != null && !idMpivavaka.isEmpty() ){
+            mpandray.setIdMpivavaka(idMpivavaka);
+            mpandray.setNomTable("v_mpivavaka_lib");
+            mpandray =( (Mpandray[]) CGenUtil.rechercher(mpandray, null, null, "") )[0];
+            pi.getFormu().getChamp("idMpivavaka").setDefaut(idMpivavaka);
+            pi.getFormu().getChamp("idMpivavaka").setAutoCompleteLibelle( mpandray.getNomComplet() );
+          }
+         
+         
          
          Liste[] listes = { new Liste("idPromotion", new Promotion(), "nomPromotion", "idPromotion") };
          

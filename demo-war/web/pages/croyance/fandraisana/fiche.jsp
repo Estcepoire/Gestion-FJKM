@@ -86,8 +86,17 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpandray=" + id%>" style="margin-right: 10px">Modifier</a>
-                            <a href="<%= lien + "?but=apresTarif.jsp&idMpandray="+ id+"&acte=delete&bute=#&classe="+classe %>"><button class="btn btn-danger">Supprimer</button></a>
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpandray=" + id%>" style="margin-right: 10px">
+                                    Modifier
+                            </a>
+                            <a href="<%= lien + "?but=apresTarif.jsp&idMpandray="+ id+"&acte=delete&bute=#&classe="+classe %>">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </a>
+                                <a href="<%= lien %>?but=apresTarif.jsp&id=<%= id %>&acte=valider&bute=croyance/fandraisana/fiche.jsp&classe=<%= classe %>">
+                                    <button class="btn btn-success">
+                                            Confirmer
+                                    </button>
+                                </a>
                         </div>
                         <br/>
 
