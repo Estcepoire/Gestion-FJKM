@@ -16,6 +16,7 @@
           PageConsulte pc = new PageConsulte( mapping, request, user );
           mapping = (MpivavakaLib) pc.getBase();
           
+          
           pc.setTitre( "Fiche du croyant : "  + mapping.getPrenom());
           
           pc.getChampByName("idMpivavaka").setLibelle("Identifiant");
@@ -59,8 +60,17 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpivavaka=" + id%>" style="margin-right: 10px">Modifier</a>
-                            <a href="<%= lien + "?but=apresTarif.jsp&id="+ id+"&acte=delete&bute=#&classe="+classe %>"><button class="btn btn-danger">Supprimer</button></a>
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpivavaka=" + id%>" style="margin-right: 10px">
+                                Modifier
+                            </a>
+                                <a href="<%= lien %>?but=croyance/fandraisana/saisie.jsp&idMpivavaka=<%= id %>">
+                                    <button class="btn btn-primary">
+                                        Ho Mpandray
+                                    </button>
+                                </a>
+                            <a href="<%= lien + "?but=apresTarif.jsp&id="+ id+"&acte=delete&bute=#&classe="+classe %>">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </a>
                         </div>
                         <br/>
 
