@@ -18,8 +18,14 @@
     Promotion promotion = new Promotion();
    
     UserEJB user = (UserEJB) session.getValue("u");
-    PageConsulte pc = new PageConsulte( promotion, request, user );
-    promotion = (Promotion) pc.getBase();
+    
+    promotion.setIdPromotion( request.getParameter( promotion.getAttributIDName() ) );
+    
+    promotion.preparerData();
+    
+    PageConsulte pc = new PageConsulte();
+    pc.setBase(promotion);
+    pc.makeChamp();
     
     pc.getChampByName("idPromotion").setLibelle("Identifiant");
     pc.getChampByName("nomPromotion").setLibelle("Nom de la Promotion");
@@ -34,7 +40,13 @@
     String classe = "croyance.promotion.Promotion";
 
     String id = promotion.getTuppleID();
-
+    
+    request.setAttribute("promotion", promotion);
+    
+//    Eto mila asiana resaka hoe iza no ao amin'ilay promotion
+//    Ahoana no anaovana izany
+//    Mila alaiko daholo ny mpandray ao amin'ilay promotion
+//    Asiana bout
 
 
 %>
@@ -60,6 +72,7 @@
                         <br/>
                         <div class="box-footer">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idPromotion=" + id%>" style="margin-right: 10px">Modifier</a>
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but=administrateur/promotion/action/apresValidation.jsp" +"&idPromotion=" + id%>" style="margin-right: 10px">Sortie de Promotion</a>
                             <a href="<%= lien + "?but=apresTarif.jsp&idPromotion="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=promotionmpandray" %>"><button class="btn btn-danger">Supprimer</button></a>
                         </div>
                         <br/>
@@ -69,4 +82,9 @@
             </div>
         </div>
     </div>
+                        
+                        
+        <div class="row">
+            <jsp:include page="./details/etudiant-promotion.jsp" />
+        </div>
 </div>

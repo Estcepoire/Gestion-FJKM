@@ -51,5 +51,15 @@ public class MpivavakaLib extends Mpivavaka {
                     this.genre = genre;
           }
           
+          @Override
+          public String[] getMotCles(){
+                 String[] mots = {"nom", "prenom"};
+                 return mots;
+          }
           
+          @Override
+          public String[] getValMotCles(){
+                  String[] values = {"nomComplet"};
+                  return values;
+          }
 }
