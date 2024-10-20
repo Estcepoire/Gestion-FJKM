@@ -34,6 +34,8 @@
             
             pi.getFormu().getChamp("idMpivavaka").setPageAppelComplete("croyance.MpivavakaLib", "idMpivavaka", "v_mpivavaka_lib");
            
+            // Visibilté des champs
+            pi.getFormu().getChamp("etat").setVisible(false);
             
             // Libelle
             pi.getFormu().getChamp("idRole").setLibelle("Role");

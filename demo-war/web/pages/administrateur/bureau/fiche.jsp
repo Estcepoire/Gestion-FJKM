@@ -65,4 +65,10 @@
             </div>
         </div>
     </div>
+                        
+    <div class="row">
+        <jsp:include page="onglets/membre-bureaux.jsp" >
+            <jsp:param name="idBureaux" value="<%= id %>" />
+        </jsp:include>
+    </div>
 </div>
