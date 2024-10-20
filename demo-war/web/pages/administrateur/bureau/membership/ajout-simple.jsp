@@ -50,7 +50,7 @@
             pi.preparerDataFormu();
             pi.getFormu().makeHtmlInsertTabIndex();
             
-            String afterPost = "administrateur/bureau/fiche.jsp";
+            String afterPost = "administrateur/bureau/liste.jsp";
             String mappingClass = "bureaux.membership.MembreBureaux";
             String nomTable = "membrebureaux";
 

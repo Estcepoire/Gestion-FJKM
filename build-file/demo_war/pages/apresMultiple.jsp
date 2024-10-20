@@ -138,7 +138,7 @@
                     val = temp.toString();
                     idmere = o.getTuppleID();
                 }%>
-    <script language="JavaScript"> document.location.replace("<%=lien%>?but=<%=bute%>&<%= o.getAttributIDName() %>=<%=idmere%>");</script>
+    <script language="JavaScript"> document.location.replace("<%=lien%>?but=<%=bute%>&id=<%=idmere%>");</script>
     <% }
         if (acte != null && acte.compareToIgnoreCase("insertFille") == 0) {
                 
@@ -175,7 +175,7 @@
                 idmere = o.getTuppleID();
             }%>
  
-    <script language="JavaScript"> document.location.replace("<%=lien%>?but=<%=bute%>&<%= o.getAttributIDName() %>=<%=idmere%>");</script>
+    <script language="JavaScript"> document.location.replace("<%=lien%>?but=<%=bute%>&id=<%=idmere%>");</script>
     <% }
 
         if (acte.compareToIgnoreCase("updateMultiple") == 0) {
