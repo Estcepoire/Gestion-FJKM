@@ -57,11 +57,12 @@ public class MembreBureaux extends ClassEtat {
           }
 
           public void setIdRole(String idRole) {
-                    if( this.getMode().equalsIgnoreCase("modif") ){
+                    
+                    if( this.getMode().equalsIgnoreCase("modif") && ( idRole == null || idRole.trim().isEmpty() ) ){
                               this.setDefaultRole();
                               return;
                     }
-                    this.idRole = idRole;
+                    this.idRole = idRole.trim();
           }
 
           public Date getDateAdmission() {
