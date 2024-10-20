@@ -28,6 +28,7 @@
     String lien = (String) session.getValue("lien");
     String pageModif = "administrateur/bureau/update.jsp";
     String classe = "bureaux.Bureaux";
+    String pageAjoutMembre = "administrateur/bureau/membership/ajouter-membre.jsp";
 
     String id = bureaux.getTuppleID();
 
@@ -55,11 +56,11 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&id=" + id%>" style="margin-right: 10px">Modifier</a>
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idBureaux=" + id%>" style="margin-right: 10px">Modifier</a>
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageAjoutMembre +"&idBureaux=" + id%>" style="margin-right: 10px">Ajouter des Membres</a>
                             <a href="<%= lien + "?but=apresTarif.jsp&id="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=bureaux" %>"><button class="btn btn-danger">Supprimer</button></a>
                         </div>
                         <br/>
-
                     </div>
                 </div>
             </div>

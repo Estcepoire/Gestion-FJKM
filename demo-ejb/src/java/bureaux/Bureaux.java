@@ -1,5 +1,6 @@
 package bureaux;
 
+import bean.CGenUtil;
 import bean.ClassEtat;
 import java.sql.Connection;
 import java.sql.Date;
@@ -76,6 +77,14 @@ public class Bureaux extends ClassEtat {
           public String getAttributIDName() {
                     return "idBureaux";
           }
-    
+          
+          @Override
+          public void controler(Connection c) throws Exception{
+                    Bureaux[] bureaux = (Bureaux[]) CGenUtil.rechercher(this, null, null, c, "");
+                    if( bureaux != null && bureaux.length > 0 ){
+                              this.setIdBureaux( bureaux[0].getTuppleID() );
+                    }
+          }
+          
 
 }

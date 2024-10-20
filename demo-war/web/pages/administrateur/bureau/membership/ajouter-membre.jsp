@@ -4,6 +4,7 @@
     Author     : sarobidy
 --%>
 
+<%@page import="bean.CGenUtil"%>
 <%@page import="bureaux.TypeBureau"%>
 <%@page import="utilisateur.Role"%>
 <%@page import="affichage.Liste"%>
@@ -28,7 +29,6 @@
                 
                 pi.getFormu().changerEnChamp(champMere);
                 
-                
                 // Visibilité des champs
                 pi.getFormu().getChamp("etat").setVisible(false);
                 Champ.setVisible( pi.getFormufle().getChampFille("etat") , false);
@@ -50,6 +50,8 @@
                 
                 pi.getFormufle().changerEnChamp(roles);
                 
+                // Okey eto isika izao i-passer id avy eny ambony
+                
                 // Libellé des champs
                 
                 pi.getFormu().getChamp("nomBureaux").setLibelle("Nom du Bureau");
@@ -60,10 +62,20 @@
                 pi.getFormufle().getChamp("idMpivavaka_0").setLibelle("Mpivavaka");
                 pi.getFormufle().getChamp("idRole_0").setLibelle("Role");
                 pi.getFormufle().getChamp("dateAdmission_0").setLibelle("Date d&apos;admission");
-
-              pi.preparerDataFormu();
-
-
+                
+                // Si l'objet existe déja
+                String idBureaux = request.getParameter("idBureaux");
+                if( idBureaux != null && !idBureaux.isEmpty() ){
+                    bureaux.setTuppleId(idBureaux);
+                    bureaux = ((Bureaux[]) CGenUtil.rechercher( bureaux , null, null, ""))[0];
+                    pi.getFormu().getChamp("nomBureaux").setDefaut( bureaux.getNomBureaux() );
+                    pi.getFormu().getChamp("descriptionBureaux").setDefaut( bureaux.getDescriptionBureaux() );
+                    pi.getFormu().getChamp("dateCreation").setDefaut(bureaux.getDateCreation().toString());
+                    pi.getFormu().getChamp("idTypeBureau").setDefaut(bureaux.getTypeBureau());
+                    pi.getFormu().getChamp("etat").setDefaut(String.valueOf(bureaux.getEtat()));
+                }
+                
+                pi.preparerDataFormu();
                 pi.setTitre("Ajout des membres pour le bureau");
 
                 pi.setLien(lien);
