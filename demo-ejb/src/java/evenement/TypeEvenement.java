@@ -5,6 +5,7 @@
 package evenement;
 
 import bean.TypeObjet;
+import java.sql.Connection;
 
 /**
  *
@@ -15,5 +16,13 @@ public class TypeEvenement extends TypeObjet {
           public TypeEvenement(){
                     this.setNomTable("typeevenement");
           }
+
+          @Override
+          public void construirePK(Connection c) throws Exception {
+                    this.preparePk("TPE", "get_seq_type_evenement");
+                    this.setId( this.makePK(c) );
+                    // super.construirePK(c); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+          }
+          
           
 }
