@@ -8,6 +8,9 @@ public class MvtStock extends ClassMere {
     String id, designation, idMagasin, idTypeMvStock;
     Date daty;
 
+    String idTypeMvtStockLib;
+    String idMagasinLib;
+
     public MvtStock() throws Exception {
         this.setNomTable("MvtStock");
         this.setLiaisonFille("idMere");
@@ -68,6 +71,14 @@ public class MvtStock extends ClassMere {
     public void construirePK(Connection c) throws Exception {
         this.preparePk("MVTSTOCK", "GET_SEQMVTSTOCK");
         this.setId(makePK(c));
+    }
+
+    public String getIdTypeMvtStockLib() {
+        return idTypeMvtStockLib;
+    }
+
+    public void setIdTypeMvtStockLib(String idTypeMvtStockLib) {
+        this.idTypeMvtStockLib = idTypeMvtStockLib;
     }
 
 }

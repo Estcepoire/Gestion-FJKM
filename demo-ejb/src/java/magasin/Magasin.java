@@ -6,7 +6,7 @@ import bean.ClassMAPTable;
 
 public class Magasin extends ClassMAPTable {
 
-    String id, val, desce, idTypeMagasin;
+    String id, val, desce;
 
     public Magasin() {
         this.setNomTable("MAGASIN");
@@ -36,13 +36,6 @@ public class Magasin extends ClassMAPTable {
         this.desce = desce;
     }
 
-    public String getIdTypeMagasin() {
-        return idTypeMagasin;
-    }
-
-    public void setIdTypeMagasin(String idTypeMagasin) {
-        this.idTypeMagasin = idTypeMagasin;
-    }
 
     @Override
     public String getAttributIDName() {

@@ -95,4 +95,15 @@ public class Produit extends ClassEtat {
         return id;
     }
 
+    @Override
+    public String[] getMotCles() {
+        String[] motCles = { "id", "val" };
+        return motCles;
+    }
+
+    @Override
+    public String[] getValMotCles() {
+        String[] valMotCles = { "val" };
+        return valMotCles;
+    }
 }

@@ -1,5 +1,6 @@
 package stock;
 
+import java.sql.Connection;
 import bean.ClassFille;
 
 public class MvtStockFille extends ClassFille {
@@ -10,7 +11,7 @@ public class MvtStockFille extends ClassFille {
     public MvtStockFille() throws Exception {
         this.setNomTable("MvtStockFille");
         this.setLiaisonMere("idMere");
-        this.setNomClasseMere("stock.MvtStock");
+        setNomClasseMere("stock.MvtStock");
     }
 
     public String getIdProduit() {
@@ -105,4 +106,9 @@ public class MvtStockFille extends ClassFille {
         this.designation = designation;
     }
 
+    @Override
+    public void construirePK(Connection c) throws Exception {
+        this.preparePk("MVTSTOCKFILLE", "GET_SEQMVTSTOCK");
+        this.setId(makePK(c));
+    }
 }

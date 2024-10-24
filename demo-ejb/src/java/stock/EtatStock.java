@@ -6,6 +6,7 @@ import utilitaire.Utilitaire;
 
 public class EtatStock extends ClassMAPTable {
     String id;
+    double reste;
     
     public String getId() {
         return id;
@@ -78,6 +79,14 @@ public class EtatStock extends ClassMAPTable {
     }
     public static void main(String[] args) {
         
+    }
+
+    public double getReste() {
+        return reste;
+    }
+
+    public void setReste(double reste) {
+        this.reste = reste;
     }
     
 }
