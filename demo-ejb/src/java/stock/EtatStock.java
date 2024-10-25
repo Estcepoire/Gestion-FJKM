@@ -235,7 +235,10 @@ public class EtatStock extends ClassMAPTable {
     public EtatStock[] caculEtatStock() throws Exception {
         String query = this.generateQueryCore(Utilitaire.stringDate(this.getDatyMin()),
                 Utilitaire.stringDate(this.getDatyMin()));
-        query = query + " and inv.idmagasin =' " + this.getIdmagasin() + "' and inv.idproduit ='" + this.getId() + "'";
+        if (this.getIdmagasin() != null && this.getId() != null) {
+            query = query + " and inv.idmagasin =' " + this.getIdmagasin() + "' and inv.idproduit ='" + this.getId()
+                    + "'";
+        }
         EtatStock[] etatStocks = (EtatStock[]) CGenUtil.rechercher(new EtatStock(), query);
         return etatStocks;
     }
