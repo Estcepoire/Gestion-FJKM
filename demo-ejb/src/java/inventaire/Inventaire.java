@@ -3,7 +3,6 @@ package inventaire;
 import java.sql.Connection;
 import java.sql.Date;
 
-import bean.CGenUtil;
 import bean.ClassMere;
 
 public class Inventaire extends ClassMere {

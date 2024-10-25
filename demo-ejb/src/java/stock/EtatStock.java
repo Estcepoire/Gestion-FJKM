@@ -6,6 +6,17 @@ import utilitaire.Utilitaire;
 
 public class EtatStock extends ClassMAPTable {
     String id;
+    String designation;
+    String idmagasin;
+    String idmagasinlib;
+    String idunite;
+    String idunitelib;
+    String idtypeproduit;
+    String idtypeproduitlib;
+    Date dateDernierinventaire;
+    double quantite;
+    double entree;
+    double sortie;
     double reste;
     
     public String getId() {
@@ -16,57 +27,169 @@ public class EtatStock extends ClassMAPTable {
         this.id = id;
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public String getIdmagasin() {
+        return idmagasin;
+    }
+
+    public void setIdmagasin(String idmagasin) {
+        this.idmagasin = idmagasin;
+    }
+
+    public String getIdmagasinlib() {
+        return idmagasinlib;
+    }
+
+    public void setIdmagasinlib(String idmagasinlib) {
+        this.idmagasinlib = idmagasinlib;
+    }
+
+    public String getIdunite() {
+        return idunite;
+    }
+
+    public void setIdunite(String idunite) {
+        this.idunite = idunite;
+    }
+
+    public String getIdunitelib() {
+        return idunitelib;
+    }
+
+    public void setIdunitelib(String idunitelib) {
+        this.idunitelib = idunitelib;
+    }
+
+    public String getIdtypeproduit() {
+        return idtypeproduit;
+    }
+
+    public void setIdtypeproduit(String idtypeproduit) {
+        this.idtypeproduit = idtypeproduit;
+    }
+
+    public String getIdtypeproduitlib() {
+        return idtypeproduitlib;
+    }
+
+    public void setIdtypeproduitlib(String idtypeproduitlib) {
+        this.idtypeproduitlib = idtypeproduitlib;
+    }
+
+    public Date getDateDernierinventaire() {
+        return dateDernierinventaire;
+    }
+
+    public void setDateDernierinventaire(Date dateDernierinventaire) {
+        this.dateDernierinventaire = dateDernierinventaire;
+    }
+
+    public double getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(double quantite) {
+        this.quantite = quantite;
+    }
+
+    public double getEntree() {
+        return entree;
+    }
+
+    public void setEntree(double entree) {
+        this.entree = entree;
+    }
+
+    public double getSortie() {
+        return sortie;
+    }
+
+    public void setSortie(double sortie) {
+        this.sortie = sortie;
+    }
+
+    public double getReste() {
+        return reste;
+    }
+
+    public void setReste(double reste) {
+        this.reste = reste;
+    }
+
     public String generateQueryCore(Date dateMin, Date dateMax) {
-        String query =  " SELECT  " +
-                    "	inv.IDPRODUIT AS ID, " +
-                    "	p.desce AS idproduitLib, " +
-                    "	p.IDTYPEPRODUIT, " +
-                    "	tp.desce AS idtypeproduitlib, " +
-                    "	inv.idmagasin, " +
-                    "	mag.desce AS idmagasinlib, " +
-                    "	inv.DATY dateDernierinventaire, " +
-                    "	COALESCE(inv.QUANTITE, 0) QUANTITE, " +
-                    "	COALESCE(mvt.ENTREE, 0) ENTREE,  " +
-                    "	COALESCE(mvt.SORTIE, 0) SORTIE,  " +
-                    "	COALESCE(mvt.ENTREE, 0) + COALESCE(inv.QUANTITE, 0) - COALESCE(mvt.SORTIE, 0) reste, " +
-                    "	p.IDUNITE, " +
-                    "	u.desce AS idunitelib, " +
-                    "   COALESCE(CAST(p.PUVENTE AS NUMERIC(30, 2)), 0) PUVENTE, " +
-                    "	mag.IDPOINT, " +
-                    "	mag.IDTYPEMAGASIN " +
-                    "FROM  " +
-                    "	INVENTAIRE_FILLE_CPL inv " +
-                    "	JOIN (" +
-                    "       SELECT inv.IDPRODUIT, inv.IDMAGASIN, MAX(inv.DATY) maxDateInventaire " +
-                    "		FROM INVENTAIRE_FILLE_CPL inv " +
-                    "		WHERE inv.ETAT = 11 " +
-                    "		AND inv.DATY <= '" + Utilitaire.datetostring(dateMin) + "' " +
-                    "		GROUP BY inv.IDPRODUIT, inv.IDMAGASIN " +
-                    "	) invm ON inv.DATY = invm.maxDateInventaire " +
-                    "	JOIN (" +
-                    "		SELECT m.IDPRODUIT, dinv.IDMAGASIN, " +
-                    "			SUM(COALESCE(m.ENTREE, 0)) ENTREE, " +
-                    "			SUM(COALESCE(m.SORTIE, 0)) SORTIE " +
-                    "		FROM MVTSTOCKFILLELIB m " +
-                    "		JOIN (" +
-                    "			SELECT inv.IDPRODUIT, inv.IDMAGASIN, MAX(inv.DATY) maxDateInventaire " +
-                    "			FROM INVENTAIRE_FILLE_CPL inv " +
-                    "			WHERE inv.ETAT = 11 " +
-                    "			AND inv.DATY <= '" + Utilitaire.datetostring(dateMin) + "' " +
-                    "			GROUP BY inv.IDPRODUIT, inv.IDMAGASIN " +
-                    "		) dinv ON m.IDPRODUIT = dinv.IDPRODUIT AND m.IDMAGASIN = dinv.IDMAGASIN " +
-                    "		WHERE m.DATY > dinv.maxDateInventaire " +
-                    "		AND m.DATY <= '" + Utilitaire.datetostring(dateMax) + "' " +
-                    "		GROUP BY m.IDPRODUIT, dinv.IDMAGASIN " +
-                    "	) mvt ON inv.IDPRODUIT = mvt.IDPRODUIT AND inv.IDMAGASIN = mvt.IDMAGASIN " +
-                    "	JOIN produit p ON inv.IDPRODUIT = p.ID " +
-                    "	JOIN type_produit tp ON p.IDTYPEPRODUIT = tp.ID " +
-                    "	JOIN magasin mag ON inv.idmagasin = mag.ID " +
-                    "	LEFT JOIN unite u ON p.IDUNITE = u.ID " +
-                    "WHERE inv.ETAT = 11 ";
+        String query = "SELECT " +
+                "inv.idproduit AS ID, " +
+                "inv.designation, " +
+                "inv.idmagasin, " +
+                "mag.desce AS idmagasinlib, " +
+                "inv.idunite, " +
+                "inv.unitelib as idunitelib, " +
+                "inv.idtypeproduit, " +
+                "inv.idtypeproduitlib," +
+                "inv.DATY AS dateDernierinventaire, " +
+                "COALESCE(inv.QUANTITE, 0) AS QUANTITE, " +
+                "COALESCE(mvt.ENTREE, 0) AS ENTREE, " +
+                "COALESCE(mvt.SORTIE, 0) AS SORTIE, " +
+                "COALESCE(mvt.ENTREE, 0) + COALESCE(inv.QUANTITE, 0) - COALESCE(mvt.SORTIE, 0) AS reste" +
+                "FROM  " +
+                "INVENTAIRE_FILLE_CPL inv " +
+                "JOIN ( " +
+                "SELECT  " +
+                "inv.idproduit,  " +
+                "inv.IDMAGASIN,  " +
+                "MAX(inv.DATY) AS maxDateInventaire " +
+                "FROM  " +
+                "INVENTAIRE_FILLE_CPL inv " +
+                "WHERE  " +
+                "inv.ETAT = 11  " +
+                "AND inv.DATY <= '" + Utilitaire.datetostring(dateMin) + "' " +
+                "GROUP BY  " +
+                "inv.idproduit, inv.IDMAGASIN " +
+                ") invm ON inv.DATY = invm.maxDateInventaire  " +
+                "AND inv.IDMAGASIN = invm.IDMAGASIN  " +
+                "AND inv.idproduit = invm.idproduit " +
+                "JOIN ( " +
+                "SELECT  " +
+                "m.idproduit ,  " +
+                "dinv.IDMAGASIN,  " +
+                "SUM(COALESCE(m.ENTREE, 0)) AS ENTREE,  " +
+                "SUM(COALESCE(m.SORTIE, 0)) AS SORTIE " +
+                "FROM  " +
+                "MVTSTOCKFILLELIB m " +
+                "JOIN ( " +
+                "SELECT  " +
+                "inv.idproduit,  " +
+                "inv.IDMAGASIN,  " +
+                "MAX(inv.DATY) AS maxDateInventaire " +
+                "FROM  " +
+                "INVENTAIRE_FILLE_CPL inv " +
+                "WHERE  " +
+                "inv.ETAT = 11  " +
+                "AND inv.DATY <= '" + Utilitaire.datetostring(dateMin) + "' " +
+                "GROUP BY  " +
+                "inv.idproduit, inv.IDMAGASIN " +
+                ") dinv ON m.idproduit = dinv.idproduit  " +
+                "AND m.IDMAGASIN = dinv.IDMAGASIN " +
+                "WHERE  " +
+                "m.DATY > dinv.maxDateInventaire  " +
+                "AND m.DATY <= '" + Utilitaire.datetostring(dateMax) + "'  " +
+                "GROUP BY  " +
+                "m.idproduit, dinv.IDMAGASIN " +
+                ") mvt ON inv.idproduit = mvt.idproduit  " +
+                "AND inv.IDMAGASIN = mvt.IDMAGASIN " +
+                "JOIN  " +
+                "magasin mag ON inv.idmagasin = mag.ID " +
+                "WHERE  " +
+                "inv.ETAT = 11 ";
         return query;
     }
-    
 
     @Override
     public String getTuppleID() {
@@ -76,17 +199,6 @@ public class EtatStock extends ClassMAPTable {
     @Override
     public String getAttributIDName() {
         return "id";
-    }
-    public static void main(String[] args) {
-        
-    }
-
-    public double getReste() {
-        return reste;
-    }
-
-    public void setReste(double reste) {
-        this.reste = reste;
     }
     
 }
