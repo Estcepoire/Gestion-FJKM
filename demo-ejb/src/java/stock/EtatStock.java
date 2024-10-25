@@ -1,6 +1,8 @@
 package stock;
 
 import java.sql.Date;
+
+import bean.CGenUtil;
 import bean.ClassMAPTable;
 import utilitaire.Utilitaire;
 
@@ -18,7 +20,35 @@ public class EtatStock extends ClassMAPTable {
     double entree;
     double sortie;
     double reste;
-    
+
+    Date daty;
+    String datyMin;
+    String datyMax;
+
+    public String getDatyMin() {
+        return datyMin;
+    }
+
+    public void setDatyMin(String datyMin) {
+        this.datyMin = datyMin;
+    }
+
+    public String getDatyMax() {
+        return datyMax;
+    }
+
+    public void setDatyMax(String datyMax) {
+        this.datyMax = datyMax;
+    }
+
+    public Date getDaty() {
+        return daty;
+    }
+
+    public void setDaty(Date daty) {
+        this.daty = daty;
+    }
+
     public String getId() {
         return id;
     }
@@ -137,7 +167,8 @@ public class EtatStock extends ClassMAPTable {
                 "COALESCE(inv.QUANTITE, 0) AS QUANTITE, " +
                 "COALESCE(mvt.ENTREE, 0) AS ENTREE, " +
                 "COALESCE(mvt.SORTIE, 0) AS SORTIE, " +
-                "COALESCE(mvt.ENTREE, 0) + COALESCE(inv.QUANTITE, 0) - COALESCE(mvt.SORTIE, 0) AS reste" +
+                "COALESCE(mvt.ENTREE, 0) + COALESCE(inv.QUANTITE, 0) - COALESCE(mvt.SORTIE, 0) AS reste," +
+                "CURRENT_DATE  as daty " +
                 "FROM  " +
                 "INVENTAIRE_FILLE_CPL inv " +
                 "JOIN ( " +
@@ -199,6 +230,14 @@ public class EtatStock extends ClassMAPTable {
     @Override
     public String getAttributIDName() {
         return "id";
+    }
+
+    public EtatStock[] caculEtatStock() throws Exception {
+        String query = this.generateQueryCore(Utilitaire.stringDate(this.getDatyMin()),
+                Utilitaire.stringDate(this.getDatyMin()));
+        query = query + " and inv.idmagasin =' " + this.getIdmagasin() + "' and inv.idproduit ='" + this.getId() + "'";
+        EtatStock[] etatStocks = (EtatStock[]) CGenUtil.rechercher(new EtatStock(), query);
+        return etatStocks;
     }
     
 }
