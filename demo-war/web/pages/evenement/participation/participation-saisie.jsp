@@ -49,6 +49,7 @@
                 
                 
          String idEvenement = request.getParameter("idEvenement");
+        String ajoutId = "";
                 if( idEvenement != null && !idEvenement.isEmpty() ){
                     event.setTuppleId(idEvenement);
                     event = ((Evenement[]) CGenUtil.rechercher( event , null, null, ""))[0];
@@ -62,6 +63,7 @@
                     pi.getFormu().getChamp("idMere").setDefaut( event.getIdMere() );
                     pi.getFormu().getChamp("idMpivavaka").setDefaut( event.getIdMpivavaka() );
                     pi.getFormu().getChamp("etat").setDefaut(String.valueOf(event.getEtat()));
+                    ajoutId = "&idEvenement=" + idEvenement;
                 }
                 
           pi.preparerDataFormu();
@@ -76,6 +78,10 @@
                       classeMere = "evenement.Evenement",
                       classeFille = "evenement.participation.Participation",
                       colonneMere = "idEvenement";
+              
+              String pageAppelMultiple = "croyance/choix/choix-mpandray-multiple.jsp";
+              String champReturn = "idMpivavaka_0libelle;idMpivavaka_0";
+              String champURL = "nomComplet;idMpivavaka";
 %>
 
 
@@ -85,12 +91,19 @@
         <%= pi.getTitre() %>
     </h1>
     <!--  -->
-    <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp&idEvenement=<%= idEvenement %>" method="post" >
-        <%
-            
-            out.println(pi.getFormu().getHtmlInsert());
-            out.println(pi.getFormufle().getHtmlTableauInsert());
-        %>
+    <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp<%= ajoutId %>" method="post" >
+        <%= pi.getFormu().getHtmlInsert() %>
+        
+        <div class="row">
+            <h3> 
+                Ajouter des Participants
+                <button class="btn btn-success" type="button" onclick="pagePopUp('modulePopup.jsp?but=<%= pageAppelMultiple %>&champReturn=<%=champReturn%>&champUrl=<%= champURL %>')">
+                    Selectionnez des Croyants
+                </button>
+            </h3>
+                <%= pi.getFormufle().getHtmlTableauInsert() %>
+        </div>
+        
         
         <input name="acte" type="hidden" id="nature" value="insert">
         <input name="bute" type="hidden" id="bute" value="<%= butApresPost %>">
