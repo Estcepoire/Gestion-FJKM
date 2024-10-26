@@ -158,7 +158,10 @@ public class Evenement extends ClassEtat {
 
           @Override
           public ClassMAPTable createObject(String u, Connection c) throws Exception {
-                    if( this.getTuppleID() != null && !this.getTuppleID().isEmpty() ) return this; // Efa feno avy amin'ny affichage
+                    if( this.getTuppleID() != null && !this.getTuppleID().isEmpty() ) {
+                              this.updateToTable(c);
+                              return this;
+                    } // Efa feno avy amin'ny affichage
                     MapUtilisateur us = new MapUtilisateur();
                     us.setRefuser(u);
                     MapUtilisateur[] users = (MapUtilisateur[]) CGenUtil.rechercher(us, null, null, c, "");
