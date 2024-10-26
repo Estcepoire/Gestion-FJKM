@@ -29,6 +29,18 @@ public class Evenement extends ClassEtat {
           String idMere;
           boolean ouvert;
           
+          String longitude;
+          String latitude;
+          String lieu;
+
+          public String getLieu() {
+                    return lieu;
+          }
+
+          public void setLieu(String lieu) {
+                    this.lieu = lieu;
+          }
+          
           public void setOuvert(boolean b){
                     this.ouvert = b;
           }
@@ -132,6 +144,19 @@ public class Evenement extends ClassEtat {
           }
 
           @Override
+          public void controler(Connection c) throws Exception {
+                    // Controle
+                    // Tokony hoe rehefa null ny coordonnées
+                    if( this.getLongitude() == null || this.getLongitude().isEmpty() || this.getLatitude() == null  || this.getLatitude().isEmpty() ){
+                              String[] coords = utils.ConstanteFJKM.getDefaultCoordinates();
+                              this.setLongitude(coords[1]);
+                              this.setLatitude(coords[0]);
+                    }
+          }
+          
+          
+
+          @Override
           public ClassMAPTable createObject(String u, Connection c) throws Exception {
                     if( this.getTuppleID() != null && !this.getTuppleID().isEmpty() ) return this; // Efa feno avy amin'ny affichage
                     MapUtilisateur us = new MapUtilisateur();
@@ -144,6 +169,22 @@ public class Evenement extends ClassEtat {
           public String getOuvertString(){
                     if( this.getOuvert() ) return "1";
                     return "0";
+          }
+
+          public String getLongitude() {
+                    return longitude;
+          }
+
+          public void setLongitude(String longitude) {
+                    this.longitude = longitude;
+          }
+
+          public String getLatitude() {
+                    return latitude;
+          }
+
+          public void setLatitude(String latitude) {
+                    this.latitude = latitude;
           }
           
 }
