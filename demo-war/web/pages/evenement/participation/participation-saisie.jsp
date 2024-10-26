@@ -59,8 +59,10 @@
                 
          String idEvenement = request.getParameter("idEvenement");
         String ajoutId = "";
+        boolean freezeMap = false;
                 if( idEvenement != null && !idEvenement.isEmpty() ){
                     event.setTuppleId(idEvenement);
+                    freezeMap = true;
                     event = ((Evenement[]) CGenUtil.rechercher( event , null, null, ""))[0];
                     pi.getFormu().getChamp("description").setDefaut( event.getDescription() );
                     pi.getFormu().getChamp("dateDebutEvenement").setDefaut( event.getDateDebutEvenement().toString() );
@@ -75,6 +77,21 @@
                     pi.getFormu().getChamp("longitude").setDefaut( event.getLongitude() );
                     pi.getFormu().getChamp("latitude").setDefaut(event.getLatitude());
                     pi.getFormu().getChamp("lieu").setDefaut(event.getLieu());
+                    
+                    pi.getFormu().getChamp("description").setAutre( "readonly" );
+                    pi.getFormu().getChamp("dateDebutEvenement").setAutre( "readonly" );
+                    pi.getFormu().getChamp("dateFinEvenement").setAutre( "readonly"  );
+                    pi.getFormu().getChamp("heureDebut").setAutre( "readonly" );
+                    pi.getFormu().getChamp("heureFin").setAutre( "readonly" );
+                    pi.getFormu().getChamp("idTypeEvenement").setAutre( "readonly" );
+                    pi.getFormu().getChamp("ouvert").setAutre(  "readonly" );
+                    pi.getFormu().getChamp("idMere").setAutre( "readonly" );
+                    pi.getFormu().getChamp("idMpivavaka").setAutre( "readonly" );
+                    pi.getFormu().getChamp("etat").setAutre("readonly");
+                    pi.getFormu().getChamp("longitude").setAutre( "readonly" );
+                    pi.getFormu().getChamp("latitude").setAutre( "readonly" );
+                    pi.getFormu().getChamp("lieu").setAutre( "readonly" );
+                    
                     ajoutId = "&idEvenement=" + idEvenement;
                 }
                 
@@ -158,7 +175,11 @@
         function onMapClick(e){
             p.setLatLng(e.latlng)
                 .openOn(map);
-            updateLongLatAndName(e.latlng);
+        
+            <%
+                      if( !freezeMap ){ %>
+                            updateLongLatAndName(e.latlng);   
+             <% } %>
         
         }
         
