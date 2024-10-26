@@ -146,20 +146,16 @@ public class Evenement extends ClassEtat {
           @Override
           public void controler(Connection c) throws Exception {
                     // Controle
-                    // Tokony hoe rehefa null ny coordonnées
-                    if( this.getLongitude() == null || this.getLongitude().isEmpty() || this.getLatitude() == null  || this.getLatitude().isEmpty() ){
-                              String[] coords = utils.ConstanteFJKM.getDefaultCoordinates();
-                              this.setLongitude(coords[1]);
-                              this.setLatitude(coords[0]);
+                    // Coordonnées efa mipetraka ho azy any am Affichage
+                    // Contrôle sur les dates
+                    if( this.getDateFinEvenement().before(this.getDateDebutEvenement()) ){
+                              throw new Exception("La date fin de l&apos;evenement est inférieure à la date de début");
                     }
           }
           
-          
-
           @Override
           public ClassMAPTable createObject(String u, Connection c) throws Exception {
                     if( this.getTuppleID() != null && !this.getTuppleID().isEmpty() ) {
-                              this.updateToTable(c);
                               return this;
                     } // Efa feno avy amin'ny affichage
                     MapUtilisateur us = new MapUtilisateur();
