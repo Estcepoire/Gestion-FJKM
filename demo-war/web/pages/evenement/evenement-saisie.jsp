@@ -4,20 +4,44 @@
     Author     : sarobidy
 --%>
 
+<%@page import="evenement.TypeEvenement"%>
+<%@page import="affichage.Liste"%>
 <%@page import="affichage.PageInsert"%>
 <%@page import="user.UserEJB"%>
 <%@page import="evenement.Evenement"%>
+
 <%
          Evenement event = new Evenement();
+         
          String lien = (String) session.getValue("lien");
          UserEJB user = (UserEJB) session.getValue("u");
+         
          PageInsert pi = new PageInsert( event, request, user );
          pi.setTitre("Ajout d'un evenement");
          pi.setLien(lien);
+         
+         Liste[] list = new Liste[2];
+          list[0] = new Liste("ouvert");
+          list[0].makeListeOuiNon();
+          
+          list[1] = new Liste( "idTypeEvenement", new TypeEvenement(), "val", "id" );
+          
+          pi.getFormu().changerEnChamp(list);
+          
+         
+         pi.getFormu().changerEnChamp(list);
+         
+         pi.getFormu().getChamp("etat").setVisible(false);
+         pi.getFormu().getChamp("idMpivavaka").setVisible(false);
+         pi.getFormu().getChamp("idMere").setVisible(false);
+         
+         pi.getFormu().getChamp("description").setType("textarea");
          pi.getFormu().getChamp("heureDebut").setType("time");
          pi.getFormu().getChamp("heureDebut").setAutre("step=\"1\"");
+         
          pi.getFormu().getChamp("heureFin").setType("time");
          pi.getFormu().getChamp("heureFin").setAutre("step=\"1\"");
+         
          pi.preparerDataFormu();
          pi.getFormu().makeHtmlInsertTabIndex();
          
