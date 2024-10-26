@@ -4,7 +4,10 @@
  */
 package evenement;
 
+import bean.CGenUtil;
 import bean.ClassEtat;
+import bean.ClassMAPTable;
+import historique.MapUtilisateur;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
@@ -24,6 +27,14 @@ public class Evenement extends ClassEtat {
           String idTypeEvenement;
           String idMpivavaka;
           String idMere;
+          boolean ouvert;
+          
+          public void setOuvert(boolean b){
+                    this.ouvert = b;
+          }
+          public boolean getOuvert(){
+                    return this.ouvert;
+          }
           
           public Evenement(){
                     this.setNomTable("evenement");
@@ -119,11 +130,20 @@ public class Evenement extends ClassEtat {
                     this.preparePk("EVE", "get_seq_evenement");
                     this.setIdEvenement(this.makePK(c));
           }
+
+          @Override
+          public ClassMAPTable createObject(String u, Connection c) throws Exception {
+                    if( this.getTuppleID() != null && !this.getTuppleID().isEmpty() ) return this; // Efa feno avy amin'ny affichage
+                    MapUtilisateur us = new MapUtilisateur();
+                    us.setRefuser(u);
+                    MapUtilisateur[] users = (MapUtilisateur[]) CGenUtil.rechercher(us, null, null, c, "");
+                    if( users.length > 0 ) this.setIdMpivavaka(users[0].getIdMpivavaka());
+                    return super.createObject(u, c); 
+          }
           
-          // Okey vita zay ny classe de base
-          // Attaquons nous au plus dangereux
-          // Aiza no asiana anle localisation
-          // Anaty base ve?
-          
+          public String getOuvertString(){
+                    if( this.getOuvert() ) return "1";
+                    return "0";
+          }
           
 }
