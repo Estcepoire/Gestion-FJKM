@@ -27,6 +27,7 @@
     
     Onglet onglet = new Onglet("liste-participant");
     onglet.addPage("liste-participant", "participant");
+    onglet.addPage("liste-evenements", "evenements");
     String tab = request.getParameter("tab");
     String currentTab = onglet.getCurrentPage(tab);
     
@@ -34,10 +35,19 @@
 
 %>
 
+<head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/leaflet-map/leaflet.css"  type="text/css"/>
+    <style>
+        
+        #map{
+                height: 400px;
+        }
+    </style>
+</head>
 
 <div class="content-wrapper">
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-6">
             <div class="box-fiche">
                 <div class="box">
@@ -68,6 +78,9 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div id="map"></div>
+        </div>
     </div>
     <div class="row">
             <div class="col-md-12">
@@ -77,14 +90,31 @@
                         <li class="<%= onglet.isActive("liste-participant") %>">
                             <a href="<%= lien %>?but=<%= pageActuel %>&idEvenement=<%= id %>&tab=participant">Participants</a>
                         </li>
+                        <li class="<%= onglet.isActive("liste-evenements") %>">
+                            <a href="<%= lien %>?but=<%= pageActuel %>&idEvenement=<%= id %>&tab=evenements">Sous Evenements</a>
+                        </li>
                     </ul>
                     <div class="tab-content">       
-                        <jsp:include page="<%= currentTab %>" >
-                            <jsp:param name="idmere" value="<%= id %>" />
-                        </jsp:include>
+                        <jsp:include page="<%= currentTab %>" />
                     </div>
                 </div>
 
             </div>
         </div>
 </div>
+                    
+                    
+<script src="${pageContext.request.contextPath}/assets/leaflet-map/leaflet.js"></script>
+<script>
+        var map = L.map('map').setView([ <%= evenement.getLatitude() %> , <%= evenement.getLongitude() %> ], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 20,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        
+        
+         const point = [ <%= evenement.getLatitude() %> , <%= evenement.getLongitude() %> ]; 
+        const marker = L.marker(point).addTo(map);
+
+       
+</script>
