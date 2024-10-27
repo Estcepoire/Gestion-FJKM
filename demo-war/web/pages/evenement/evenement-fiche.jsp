@@ -34,6 +34,9 @@
     String currentTab = onglet.getCurrentPage(tab);
     
     request.setAttribute("evenement", evenement);
+    
+    String redirectionFille = ( evenement.getOuvert() ) ? "evenement/evenement-saisie.jsp" : "evenement/participation/participation-saisie.jsp";
+    redirectionFille = redirectionFille + "&idMere=" + id;
 
 %>
 
@@ -75,6 +78,9 @@
                                    <button class="btn btn-primary">Ajouter participants</button>
                                </a>
                               <% } %>
+                              <a href="<%= lien + "?but=" + redirectionFille %>">
+                                <button class="btn btn-primary">Lier Evenement </button>
+                            </a>
                             <a href="<%= lien + "?but=apresTarif.jsp&" + evenement.getAttributIDName() + "="+ id+"&acte=delete&bute=#&classe="+classe %>">
                                 <button class="btn btn-danger">Supprimer</button>
                             </a>
