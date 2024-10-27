@@ -17,6 +17,8 @@
     PageConsulte pc = new PageConsulte(evenement, request, u);
     pc.setTitre("D&eacute;tails de l&apos;evenement");
     
+    evenement = (Evenement) pc.getBase();
+    
     pc.setLien(lien);
     
     String pageModif = "evenement/evenement-update.jsp";
@@ -68,6 +70,11 @@
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&" + evenement.getAttributIDName() + "=" + id%>" style="margin-right: 10px">
                                     Modifier
                             </a>
+                             <% if( evenement.getOuvert() == false ) { %>
+                                <a href="<%= lien + "?but=evenement/participation/participation-saisie.jsp&idEvenement=" + id %> ">
+                                   <button class="btn btn-primary">Ajouter participants</button>
+                               </a>
+                              <% } %>
                             <a href="<%= lien + "?but=apresTarif.jsp&" + evenement.getAttributIDName() + "="+ id+"&acte=delete&bute=#&classe="+classe %>">
                                 <button class="btn btn-danger">Supprimer</button>
                             </a>
