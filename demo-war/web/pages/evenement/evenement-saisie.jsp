@@ -47,6 +47,19 @@
          pi.getFormu().getChamp("longitude").setDefaut( coords[1] );
          pi.getFormu().getChamp("latitude").setDefaut( coords[0] );
          
+         
+         // Libellé
+         pi.getFormu().getChamp("description").setLibelle("D&eacute;scription");
+         pi.getFormu().getChamp("dateDebutEvenement").setLibelle("Date d&eacute;but");
+         pi.getFormu().getChamp("dateFinEvenement").setLibelle("Date Fin");
+         pi.getFormu().getChamp("heureDebut").setLibelle("Heure D&eacute;but");
+         pi.getFormu().getChamp("heureFin").setLibelle("Heure Fin");
+         pi.getFormu().getChamp("idTypeEvenement").setLibelle("Type d&apos;evenement");
+         pi.getFormu().getChamp("ouvert").setLibelle("Ouvert &agrave; tous");
+         pi.getFormu().getChamp("lieu").setLibelle("Lieu");
+
+
+         
          String idMere = request.getParameter("idMere");
         pi.getFormu().getChamp("idMere").setDefaut( ( idMere != null ) ? idMere : null );
          
