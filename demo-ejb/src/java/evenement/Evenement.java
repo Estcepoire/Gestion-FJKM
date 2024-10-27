@@ -142,6 +142,24 @@ public class Evenement extends ClassEtat {
                     this.preparePk("EVE", "get_seq_evenement");
                     this.setIdEvenement(this.makePK(c));
           }
+          
+          public void controllerEvenementFille(Connection c) throws Exception{
+                    if( this.getIdMere() != null && !this.getIdMere().isEmpty() ){
+                              Evenement e = new Evenement();
+                              String requete = "select * from evenement where idEvenement = '" + this.getIdMere() + "'";
+                              e = ( (Evenement[]) CGenUtil.rechercher(e, requete, c ))[0];
+                              System.out.println("Dans controler === " + this.getDateDebutEvenement().toString());
+                              System.out.println("Dans controler === 2 " + e.getDateFinEvenement().toString());
+                              System.out.println("Dans controler === 3 " + this.getDateDebutEvenement().compareTo(e.getDateFinEvenement()) );
+                              if( this.getDateDebutEvenement().before(e.getDateDebutEvenement()) ){
+                                        throw new Exception("La date de début ne peut être antérieure à la date début mère : " + e.getDateDebutEvenement());
+                              }
+                              if(  utilitaire.Utilitaire.compareDaty(this.getDateDebutEvenement(), e.getDateFinEvenement())== 1 )
+                                        throw new Exception("La date de début ne peut être postérieure à la date fin mère : " + e.getDateFinEvenement());
+                              if( utilitaire.Utilitaire.compareDaty(this.getDateFinEvenement(), e.getDateFinEvenement())== 1 )
+                                        throw new Exception("La date de fin ne peut être postérieure à la date fin mère : " + e.getDateFinEvenement());
+                    }
+          }
 
           @Override
           public void controler(Connection c) throws Exception {
@@ -151,6 +169,8 @@ public class Evenement extends ClassEtat {
                     if( this.getDateFinEvenement().before(this.getDateDebutEvenement()) ){
                               throw new Exception("La date fin de l&apos;evenement est inférieure à la date de début");
                     }
+                    
+                    this.controllerEvenementFille(c);
           }
           
           @Override

@@ -28,9 +28,6 @@
           list[1] = new Liste( "idTypeEvenement", new TypeEvenement(), "val", "id" );
           
           pi.getFormu().changerEnChamp(list);
-          
-         
-         pi.getFormu().changerEnChamp(list);
          
          pi.getFormu().getChamp("etat").setVisible(false);
          pi.getFormu().getChamp("idMpivavaka").setVisible(false);
@@ -49,6 +46,9 @@
          String[] coords = ConstanteFJKM.getDefaultCoordinates();
          pi.getFormu().getChamp("longitude").setDefaut( coords[1] );
          pi.getFormu().getChamp("latitude").setDefaut( coords[0] );
+         
+         String idMere = request.getParameter("idMere");
+        pi.getFormu().getChamp("idMere").setDefaut( ( idMere != null ) ? idMere : null );
          
          pi.preparerDataFormu();
          pi.getFormu().makeHtmlInsertTabIndex();

@@ -55,7 +55,10 @@
           Champ.setVisible( pi.getFormufle().getChampFille("idEvenement") , false);
           // Comportement des champs
                 Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idMpivavaka"), "croyance.MpivavakaLib", "idMpivavaka", "v_mpivavaka_lib");
-                
+         
+         String idMere = request.getParameter("idMere");
+        pi.getFormu().getChamp("idMere").setDefaut( ( idMere != null ) ? idMere : null );
+
                 
          String idEvenement = request.getParameter("idEvenement");
         String ajoutId = "";
@@ -94,7 +97,8 @@
                     
                     ajoutId = "&idEvenement=" + idEvenement;
                 }
-                
+          
+           
           pi.preparerDataFormu();
                 pi.setTitre("Ajout de participants pour l&apos;evenement");
 
