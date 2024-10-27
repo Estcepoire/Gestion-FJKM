@@ -54,18 +54,6 @@
 
 %>
 
-<!--
-
-    ahoana ny pozina fiche
-        - alaina aloha ny idan'ilay mpandray
-        - rehefa hita iny de manao affichage cote à cote
-        - cote 1 : Mpivavaka
-        - cote 2 : Ny momba an'ilay mpandray mihitsy
-        - apj fuck donc mila manao include page
-        - settena ao ilay izy anamboarana fiche fotsiny
-        - let's go
--->
-
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-3"></div>
