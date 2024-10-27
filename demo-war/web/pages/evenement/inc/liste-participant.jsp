@@ -36,7 +36,8 @@
 
 <div class="box-body">
     <%
-        String lienTableau[] = {pr.getLien() + "?but=#"};
+         String[] libelles = {"Nom Complet", "Age (ans)", "Sexe"};
+        pr.getTableau().setLibelleAffiche(libelles);
         MpivavakaLib[] liste=(MpivavakaLib[]) pr.getTableau().getData();
         if(pr.getTableau().getHtml() != null)
             out.println(pr.getTableau().getHtml());
