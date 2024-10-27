@@ -4,6 +4,7 @@
     Author     : sarobidy
 --%>
 
+<%@page import="affichage.Onglet"%>
 <%@page import="affichage.PageConsulte"%>
 <%@page import="user.UserEJB"%>
 <%@page import="evenement.Evenement"%>
@@ -22,6 +23,14 @@
     String id = evenement.getTuppleID();
     String classe = "evenement.Evenement";
     String nomTable = "evenement";
+    String pageActuel = "evenement/evenement-fiche.jsp";
+    
+    Onglet onglet = new Onglet("liste-participant");
+    onglet.addPage("liste-participant", "participant");
+    String tab = request.getParameter("tab");
+    String currentTab = onglet.getCurrentPage(tab);
+    
+    request.setAttribute("evenement", evenement);
 
 %>
 
@@ -60,4 +69,22 @@
             </div>
         </div>
     </div>
+    <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <!-- a modifier -->
+                        <li class="<%= onglet.isActive("liste-participant") %>">
+                            <a href="<%= lien %>?but=<%= pageActuel %>&idEvenement=<%= id %>&tab=participant">Participants</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">       
+                        <jsp:include page="<%= currentTab %>" >
+                            <jsp:param name="idmere" value="<%= id %>" />
+                        </jsp:include>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 </div>
