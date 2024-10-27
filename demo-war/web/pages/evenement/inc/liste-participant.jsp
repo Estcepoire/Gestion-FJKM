@@ -4,6 +4,7 @@
     Author     : sarobidy
 --%>
 
+<%@page import="evenement.EvenementLib"%>
 <%@page import="croyance.MpivavakaLib"%>
 <%@page import="user.UserEJB"%>
 <%@page import="affichage.PageRecherche"%>
@@ -11,7 +12,7 @@
 <%@page import="evenement.Evenement"%>
 <%
           // Alaina ilay evenement aloha
-          Evenement evenement = (Evenement) request.getAttribute("evenement");
+          EvenementLib evenement = (EvenementLib) request.getAttribute("evenement");
           // Rehefa azo de alaina ny participant rehetra
          MpivavakaLib p = new MpivavakaLib();
          p.setNomTable("v_participation_croyant");

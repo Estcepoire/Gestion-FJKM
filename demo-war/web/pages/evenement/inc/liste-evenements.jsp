@@ -4,11 +4,12 @@
     Author     : sarobidy
 --%>
 
+<%@page import="evenement.EvenementLib"%>
 <%@page import="affichage.PageRecherche"%>
 <%@page import="user.UserEJB"%>
 <%@page import="evenement.Evenement"%>
 <%
-          Evenement ev = (Evenement) request.getAttribute("evenement");
+          EvenementLib ev = (EvenementLib) request.getAttribute("evenement");
           UserEJB u = (UserEJB) session.getValue("u");
           String lien = (String) session.getValue("lien");
           

@@ -4,20 +4,21 @@
     Author     : sarobidy
 --%>
 
+<%@page import="evenement.EvenementLib"%>
 <%@page import="affichage.Onglet"%>
 <%@page import="affichage.PageConsulte"%>
 <%@page import="user.UserEJB"%>
 <%@page import="evenement.Evenement"%>
 <%
           
-    Evenement evenement = new Evenement();
+    EvenementLib evenement = new EvenementLib();
     String lien = (String) session.getValue("lien");
     UserEJB u = (UserEJB) session.getValue("u");
     
     PageConsulte pc = new PageConsulte(evenement, request, u);
     pc.setTitre("D&eacute;tails de l&apos;evenement");
     
-    evenement = (Evenement) pc.getBase();
+    evenement = (EvenementLib) pc.getBase();
     
     pc.setLien(lien);
     
@@ -80,6 +81,9 @@
                               <% } %>
                               <a href="<%= lien + "?but=" + redirectionFille %>">
                                 <button class="btn btn-primary">Lier Evenement </button>
+                            </a>
+                            <a href="<%= lien + "?but=evenement/apresEvenement.jsp&bute=evenement/evenement-fiche.jsp&acte=terminer&idEvenement=" + id %>">
+                                <button class="btn btn-primary">Terminer l'evenement </button>
                             </a>
                             <a href="<%= lien + "?but=apresTarif.jsp&" + evenement.getAttributIDName() + "="+ id+"&acte=delete&bute=#&classe="+classe %>">
                                 <button class="btn btn-danger">Supprimer</button>

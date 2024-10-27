@@ -11,6 +11,8 @@ import historique.MapUtilisateur;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import utilitaire.UtilDB;
 
 /**
  *
@@ -207,6 +209,30 @@ public class Evenement extends ClassEtat {
 
           public void setLatitude(String latitude) {
                     this.latitude = latitude;
+          }
+          
+          public void terminer() throws Exception{
+                    Connection connection = null;
+                    try{
+                              connection = new UtilDB().GetConn();
+                              // Okey alohan'ny anao terminer de mila jerena hoe mety ve ilay condition
+                              Date now = Date.valueOf( LocalDate.now() );
+                              
+                              Evenement e =((Evenement[]) CGenUtil.rechercher(this, null, null, connection, ""))[0];
+                              if( utilitaire.Utilitaire.compareDaty(e.getDateDebutEvenement(), now) == 1 ){
+                                        throw new Exception("Vous ne pouvez pas terminer un evenement qui n'a pas encore commencé");
+                              }
+                              // Sinon terminer ilay izy
+                              // Etat 200
+                              e.setEtat(200);
+                              e.updateToTable(connection);
+                    }catch(Exception e){
+                              if( connection != null ) connection.rollback();
+                              e.printStackTrace();
+                              throw e;
+                    }finally{
+                              if(connection != null) connection.close();
+                    }
           }
           
 }
