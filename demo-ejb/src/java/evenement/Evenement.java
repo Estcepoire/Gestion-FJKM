@@ -148,9 +148,6 @@ public class Evenement extends ClassEtat {
                               Evenement e = new Evenement();
                               String requete = "select * from evenement where idEvenement = '" + this.getIdMere() + "'";
                               e = ( (Evenement[]) CGenUtil.rechercher(e, requete, c ))[0];
-                              System.out.println("Dans controler === " + this.getDateDebutEvenement().toString());
-                              System.out.println("Dans controler === 2 " + e.getDateFinEvenement().toString());
-                              System.out.println("Dans controler === 3 " + this.getDateDebutEvenement().compareTo(e.getDateFinEvenement()) );
                               if( this.getDateDebutEvenement().before(e.getDateDebutEvenement()) ){
                                         throw new Exception("La date de début ne peut être antérieure à la date début mère : " + e.getDateDebutEvenement());
                               }
