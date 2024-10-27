@@ -21,7 +21,7 @@
     
     pc.setLien(lien);
     
-    String pageModif = "evenement/evenement-update.jsp";
+    String pageModif = ( evenement.getOuvert() ) ?  "evenement/evenement-update.jsp" : "evenement/participation/participation-update.jsp";
     String id = evenement.getTuppleID();
     String classe = "evenement.Evenement";
     String nomTable = "evenement";
