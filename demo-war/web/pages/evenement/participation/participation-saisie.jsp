@@ -97,8 +97,18 @@
                     
                     ajoutId = "&idEvenement=" + idEvenement;
                 }
-          
-           
+                
+          // Libellé
+         pi.getFormu().getChamp("description").setLibelle("D&eacute;scription");
+         pi.getFormu().getChamp("dateDebutEvenement").setLibelle("Date d&eacute;but");
+         pi.getFormu().getChamp("dateFinEvenement").setLibelle("Date Fin");
+         pi.getFormu().getChamp("heureDebut").setLibelle("Heure D&eacute;but");
+         pi.getFormu().getChamp("heureFin").setLibelle("Heure Fin");
+         pi.getFormu().getChamp("idTypeEvenement").setLibelle("Type d&apos;evenement");
+         pi.getFormu().getChamp("ouvert").setLibelle("Ouvert &agrave; tous");
+         pi.getFormu().getChamp("lieu").setLibelle("Lieu");
+         pi.getFormufle().getChamp("idMpivavaka_0").setLibelle("Mpivavaka");
+ 
           pi.preparerDataFormu();
                 pi.setTitre("Ajout de participants pour l&apos;evenement");
 
