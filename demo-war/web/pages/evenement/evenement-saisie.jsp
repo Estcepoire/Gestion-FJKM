@@ -53,7 +53,7 @@
          pi.preparerDataFormu();
          pi.getFormu().makeHtmlInsertTabIndex();
          
-         String afterPost = "",
+         String afterPost = "evenement/evenement-fiche.jsp",
             mappingClass = "evenement.Evenement",
             nomTable = "evenement";
 %>
