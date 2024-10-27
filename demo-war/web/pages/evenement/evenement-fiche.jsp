@@ -28,6 +28,25 @@
     String nomTable = "evenement";
     String pageActuel = "evenement/evenement-fiche.jsp";
     
+    // Libellés
+    pc.getChampByName("idEvenement").setLibelle("ID");
+    pc.getChampByName("description").setLibelle("D&eacute;scription");
+    pc.getChampByName("dateDebutEvenement").setLibelle("Date d&eacute;but");
+    pc.getChampByName("dateFinEvenement").setLibelle("Date Fin");
+    pc.getChampByName("heureDebut").setLibelle("Heure D&eacute;but");
+    pc.getChampByName("heureFin").setLibelle("Heure Fin");
+    pc.getChampByName("typeEvenement").setLibelle("Type d&apos;evenement");
+    pc.getChampByName("ouvert").setLibelle("Ouvert &agrave; tous");
+    pc.getChampByName("latLong").setLibelle("Coordonn&eacute;&eacute;s (Lat, Long)");
+    
+    // Visibilité
+    pc.getChampByName("etat").setVisible(false);
+    pc.getChampByName("idMpivavaka").setVisible(false);
+    pc.getChampByName("idMere").setVisible(false);
+    pc.getChampByName("longitude").setVisible(false);
+    pc.getChampByName("latitude").setVisible(false);
+    pc.getChampByName("idTypeEvenement").setVisible(false);
+    
     Onglet onglet = new Onglet("liste-participant");
     onglet.addPage("liste-participant", "participant");
     onglet.addPage("liste-evenements", "evenements");

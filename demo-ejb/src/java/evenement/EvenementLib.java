@@ -7,9 +7,11 @@ package evenement;
  */
 public class EvenementLib extends Evenement {
           String status;
+          String latLong;
+          String typeEvenement;
           
           public EvenementLib(){
-                    this.setNomTable("v_evenement_etat");
+                    this.setNomTable("v_evenement_lib");
           }
 
           public String getStatus() {
@@ -19,5 +21,23 @@ public class EvenementLib extends Evenement {
           public void setStatus(String status) {
                     this.status = status;
           }
+
+          public String getLatLong() {
+                    return latLong;
+          }
+
+          public void setLatLong(String latLong) {
+                    this.latLong = latLong;
+          }
+
+          public String getTypeEvenement() {
+                    return typeEvenement;
+          }
+
+          public void setTypeEvenement(String typeEvenement) {
+                    this.typeEvenement = typeEvenement;
+          }
+          
+          
           
 }
