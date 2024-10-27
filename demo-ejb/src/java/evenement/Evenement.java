@@ -143,8 +143,12 @@ public class Evenement extends ClassEtat {
                     this.setIdEvenement(this.makePK(c));
           }
           
+          public boolean isEvenementFille(){
+                    return this.getIdMere() != null && !this.getIdMere().isEmpty();
+          }
+          
           public void controllerEvenementFille(Connection c) throws Exception{
-                    if( this.getIdMere() != null && !this.getIdMere().isEmpty() ){
+                    if( this.isEvenementFille() ){
                               Evenement e = new Evenement();
                               String requete = "select * from evenement where idEvenement = '" + this.getIdMere() + "'";
                               e = ( (Evenement[]) CGenUtil.rechercher(e, requete, c ))[0];
@@ -160,14 +164,16 @@ public class Evenement extends ClassEtat {
 
           @Override
           public void controler(Connection c) throws Exception {
-                    // Controle
-                    // Coordonnées efa mipetraka ho azy any am Affichage
-                    // Contrôle sur les dates
                     if( this.getDateFinEvenement().before(this.getDateDebutEvenement()) ){
                               throw new Exception("La date fin de l&apos;evenement est inférieure à la date de début");
                     }
-                    
                     this.controllerEvenementFille(c);
+          }
+
+          @Override
+          public void controlerUpdate(Connection c) throws Exception {
+                    this.controler(c);
+                    super.controlerUpdate(c);
           }
           
           @Override
