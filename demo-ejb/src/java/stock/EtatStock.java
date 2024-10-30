@@ -25,6 +25,8 @@ public class EtatStock extends ClassMAPTable {
     String datyMin;
     String datyMax;
 
+    
+
     public String getDatyMin() {
         return datyMin;
     }
@@ -232,6 +234,10 @@ public class EtatStock extends ClassMAPTable {
         return "id";
     }
 
+    public EtatStock() {
+        this.setNomTable("V_EtatStockvide");
+    }
+
     public EtatStock[] caculEtatStock() throws Exception {
         String query = this.generateQueryCore(Utilitaire.stringDate(this.getDatyMin()),
                 Utilitaire.stringDate(this.getDatyMin()));
@@ -239,6 +245,7 @@ public class EtatStock extends ClassMAPTable {
             query = query + " and inv.idmagasin =' " + this.getIdmagasin() + "' and inv.idproduit ='" + this.getId()
                     + "'";
         }
+
         EtatStock[] etatStocks = (EtatStock[]) CGenUtil.rechercher(new EtatStock(), query);
         return etatStocks;
     }
