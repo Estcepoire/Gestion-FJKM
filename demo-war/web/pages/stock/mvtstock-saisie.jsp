@@ -17,6 +17,7 @@
 			   redirection = "stock/mvtstock-fiche.jsp";
         String colonneMere = "idMere";
         int taille = 10;
+
         MvtStock mere = new MvtStock();
         mere.setNomTable("MVTSTOCK");
 
@@ -44,13 +45,11 @@
 
         pi.getFormu().getChamp("etat").setVisible(false);
         
-        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idProduit"),"annexe.Produit","id","PRODUIT");
-        
+        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT","","");
+
         pi.getFormufle().getChamp("quantites_0").setLibelle("Quantit&eacute;");
         pi.getFormufle().getChamp("remarque_0").setLibelle("Remarque");
         pi.getFormufle().getChamp("designation_0").setLibelle("Disignation");
-        pi.getFormufle().getChamp("prixUnitaire_0").setLibelle("Prix Unitaire");
-        pi.getFormufle().getChamp("prixUnitaire_0").setAutre("readOnly");
         pi.getFormufle().getChamp("idProduit_0").setLibelle("Produit");
 
         affichage.Champ.setVisible(pi.getFormufle().getChampFille("id"),false);
@@ -58,6 +57,7 @@
         affichage.Champ.setVisible(pi.getFormufle().getChampFille("entree"),false);
         affichage.Champ.setVisible(pi.getFormufle().getChampFille("idMere"),false);
         affichage.Champ.setVisible(pi.getFormufle().getChampFille("etat"),false);
+        affichage.Champ.setVisible(pi.getFormufle().getChampFille("prixUnitaire"),false);
 
 
         pi.preparerDataFormu();

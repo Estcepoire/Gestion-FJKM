@@ -1,12 +1,17 @@
 package stock;
 
 import java.sql.Connection;
+
+import bean.CGenUtil;
 import bean.ClassFille;
+import bean.ClassMAPTable;
 
 public class MvtStockFille extends ClassFille {
     String id, idMere, idProduit;
     String val, designation, remarque;
     double entree, sortie, quantites, prixUnitaire;
+
+    
 
     public MvtStockFille() throws Exception {
         this.setNomTable("MvtStockFille");
@@ -111,4 +116,24 @@ public class MvtStockFille extends ClassFille {
         this.preparePk("MVTSTOCKFILLE", "GET_SEQMVTSTOCK");
         this.setId(makePK(c));
     }
+
+    @Override
+    public ClassMAPTable createObject(String u, Connection c) throws Exception {
+        MvtStock m = new MvtStock();
+        m.setId(this.getIdMere());
+        MvtStock[] mvtStock = (MvtStock[]) CGenUtil.rechercher(m, null, null, c, "");
+        if (mvtStock.length > 0) {
+            if (mvtStock[0].getIdTypeMvStock().compareToIgnoreCase("TYPMVT000001") == 0) {
+                this.setEntree(this.getQuantites());
+            }
+            if (mvtStock[0].getIdTypeMvStock().compareToIgnoreCase("TYPMVT000002") == 0) {
+                this.setSortie(this.getQuantites());
+            }
+        } else {
+            throw new Exception("pas de mere existante");
+        }
+        this.setQuantites(0);
+        return super.createObject(u, c);
+    }
+
 }

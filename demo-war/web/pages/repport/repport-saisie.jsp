@@ -33,7 +33,7 @@
         out.println(pi.getFormu().getHtmlInsert());
     %>
     <input name="acte" type="hidden" id="nature" value="insert">
-    <input name="bute" type="hidden" id="bute" value="repport/repport-fiche.jsp">
+    <input name="bute" type="hidden" id="bute" value="repport/repport-liste.jsp">
     <input name="classe" type="hidden" id="classe" value="repport.Repport">
     <input name="nomtable" type="hidden" id="nomtable" value="reportcaisse">
     

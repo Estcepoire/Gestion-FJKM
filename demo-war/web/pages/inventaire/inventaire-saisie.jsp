@@ -1,65 +1,51 @@
-<%@page import="annexe.*"%>
-<%@page import="magasin.*"%>
-<%@page import="stock.details.*"%>
-<%@page import="stock.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%@page import="affichage.*"%>
 <%@page import="bean.*"%> 
 <%@page import="utilitaire.Utilitaire"%>
-<%@page import="user.*"%>
+<%@page import="user.UserEJB"%>
+<%@ page import="affichage.*" %>
+<%@ page import="inventaire.*" %>
+<%@page import="annexe.*"%>
+<%@page import="magasin.*"%>
 <%
     try {
-        String autreparsley = "data-parsley-range='[8, 40]' required";
         UserEJB u = u = (UserEJB) session.getValue("u");
-        String classeMere = "stock.MvtStock",
-               classeFille = "stock.MvtStockFille",
-               titre = "Saisie mouvement de stock",
-			   redirection = "stock/mvtstock-fiche.jsp";
+        String classeMere = "inventaire.Inventaire",
+               classeFille = "inventaire.InventaireFille",
+               titre = "Saisie Invetaire de stock",
+			   redirection = "inventaire/inventaire-fiche.jsp";
         String colonneMere = "idMere";
         int taille = 10;
-        MvtStock mere = new MvtStock();
-        mere.setNomTable("MVTSTOCK");
 
-        MvtStockFille fille = new MvtStockFille();
-        fille.setNomTable("MVTSTOCKFILLE");
+        Inventaire mere = new Inventaire();
+        InventaireFille fille = new InventaireFille();
 
         PageInsertMultiple pi = new PageInsertMultiple(mere, fille, request, taille, u);
         pi.setLien((String) session.getValue("lien")); 
 
-        Liste[] liste = new Liste[2];
-
-        TypeMvtStock typemvt = new TypeMvtStock();
-        liste[0] = new Liste("idTypeMvStock",typemvt,"val","id");
+        Liste[] liste = new Liste[1];
         
         Magasin magasin = new Magasin();
-        liste[1] = new Liste("idMagasin",magasin,"val","id");
+        liste[0] = new Liste("idMagasin",magasin,"val","id");
 
         pi.getFormu().changerEnChamp(liste);
-    
+
+        pi.getFormu().getChamp("designation").setLibelle("Designation");
+        pi.getFormu().getChamp("remarque").setLibelle("Remarque");
         pi.getFormu().getChamp("idMagasin").setLibelle("Magasin");
-        pi.getFormu().getChamp("idTypeMvStock").setLibelle("Type mouvement de stock");
-        pi.getFormu().getChamp("designation").setLibelle("D&eacute;signation*");
         pi.getFormu().getChamp("daty").setLibelle("Date");
-        pi.getFormu().getChamp("daty").setDefaut(""+Utilitaire.dateDuJourSql());
-
+        pi.getFormu().getChamp("daty").setDefaut(""+Utilitaire.dateDuJour());
         pi.getFormu().getChamp("etat").setVisible(false);
-        
-        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idProduit"),"annexe.Produit","id","PRODUIT");
-        
-        pi.getFormufle().getChamp("quantites_0").setLibelle("Quantit&eacute;");
-        pi.getFormufle().getChamp("remarque_0").setLibelle("Remarque");
-        pi.getFormufle().getChamp("designation_0").setLibelle("Disignation");
-        pi.getFormufle().getChamp("prixUnitaire_0").setLibelle("Prix Unitaire");
-        pi.getFormufle().getChamp("prixUnitaire_0").setAutre("readOnly");
-        pi.getFormufle().getChamp("idProduit_0").setLibelle("Produit");
 
-        affichage.Champ.setVisible(pi.getFormufle().getChampFille("id"),false);
-        affichage.Champ.setVisible(pi.getFormufle().getChampFille("Sortie"),false);
-        affichage.Champ.setVisible(pi.getFormufle().getChampFille("entree"),false);
+        pi.getFormufle().getChamp("idproduit_0").setLibelle("Produit");
+        pi.getFormufle().getChamp("quantite_0").setLibelle("Quantite");
+        pi.getFormufle().getChamp("explication_0").setLibelle("Explication");
+
+        affichage.Champ.setVisible(pi.getFormufle().getChampFille("id"),false); 
         affichage.Champ.setVisible(pi.getFormufle().getChampFille("idMere"),false);
-        affichage.Champ.setVisible(pi.getFormufle().getChampFille("etat"),false);
+        affichage.Champ.setVisible(pi.getFormufle().getChampFille("quantitetheorique"),false);
 
-
+        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT","","");
+ 
         pi.preparerDataFormu();
 
         pi.getFormu().makeHtmlInsertTabIndex();
@@ -68,11 +54,11 @@
 <div class="content-wrapper">
     <h1><%=titre%></h1>
     <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp" method="post" >
-        <%
+        <%      
             out.println(pi.getFormu().getHtmlInsert());
         %>
         <div style="text-align: center;">
-            <h2>D&eacute;tails mouvement de stocks</h2>
+            <h2>Détails Inventaire stock</h2>
         </div>
         <%
             out.println(pi.getFormufle().getHtmlTableauInsert());
@@ -82,7 +68,7 @@
         <input name="bute" type="hidden" id="bute" value="<%=redirection%>">
         <input name="classe" type="hidden" id="classe" value="<%=classeMere%>">
         <input name="classefille" type="hidden" id="classefille" value="<%=classeFille%>">
-        <input name="nomtable" type="hidden" id="classefille" value="mvtstockfille">
+        <input name="nomtable" type="hidden" id="classefille" value="InventaireFille">
         <input name="nombreLigne" type="hidden" id="nombreLigne" value="10">
         <input name="colonneMere" type="hidden" id="colonneMere" value="<%=colonneMere%>">
     </form>
@@ -96,4 +82,4 @@
         alert('<%=e.getMessage()%>');
         history.back();
     </script>
-<% } %>
+<% }%>

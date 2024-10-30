@@ -12,6 +12,7 @@ public class Inventaire extends ClassMere {
     String designation;
     String idMagasin;
     String remarque;
+    String idmagasinlib;
 
     public Inventaire() throws Exception {
         this.setNomTable("Inventaire");
@@ -82,6 +83,14 @@ public class Inventaire extends ClassMere {
         invF.setIdMere(this.getId());
         invF.setExplication("inventaire 0");
         return invF;
+    }
+
+    public String getIdmagasinlib() {
+        return idmagasinlib;
+    }
+
+    public void setIdmagasinlib(String idmagasinlib) {
+        this.idmagasinlib = idmagasinlib;
     }
 
 }

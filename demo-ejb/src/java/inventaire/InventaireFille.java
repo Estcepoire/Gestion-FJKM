@@ -17,6 +17,8 @@ public class InventaireFille extends ClassFille {
     String idproduit;
     String idMagasin;
 
+    String designation;
+
     public String getIdMagasin() {
         return idMagasin;
     }
@@ -137,6 +139,14 @@ public class InventaireFille extends ClassFille {
         this.controlerDuplicationInventaire(c);
         this.calculateQuantiteTheorique(c);
         return super.createObject(u, c);
+
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
 }

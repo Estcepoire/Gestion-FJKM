@@ -4,14 +4,16 @@
 <%@page import="bean.*"%>
 <%@page import="user.UserEJB"%>
 <%@page import="stock.*"%>
+<%@page import="stock.*"%>
+<%@page import="magasin.*"%>
 
 <%  
     try {
         EtatStock etatstock = new EtatStock();
         etatstock.setNomTable("V_EtatStockvide"); 
-        String listeCrt[] = {"id", "designation","idmagasin","idunite","idtypeproduit","daty"};
+        String listeCrt[] = {"id", "designation","idmagasin","daty"};
         String listeInt[] = {"daty"};
-        String libEntete[] = {"id","designation","idtypeproduitlib","idunitelib","idmagasinlib", "dateDernierinventaire","entree", "sortie", "reste"} ;
+        String libEntete[] = {"id","designation","idtypeproduitlib","idunitelib","idmagasinlib","entree", "sortie", "reste"} ;
         String somDefaut[] = null;
         PageRecherche pr = new PageRecherche(etatstock, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
         
@@ -20,9 +22,14 @@
         pr.setUtilisateur(u);
         pr.setLien((String) session.getValue("lien"));
 
+        Liste[] liste = new Liste[1];
+        
+        Magasin magasin = new Magasin();
+        liste[0] = new Liste("idmagasin",magasin,"val","id");
+
+        pr.getFormu().changerEnChamp(liste);
+
         pr.getFormu().getChamp("idmagasin").setLibelle("Magasin");
-        pr.getFormu().getChamp("idunite").setLibelle("Unite");
-        pr.getFormu().getChamp("idtypeproduit").setLibelle("Type produit");
 
         pr.getFormu().getChamp("daty1").setLibelle("Date min");
         pr.getFormu().getChamp("daty1").setDefaut(Utilitaire.dateDuJour());
@@ -42,8 +49,9 @@
         etatstock.setDatyMax(daty2);
         EtatStock[] stock = etatstock.caculEtatStock();
         pr.creerObjetPage(libEntete, somDefaut);
-        String[] libEnteteAffiche = {"id","designation","type de produit","unite","magasin", "report","entree", "sortie", "reste"} ;
+        String[] libEnteteAffiche = {"id","designation","type de produit","unite","magasin","entree", "sortie", "reste"} ;
         pr.setTableau(new TableauRecherche(stock, libEntete));
+        pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 
 %>
         <script>

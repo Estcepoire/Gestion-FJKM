@@ -7,15 +7,18 @@ import bean.*;
 public class MvtStock extends ClassMere {
     String id, designation, idMagasin, idTypeMvStock;
     Date daty;
+    String remarque;
 
-    String idTypeMvtStockLib;
+    String idtypemvstocklib;
     String idMagasinLib;
+
 
     public MvtStock() throws Exception {
         this.setNomTable("MvtStock");
         this.setLiaisonFille("idMere");
         this.setNomClasseFille("stock.MvtStockFille");
     }
+
 
     public String getId() {
         return id;
@@ -73,12 +76,28 @@ public class MvtStock extends ClassMere {
         this.setId(makePK(c));
     }
 
-    public String getIdTypeMvtStockLib() {
-        return idTypeMvtStockLib;
+    public String getIdMagasinLib() {
+        return idMagasinLib;
     }
 
-    public void setIdTypeMvtStockLib(String idTypeMvtStockLib) {
-        this.idTypeMvtStockLib = idTypeMvtStockLib;
+    public void setIdMagasinLib(String idMagasinLib) {
+        this.idMagasinLib = idMagasinLib;
+    }
+
+    public String getRemarque() {
+        return remarque;
+    }
+
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
+
+    public String getIdtypemvstocklib() {
+        return idtypemvstocklib;
+    }
+
+    public void setIdtypemvstocklib(String idtypemvstocklib) {
+        this.idtypemvstocklib = idtypemvstocklib;
     }
 
 }
