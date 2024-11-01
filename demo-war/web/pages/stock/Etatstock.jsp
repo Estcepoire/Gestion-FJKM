@@ -68,7 +68,6 @@
                     %>
                 </form>
                 <%  
-                    out.println(pr.getTableauRecap().getHtml());
                     out.println(pr.getTableau().getHtml());
                     out.println(pr.getBasPage());
                 %>

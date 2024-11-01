@@ -7,14 +7,14 @@
 
 <%  
     try {
-        EtatStock etatstock = new EtatStock();
-        etatstock.setNomTable("V_ETATCAISSEVIDE"); 
+        EtatCaisse etatcaisse = new EtatCaisse();
+        etatcaisse.setNomTable("V_ETATCAISSEVIDE"); 
 
         String listeCrt[] = {"id", "idcaisse","idtypecaisselib","daty"};
         String listeInt[] = {"daty"};
         String libEntete[] = {"id","idcaisseLib","idtypecaisselib","debit", "credit","montantDernierReport", "reste"} ;
         String somDefaut[] = null;
-        PageRecherche pr = new PageRecherche(etatstock, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
+        PageRecherche pr = new PageRecherche(etatcaisse, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
         
         
         UserEJB u = (user.UserEJB) session.getValue("u");
@@ -35,13 +35,15 @@
         if(daty1 == null || daty1.compareToIgnoreCase("") == 0) daty1 = Utilitaire.dateDuJour();
         if(daty2 == null || daty2.compareToIgnoreCase("") == 0) daty2 = Utilitaire.dateDuJour();
 
-        etatstock.setIdCaisse(request.getParameter("idmagasin"));
-        etatstock.setDatyMin(daty1);
-        etatstock.setDatyMax(daty2);
-        EtatStock[] stock = etatstock.caculEtatCaisse();
+        etatcaisse.setIdCaisse(request.getParameter("idmagasin"));
+        etatcaisse.setDatyMin(daty1);
+        etatcaisse.setDatyMax(daty2);
+        EtatCaisse[] caisse = etatcaisse.caculEtatCaisse();
         pr.creerObjetPage(libEntete, somDefaut);
         String[] libEnteteAffiche = {"id","Caisse","type de Caisse","Debit","Credit","report","reste"} ;
-        pr.setTableau(new TableauRecherche(stock, libEntete));
+        TableauRecherche tab = new TableauRecherche(caisse, libEntete);
+        tab.setLibelleAffiche(libEnteteAffiche);
+        pr.setTableau(tab);
 
 %>
         <script>
@@ -49,7 +51,7 @@
         </script>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>Etat de stock</h1>
+                <h1>Etat de Caisse</h1>
             </section>
             <section class="content">
                 <form action="<%=pr.getLien()%>?but=caisse/etatcaisse.jsp" method="post" name="incident" id="incident">
@@ -58,7 +60,6 @@
                     %>
                 </form>
                 <%  
-                    out.println(pr.getTableauRecap().getHtml());
                     out.println(pr.getTableau().getHtml());
                     out.println(pr.getBasPage());
                 %>

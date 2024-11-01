@@ -16,7 +16,7 @@
     MvtStock f = new MvtStock();
     f.setNomTable("mvtstocklib");
     PageConsulte pc = new PageConsulte(f, request, u);
-    pc.setTitre("Fiche Mouveent stock");
+    pc.setTitre("Fiche Mouvement stock");
 
     MvtStock blf = (MvtStock) pc.getBase();
     String id = blf.getTuppleID();
@@ -27,6 +27,7 @@
     pc.getChampByName("daty").setLibelle("Date");
     pc.getChampByName("idtypemvstocklib").setLibelle("type de mouvement");
     pc.getChampByName("idMagasinLib").setLibelle("Magasin");
+    pc.getChampByName("IdTypeMvStock").setVisible(false);
 
     String pageActuel = "stock/mvtstock-fiche.jsp";
     String lien = (String) session.getValue("lien");
@@ -59,9 +60,15 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <a class="btn btn-success pull-right" href="<%= (String) session.getValue("lien") + "?but=apresTarif.jsp&acte=valider&id=" + request.getParameter("id") + "&bute=vitafoam/production/fabrication-fiche.jsp&classe=" + classe %> " style="margin-right: 10px">Valider</a>
+                        <%
+                            if(blf.getEtat() < 11){
+                        %>
+                            <a class="btn btn-success pull-right" href="<%= (String) session.getValue("lien") + "?but=apresTarif.jsp&acte=valider&id=" + request.getParameter("id") + "&bute=stock/mvtstock-fiche.jsp&classe=" + classe %> " style="margin-right: 10px">Valider</a>
                             <a class="btn btn-warning pull-right" href="<%= (String) session.getValue("lien") + "?but=#&id=" + request.getParameter("id")%>" style="margin-right: 5px">Modifier</a>
                         </div>
+                        <%
+                            }
+                        %>
                         <br/>
 
                     </div>
