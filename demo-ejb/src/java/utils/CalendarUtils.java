@@ -37,4 +37,15 @@ public class CalendarUtils {
                     return gson.toJson(validFormats);
           }
           
+          public static String getEventsJSON( Evenement[] events, String urlRedirection ){
+                    EvenementDTO[] validFormats = formatEvenement(events);
+                    for(int i = 0; i < events.length ; i++) {
+                              EvenementDTO e = validFormats[i];
+                              String newUrl = urlRedirection + "&idEvenement=" + events[i].getTuppleID();
+                              e.setUrl(newUrl);
+                    }
+                    Gson gson = new Gson();
+                    return gson.toJson(validFormats);
+          }
+          
 }

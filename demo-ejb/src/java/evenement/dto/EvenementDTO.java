@@ -4,7 +4,6 @@
  */
 package evenement.dto;
 
-import com.google.gson.annotations.Expose;
 
 /**
  *
@@ -12,10 +11,10 @@ import com.google.gson.annotations.Expose;
  */
 public class EvenementDTO {
           
-          
           String title;
           String start;
           String end;
+          String url;
 
           public String getTitle() {
                     return title;
@@ -40,9 +39,14 @@ public class EvenementDTO {
           public void setEnd(String end) {
                     this.end = end;
           }
-          
-          
-          
+
+          public String getUrl() {
+                    return url;
+          }
+
+          public void setUrl(String url) {
+                    this.url = url;
+          }
           
           
 }
