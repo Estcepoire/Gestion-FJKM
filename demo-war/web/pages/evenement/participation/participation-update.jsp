@@ -17,6 +17,9 @@
 <%@page import="evenement.Evenement"%>
 
 <%
+          try{
+          
+          
           
           Evenement event = new Evenement();
           Participation participant = new Participation();
@@ -66,8 +69,9 @@
             pi.getFormufle().getChamp("idMpivavaka_"+i).setAutoCompleteLibelle( ts[i].getNomComplet() );
         }
         
+
         // Libellé
-         pi.getFormu().getChamp("idEvenement").setVisible(false);
+         // pi.getFormu().getChamp("idEvenement").setVisible(false);
          pi.getFormu().getChamp("description").setLibelle("D&eacute;scription");
          pi.getFormu().getChamp("dateDebutEvenement").setLibelle("Date d&eacute;but");
          pi.getFormu().getChamp("dateFinEvenement").setLibelle("Date Fin");
@@ -79,7 +83,7 @@
          pi.getFormufle().getChamp("idMpivavaka_0").setLibelle("Mpivavaka");
 
           pi.preparerDataFormu();
-                pi.setTitre("Ajout de participants pour l&apos;evenement");
+                pi.setTitre("Modifier l&apos;evenement");
 
                 pi.setLien(lien);
 
@@ -127,9 +131,6 @@
         <div class="row">
             <h3> 
                 Modification des Participants
-                <button class="btn btn-success" type="button" onclick="pagePopUp('modulePopup.jsp?but=<%= pageAppelMultiple %>&champReturn=<%=champReturn%>&champUrl=<%= champURL %>')">
-                    Selectionnez des Croyants
-                </button>
             </h3>
                 <%= pi.getFormufle().getHtmlTableauInsert() %>
         </div>
@@ -189,7 +190,7 @@
     // Eto manao script manao update anle champ coordinate reny fotsiny
     function updateLongLatAndName( coordinate ) {
         const { lat, lng } = coordinate;
-        // Okey azoko eto le Coordonnées anle olona
+        // Okey azoko eto le Coordonnï¿½es anle olona
         // Mila ampidiriko anaty champ fotsiny
         // Manao reverse api kely
         const url = `https://nominatim.openstreetmap.org/reverse?lat=\${lat}&lon=\${lng}&format=json`;
@@ -207,3 +208,10 @@
     }
     
 </script>
+
+
+<%
+          }catch(Exception e){
+            e.printStackTrace();
+    }
+%>

@@ -235,4 +235,25 @@ public class Evenement extends ClassEtat {
                     }
           }
           
+          public Evenement[] getEvenements( String dateMin, String dateMax ) throws Exception{
+                    dateMin = dateMin.trim();
+                    dateMax = dateMax.trim();
+                    dateMin = dateMin.split("T")[0];
+                    dateMax = dateMax.split("T")[0];
+                    
+                    
+                    Date min = Date.valueOf(dateMin);
+                    Date max = Date.valueOf(dateMax);
+                    
+                    String requete = "select * from evenement where dateDebutEvenement >= '" + min + "' and dateDebutEvenement <= '" + max + "'" ;
+                    
+                    try(Connection connection = new UtilDB().GetConn()){
+                              Evenement[] events = (Evenement[]) CGenUtil.rechercher(this, requete, connection);
+                              return events;
+                    }catch(Exception e){
+                              throw e;
+                    }
+                    
+          }
+          
 }
