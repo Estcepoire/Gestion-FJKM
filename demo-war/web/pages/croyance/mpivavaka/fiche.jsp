@@ -32,10 +32,16 @@
           
           pc.setLien(lien);
           
-       String pageModif = "croyance/mpivavaka/update.jsp";
+       String pageModif = "croyance/mpivavaka/update.jsp";       
+       String actuel = "croyance/mpivavaka/fiche.jsp";
+
         String classe = "croyance.Mpivavaka";
 
         String id = mapping.getTuppleID();
+        Onglet onglet = new Onglet("info-sup");
+        onglet.addPage("info-sup", "info");
+        String tab = (String) request.getParameter("tab");
+        String pageActuel = onglet.getCurrentPage(tab);
 
 %>
 
@@ -79,4 +85,23 @@
             </div>
         </div>
     </div>
+
+                                <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <!-- a modifier -->
+                        <li class="<%= onglet.isActive("info-sup") %>">
+                            <a href="<%= lien %>?but=<%= actuel %>&idMpivavaka=<%= id %>&tab=info">Informations Supplémentaires</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="tab-content">       
+                        <jsp:include page="<%= pageActuel %>" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 </div>
