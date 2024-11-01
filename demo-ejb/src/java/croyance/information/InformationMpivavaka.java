@@ -6,6 +6,7 @@ package croyance.information;
 
 import bean.CGenUtil;
 import bean.ClassMAPTable;
+import com.google.gson.Gson;
 import croyance.MpivavakaLib;
 import java.sql.Connection;
 
@@ -16,7 +17,7 @@ import java.sql.Connection;
 public class InformationMpivavaka extends MpivavakaLib {
           
           // Atao extends Mpivavaka Lib satria misy ilaiko azy avy eo
-          String idInfo, idAnnexe, valeur;
+          String idInfoMpivavaka, idInfoAnnexe, valeur, information;
           
           public InformationMpivavaka(){
                     this.setNomTable("mpivavaka_informations");
@@ -25,34 +26,35 @@ public class InformationMpivavaka extends MpivavakaLib {
           @Override
           public void construirePK(Connection c) throws Exception {
                     this.preparePk("INM","get_seq_information");
+                    this.setIdInfoMpivavaka(this.makePK(c));
           }
 
           @Override
           public String getAttributIDName() {
-                    return "idInfo";
+                    return "idInfoMpivavaka";
           }
 
           @Override
           public String getTuppleID() {
-                    return this.getIdInfo();
+                    return this.getIdInfoMpivavaka();
           }
           
          
-          public String getIdInfo() {
-                    return idInfo;
+          public String getIdInfoMpivavaka() {
+                    return idInfoMpivavaka;
           }
 
-          public void setIdInfo(String idInfo) {
-                    this.idInfo = idInfo;
+          public void setIdInfoMpivavaka(String idInfo) {
+                    this.idInfoMpivavaka = idInfo;
           }
 
-          public String getIdAnnexe() {
-                    return idAnnexe;
+          public String getIdInfoAnnexe() {
+                    return idInfoAnnexe;
           }
 
-          public void setIdAnnexe(String idAnnexe) {
+          public void setIdInfoAnnexe(String idInfoAnnexe) {
                     
-                    this.idAnnexe = idAnnexe;
+                    this.idInfoAnnexe = idInfoAnnexe;
           }
 
           public String getValeur() {
@@ -72,17 +74,32 @@ public class InformationMpivavaka extends MpivavakaLib {
                     // Raha mi-existe ilay couple de atao update
                     InformationMpivavaka inf = new InformationMpivavaka();
                     inf.setIdMpivavaka(this.getIdMpivavaka());
-                    inf.setIdAnnexe(this.getIdAnnexe());
-                    InformationMpivavaka[] results = (InformationMpivavaka[]) CGenUtil.rechercher(inf, null, null, c, idAnnexe);
+                    inf.setIdInfoAnnexe(this.getIdInfoAnnexe());
+                    System.out.println("hahahahahha");
+
+                    InformationMpivavaka[] results = (InformationMpivavaka[]) CGenUtil.rechercher(inf, null, null, c, "");
                     if( results.length > 0 ){
                               results[0].setValeur(this.getValeur());
                               results[0].updateToTableWithHisto(u, c);
                               return results[0];
                     }
-                    return this;
+                    return super.createObject(u, c);
+          }
+
+          public String getInformation() {
+                    return information;
+          }
+
+          public void setInformation(String information) {
+                    this.information = information;
           }
           
           
+          
+          @Override
+          public String toString(){
+                    return new Gson().toJson(this);
+          }
           
           
           
