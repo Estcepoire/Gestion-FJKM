@@ -4,16 +4,25 @@
     Author     : sarobidy
 --%>
 
+<%@page import="annexe.InformationAnnexe"%>
+<%@page import="bean.CGenUtil"%>
+<%@page import="croyance.information.InformationMpivavaka"%>
 <%@page import="annexe.Faritra"%>
 <%@page import="user.UserEJB"%>
 <%@page import="affichage.*"%>
 <%@page import="croyance.Mpivavaka"%>
 
 <%
+try{
+
 
     Mpivavaka mpivavaka = new Mpivavaka();
     UserEJB user = (UserEJB) session.getValue("u");
-    PageUpdate pi = new PageUpdate( mpivavaka , request, user);
+    InformationMpivavaka info = new InformationMpivavaka();
+    int nbLine = 10;
+    InformationMpivavaka[] filles = (InformationMpivavaka[]) CGenUtil.rechercher(info, null, null, null, " and idMpivavaka = '" + request.getParameter("idMpivavaka") + "'");
+         
+    PageUpdateMultiple pi = new PageUpdateMultiple(mpivavaka, info, filles, request, user, nbLine);
     mpivavaka = (Mpivavaka) pi.getBase();
     pi.setTitre("Modification Croyant : " + mpivavaka.getPrenom());
     
@@ -27,7 +36,6 @@
     pi.getFormu().changerEnChamp(list);
     
     pi.getFormu().getChamp("etat").setVisible(false);
-    pi.getFormu().getChamp("idMpivavaka").setVisible(false);
     
     pi.getFormu().getChamp("nom").setLibelle("Nom");
     pi.getFormu().getChamp("prenom").setLibelle("Pr&eacute;nom");
@@ -38,6 +46,15 @@
     pi.getFormu().getChamp("addresse").setLibelle("Adresse");
     pi.getFormu().getChamp("idFaritra").setLibelle("Faritra");
     
+    Champ.setVisible(pi.getFormufle().getChampFille("idMpivavaka"), false);
+    Champ.setVisible(pi.getFormufle().getChampFille("idInfoMpivavaka"), false);
+    
+    list = new Liste[1];
+    list[0] = new Liste("idInfoAnnexe", new InformationAnnexe(), "val", "id");
+    pi.getFormufle().changerEnChamp(list);
+    pi.getFormufle().getChamp("idInfoAnnexe_0").setLibelle("Information sup.");
+    pi.getFormufle().getChamp("valeur_0").setLibelle("Valeur");
+    
     pi.preparerDataFormu();
     
     pi.setLien((String) session.getValue("lien") );
@@ -46,32 +63,38 @@
     
     String bute = "croyance/mpivavaka/fiche.jsp";
     String classe = "croyance.Mpivavaka";
-    String nomTable = "mpivavaka";
+    String classeFille = "croyance.information.InformationMpivavaka";
+    String mere = "idMpivavaka";
     
 %>
 
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box-fiche">
-                <div class="box">
-                    <h1> 
-                        <%= pi.getTitre() %>
-                    </h1>
-                    <form action="<%= pi.getLien() %>?but=apresTarif.jsp&idMpivavaka=<%= mpivavaka.getTuppleID()%>" method="post">
+    <h1> 
+        <%= pi.getTitre() %>
+    </h1>
+                    
+                    <form action="<%= pi.getLien() %>?but=apresMultiple.jsp&idMpivavaka=<%= mpivavaka.getTuppleID()%>" method="post">
                         <%
                             pi.getFormu().makeHtmlInsertTabIndex();
+                            pi.getFormufle().makeHtmlInsertTableauIndex();
                             out.println(pi.getFormu().getHtmlInsert());
+                            out.println(pi.getFormufle().getHtmlTableauInsert());
                         %>
-                        <input name="acte" type="hidden" id="acte" value="update">
+                        <input name="acte" type="hidden" id="acte" value="updateInsert">
+                        <input name="id" type="hidden" id="acte" value="test">
                         <input name="rajoutLien" type="hidden" id="rajoutLien" value="idMpivavaka-<%= mpivavaka.getTuppleID()%>" >
                         <input name="bute" type="hidden" id="bute" value="<%= bute %>">
                         <input name="classe" type="hidden" id="classe" value="<%= classe %>">
-                        <input name="nomtable" type="hidden" id="nomtable" value="<%= nomTable %>">
+                        <input name="classefille" type="hidden" id="classefille" value="<%= classeFille %>">
+                        <input name="colonneMere" type="hidden" id="colonneMere" value="<%= mere %>">
+                        
+        <input name="nombreLigne" type="hidden" id="nombreLigne" value="<%= nbLine %>">
 
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+                        
+<%
+          }catch(Exception e){
+          e.printStackTrace();
+}
+%>
