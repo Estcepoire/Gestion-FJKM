@@ -10,11 +10,39 @@ public class MvtCaisse extends ClassEtat {
     String id;
     String designation;
     String idCaisse;
-    Date date;
+    Date daty;
     String idOrigine;
     String idTiers;
     double debit;
     double credit;
+
+    String idFacturefournisseurlib;
+    String idtierslib;
+    String idcaisselib;
+
+    public String getIdFacturefournisseurlib() {
+        return idFacturefournisseurlib;
+    }
+
+    public void setIdFacturefournisseurlib(String idFacturefournisseurlib) {
+        this.idFacturefournisseurlib = idFacturefournisseurlib;
+    }
+
+    public String getIdtierslib() {
+        return idtierslib;
+    }
+
+    public void setIdtierslib(String idtierslib) {
+        this.idtierslib = idtierslib;
+    }
+
+    public String getIdcaisselib() {
+        return idcaisselib;
+    }
+
+    public void setIdcaisselib(String idcaisselib) {
+        this.idcaisselib = idcaisselib;
+    }
 
     public String getId() {
         return id;
@@ -40,12 +68,12 @@ public class MvtCaisse extends ClassEtat {
         this.idCaisse = idCaisse;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDaty() {
+        return daty;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDaty(Date daty) {
+        this.daty = daty;
     }
 
     public String getIdOrigine() {

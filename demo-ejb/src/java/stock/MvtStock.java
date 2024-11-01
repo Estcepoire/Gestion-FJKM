@@ -8,6 +8,15 @@ public class MvtStock extends ClassMere {
     String id, designation, idMagasin, idTypeMvStock;
     Date daty;
     String remarque;
+    String idOrigine;
+
+    public String getIdOrigine() {
+        return idOrigine;
+    }
+
+    public void setIdOrigine(String idOrigine) {
+        this.idOrigine = idOrigine;
+    }
 
     String idtypemvstocklib;
     String idMagasinLib;
