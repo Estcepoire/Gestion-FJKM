@@ -1,5 +1,5 @@
 <%@ page import="bean.*" %>
-<%@ page import="facture.*" %>
+<%@ page import="recette.*" %>
 <%@ page import="user.*" %>
 <%@ page import="utilitaire.*" %>
 <%@ page import="bean.*" %>
@@ -7,14 +7,12 @@
 <%
 try {
     UserEJB u = (UserEJB) session.getAttribute("u");
-    String lien = (String) session.getValue("lien");;
-    String idCaisse = request.getParameter("idCaisse");
+    String lien = (String) session.getValue("lien");
     String id = request.getParameter("id");
-    FactureFournisseur facture = (FactureFournisseur) new FactureFournisseur().getById(id,"facturefournisseur_cpl",null);
-    
-    String idDepense = facture.genererDepense(""+u.getUser().getRefuser(), null, idCaisse);
+    Recette recette = (Recette) new Recette().getById(id,"v_recettelib",null);
+    String idMvtCaisse = recette.genererCaisse(""+u.getUser().getRefuser(), null, recette.getIdCaisse());
     %>
-    <script language="JavaScript"> document.location.replace("<%=lien%>?but=depense/depense-fiche.jsp&id=<%=idDepense%>");</script>
+    <script language="JavaScript"> document.location.replace("<%=lien%>?but=caisse/mvt-caisse-fiche.jsp&id=<%=idMvtCaisse%>");</script>
     <%
     }catch (Exception e) {
         e.printStackTrace();

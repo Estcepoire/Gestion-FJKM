@@ -4,6 +4,7 @@ import bean.CGenUtil;
 import bean.ClassMAPTable;
 import bean.ClassMere;
 import caisse.MvtCaisse;
+import depense.Depense;
 import stock.MvtStock;
 import stock.MvtStockFille;
 import utilitaire.UtilDB;
@@ -118,7 +119,7 @@ public class FactureFournisseur extends ClassMere {
         this.setId(makePK(c));
     }
 
-    public String genererMvtCaisse(String u, Connection c, String idCaisse) throws Exception {
+    public String genererDepense(String u, Connection c, String idCaisse) throws Exception {
         boolean canClose = false;
         String idmvt;
         try {
@@ -126,17 +127,17 @@ public class FactureFournisseur extends ClassMere {
                 c = new UtilDB().GetConn();
                 canClose = true;
             }
-            MvtCaisse mvtCaisse = new MvtCaisse();
+            Depense depense = new Depense();
             if (this.getEtat() == 11) {
-                mvtCaisse.setIdCaisse(idCaisse);
-                mvtCaisse.setIdOrigine(this.getId());
-                mvtCaisse.setIdTiers(this.getIdTiers());
-                mvtCaisse.setDaty(Utilitaire.dateDuJourSql());
-                mvtCaisse.setDesignation(" Payement Facture " + this.getId());
-                mvtCaisse.setCredit(this.getMontant());
-                mvtCaisse.setDebit(0);
-                mvtCaisse = (MvtCaisse) mvtCaisse.createObject(u, c);
-                idmvt = mvtCaisse.getId();
+                depense.setIdCaisse(idCaisse);
+                depense.setIdOrigine(this.getId());
+                depense.setDaty(Utilitaire.dateDuJourSql());
+                depense.setDesignation("Paiement Facture " + this.getId());
+                depense.setMontant(this.getMontant());
+                depense.setIdlignecredit(this.getIdlignecredit());
+                depense.setIdtypedepense("TYPDEP001");
+                depense = (Depense) depense.createObject(u, c);
+                idmvt = depense.getId();
             } else {
                 throw new Exception("La facture doit &ecirc;tre valid&eacute;e");
             }

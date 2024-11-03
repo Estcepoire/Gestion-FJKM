@@ -9,6 +9,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<style>
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select {
+            width: 20%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+</style>
 
 <h2>Etat de Caisse par Mois</h2>
 
@@ -25,6 +66,9 @@
     <select id="idCaisse" name="idCaisse">
         <% 
             Caisse[] caisses = (Caisse[]) CGenUtil.rechercher(new Caisse(), null, null, "");
+            %>
+                <option value="tous" %>Tous</option>
+            <%
             for (Caisse caisse : caisses) { 
         %>
             <option value="<%= caisse.getId() %>" <%= request.getParameter("idCaisse") != null && request.getParameter("idCaisse").equals(caisse.getId()) ? "selected" : "" %>><%= caisse.getVal() %></option>
@@ -40,7 +84,14 @@
     String idCaisseParam = request.getParameter("idCaisse");
     Suivie s = new Suivie();
     s.setNomTable("vue_suivie_caisse_par_mois");
-    Suivie[] suivie = (Suivie[]) CGenUtil.rechercher(s, null, null, " AND id like '" + idCaisseParam + "' AND annee=" + anneeParam);
+    Suivie[] suivie = null;
+    if(request.getParameter("idCaisse").compareToIgnoreCase("tous") == 0){
+        s.setNomTable("vue_suivie_global_par_mois");
+        suivie = (Suivie[]) CGenUtil.rechercher(s, null, null, " AND annee=" + anneeParam);
+    }
+    else{
+        suivie = (Suivie[]) CGenUtil.rechercher(s, null, null, " AND id like '" + idCaisseParam + "' AND annee=" + anneeParam);
+    }
 %>
 
 <script>

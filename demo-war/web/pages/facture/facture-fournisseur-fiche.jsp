@@ -86,8 +86,9 @@ option {
     pc.getChampByName("idlignecreditlib").setLibelle("Ligne Credit");
     pc.getChampByName("montant").setLibelle("montant Total");
     pc.getChampByName("idtiers").setVisible(false);
+    pc.getChampByName("idlignecredit").setVisible(false);
 
-    String pageActuel = "inventaire/inventaire-fiche.jsp";
+    String pageActuel = "facture-fournisseur-fiche.jsp";
     String lien = (String) session.getValue("lien");
 
     String classe = "facture.FactureFournisseur";
