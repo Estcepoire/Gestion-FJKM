@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public class DetailCotisation extends ClassFille {
           
-          String idDetailPaiement, idMpivavaka, idPaiementCotisation, referencePaiement;
+          String idDetailPaiement, idMpivavaka, idPaiementCotisation, referencePaiement, nomComplet;
           double montant;
           Date datePaiement;
 
@@ -79,9 +79,15 @@ public class DetailCotisation extends ClassFille {
           public void setDatePaiement(Date datePaiement) {
                     this.datePaiement = datePaiement;
           }
-          
-          
 
+          public String getNomComplet() {
+                    return nomComplet;
+          }
+
+          public void setNomComplet(String nomComplet) {
+                    this.nomComplet = nomComplet;
+          }
+          
           @Override
           public String getTuppleID() {
                     return this.getIdDetailPaiement();

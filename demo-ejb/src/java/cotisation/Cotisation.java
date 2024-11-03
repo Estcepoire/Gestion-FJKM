@@ -17,6 +17,9 @@ public class Cotisation extends ClassMere {
           String designation;
           int mois;
           int annee;
+          
+          String moisLib;
+          double montant;
 
           @Override
           public void construirePK(Connection c) throws Exception {
@@ -61,8 +64,23 @@ public class Cotisation extends ClassMere {
           public void setDesignation(String designation) {
                     this.designation = designation;
           }
-          
 
+          public String getMoisLib() {
+                    return moisLib;
+          }
+
+          public void setMoisLib(String moisLib) {
+                    this.moisLib = moisLib;
+          }
+
+          public double getMontant() {
+                    return montant;
+          }
+
+          public void setMontant(double montant) {
+                    this.montant = montant;
+          }
+          
           @Override
           public String getTuppleID() {
                     return this.getIdPaiementCotisation();
