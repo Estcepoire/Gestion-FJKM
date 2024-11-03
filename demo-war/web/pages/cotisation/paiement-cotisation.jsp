@@ -47,6 +47,16 @@
     Champ.setVisible(pi.getFormufle().getChampFille("idPaiementCotisation"), false);
     Champ.setVisible(pi.getFormufle().getChampFille("idDetailPaiement"), false);
     
+    Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idMpivavaka"), "croyance.MpivavakaLib", "idMpivavaka", "v_mpivavaka_lib");
+    
+    pi.getFormu().getChamp("designation").setLibelle("D&eacute;signation");
+    pi.getFormufle().getChamp("idMpivavaka_0").setLibelle("Croyant");
+    pi.getFormufle().getChamp("datePaiement_0").setLibelle("Date de Paiement");
+    pi.getFormufle().getChamp("referencePaiement_0").setLibelle("R&eacute;ference");
+    pi.getFormufle().getChamp("montant_0").setLibelle("Montant");
+    
+    Champ.setDefaut(pi.getFormufle().getChampFille("datePaiement"), utilitaire.Utilitaire.dateDuJour());
+    
     String[] ordres = {"idMpivavaka", "datePaiement", "referencePaiement","montant"};
     pi.getFormufle().setColOrdre(ordres);
     
