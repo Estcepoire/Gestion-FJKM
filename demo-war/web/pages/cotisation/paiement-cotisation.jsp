@@ -65,7 +65,7 @@
     pi.getFormu().makeHtmlInsertTabIndex();
     pi.getFormufle().makeHtmlInsertTableauIndex();
     
-    String bute = "",
+    String bute = "cotisation/cotisation-fiche.jsp",
     classe = "cotisation.Cotisation",
     classeFille = "cotisation.DetailCotisation",
     nomtable = "detailpaiementcotisation",
