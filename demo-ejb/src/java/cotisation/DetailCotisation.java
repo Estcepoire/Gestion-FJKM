@@ -30,8 +30,6 @@ public class DetailCotisation extends ClassFille {
                     setNomClasseMere("cotisation.Cotisation");
           }
           
-          
-
           public String getIdDetailPaiement() {
                     return idDetailPaiement;
           }
@@ -68,7 +66,10 @@ public class DetailCotisation extends ClassFille {
                     return montant;
           }
 
-          public void setMontant(double montant) {
+          public void setMontant(double montant) throws Exception {
+                    System.out.println();
+                    if(this.getMode().equalsIgnoreCase("modif"))
+                              if( montant < 0 ) throw new Exception("Le montant ne doit pas etre négatif");
                     this.montant = montant;
           }
 
@@ -97,6 +98,15 @@ public class DetailCotisation extends ClassFille {
           public String getAttributIDName() {
                     return "idDetailPaiement";
           }
+
+          @Override
+          public void controlerUpdate(Connection c) throws Exception {
+                    this.setLiaisonMere("idPaiementCotisation");
+                    this.setNomClasseMere("cotisation.Cotisation");
+                    super.controlerUpdate(c);
+          }
+          
+          
           
           
           

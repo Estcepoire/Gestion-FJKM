@@ -50,6 +50,8 @@
         
         String tab = request.getParameter("tab");
         String currentPage = onglet.getCurrentPage(tab);
+        
+        String pageModif = "";
 
 
 %>
@@ -75,6 +77,22 @@
                         %>
                         <br/>
                         <div class="box-footer">
+                            <% if( cotisation.getEtat() > 0 && cotisation.getEtat() < 10 ) { %>
+                            
+                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but=cotisation/apresOuverture.jsp&mois=" + mois + "&annee=" + annee %>" style="margin-right: 10px">
+                                    Ouvrir
+                            </a>
+                           <% } %>
+                            
+                            <%
+                                      if( cotisation.getEtat() == 10 ) { // etat de Cotisation ouverte %>
+                                        <a class="btn btn-success pull-left"  href="<%= lien + "?but=cotisation/cotisation-ajout-paiement.jsp&idPaiementCotisation=" + cotisation.getIdPaiementCotisation() %>" style="margin-right: 10px">
+                                                Ajouter Paiement
+                                        </a>
+                             
+                             <%                
+                                }
+                            %>
                             
                         </div>
                         <br/>

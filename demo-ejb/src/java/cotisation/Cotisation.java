@@ -6,6 +6,7 @@ package cotisation;
 
 import bean.ClassMere;
 import java.sql.Connection;
+import utilitaire.UtilDB;
 
 /**
  *
@@ -33,6 +34,12 @@ public class Cotisation extends ClassMere {
                     this.setLiaisonFille("idPaiementCotisation");
           }
           
+          public Cotisation(String mois, String annee) throws Exception{
+                    this();
+                    this.setAnnee(annee);
+                    this.setMois(mois);
+          }
+          
           public String getIdPaiementCotisation() {
                     return idPaiementCotisation;
           }
@@ -48,6 +55,10 @@ public class Cotisation extends ClassMere {
           public void setMois(int mois) {
                     this.mois = mois;
           }
+          
+          public void setMois(String month){
+                    this.setMois( Integer.parseInt(month) );
+          }
 
           public int getAnnee() {
                     return annee;
@@ -55,6 +66,10 @@ public class Cotisation extends ClassMere {
 
           public void setAnnee(int annee) {
                     this.annee = annee;
+          }
+          
+          public void setAnnee(String ans){
+                    this.setAnnee( Integer.parseInt(ans) );
           }
 
           public String getDesignation() {
@@ -89,6 +104,24 @@ public class Cotisation extends ClassMere {
           @Override
           public String getAttributIDName() {
                    return "idPaiementCotisation";
+          }
+          
+          public void ouvrirPayement( String refUser ) throws Exception {
+                    
+                    this.setEtat(10);
+                    Connection connection = null;
+                    try{
+                              connection = new UtilDB().GetConn();
+                              super.createObject(refUser, connection);
+                    }catch(Exception e){
+                              if(connection != null)
+                                        connection.rollback();
+                            e.printStackTrace();
+                            throw e;
+                    }finally{
+                              if(connection != null)
+                                        connection.close();
+                    }
           }
           
           
