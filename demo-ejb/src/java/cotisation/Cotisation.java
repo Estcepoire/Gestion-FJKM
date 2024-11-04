@@ -4,6 +4,8 @@
  */
 package cotisation;
 
+import bean.CGenUtil;
+import bean.ClassMAPTable;
 import bean.ClassMere;
 import java.sql.Connection;
 import utilitaire.UtilDB;
@@ -105,14 +107,30 @@ public class Cotisation extends ClassMere {
           public String getAttributIDName() {
                    return "idPaiementCotisation";
           }
+
+          @Override
+          public ClassMAPTable createObject(String u, Connection c) throws Exception {
+                    Cotisation cotisation = new Cotisation();
+                    cotisation.setMois(this.getMois());
+                    cotisation.setAnnee(this.getAnnee());
+                    Cotisation[]  cs = (Cotisation[])CGenUtil.rechercher(cotisation, null, null, c, "");
+                    if( cs.length > 0 ){
+                              return cs[0];
+                    }
+                    return this.ouvrirPayement(u, c);
+          }
+          
+          public ClassMAPTable ouvrirPayement( String refUser, Connection c ) throws Exception{
+                    this.setEtat(10); 
+                    return super.createObject(refUser, c);
+          }
           
           public void ouvrirPayement( String refUser ) throws Exception {
-                    
-                    this.setEtat(10);
+                   
                     Connection connection = null;
                     try{
                               connection = new UtilDB().GetConn();
-                              super.createObject(refUser, connection);
+                              this.ouvrirPayement(refUser, connection);
                     }catch(Exception e){
                               if(connection != null)
                                         connection.rollback();
