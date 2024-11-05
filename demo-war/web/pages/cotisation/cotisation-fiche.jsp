@@ -15,6 +15,8 @@
         cotisation.setNomTable("v_paiement_cotisation_lib_montant");
 
         String id = request.getParameter(cotisation.getAttributIDName());
+        id = utilitaire.Utilitaire.champNull(id);
+        id = id.trim();
         String mois = request.getParameter("mois");
         String annee = request.getParameter("annee");
           
@@ -25,7 +27,7 @@
 
         PageConsulte pc = null;
 
-        if(  id == null || id.isEmpty() ) {
+        if( id == null || id.isEmpty() ) {
           cotisation.setMois( Integer.valueOf(mois) );
           cotisation.setAnnee( Integer.valueOf(annee) );
           cotisation = ((Cotisation[]) CGenUtil.rechercher(cotisation, null, null, null, " and mois = " + mois + " and annee = " + annee))[0];
@@ -77,7 +79,7 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <% if( cotisation.getEtat() > 0 && cotisation.getEtat() < 10 ) { %>
+                            <% if( cotisation.getEtat() == -5 ) { %>
                             
                              <a class="btn btn-warning pull-left"  href="<%= lien + "?but=cotisation/apresOuverture.jsp&mois=" + mois + "&annee=" + annee %>" style="margin-right: 10px">
                                     Ouvrir
