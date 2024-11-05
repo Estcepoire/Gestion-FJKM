@@ -32,7 +32,7 @@
         
     PageUpdateMultiple pi = new PageUpdateMultiple(cotisation, detail, details ,request, user, nbLine);
     pi.setLien(lien);
-    
+    pi.setTitre("Ajouter paiement pour la cotisation");
     Vector<String> years = new Vector<>();
     
     for( int i = utilitaire.Utilitaire.getAneeEnCours(); i >= minYear ; i-- ){

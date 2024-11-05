@@ -25,7 +25,7 @@
     
     PageInsertMultiple pi = new PageInsertMultiple(cotisation, detail, request, nbLine, user);
     pi.setLien(lien);
-    
+    pi.setTitre("Paiement d'une cotisation");
     Vector<String> years = new Vector<>();
     
     for( int i = utilitaire.Utilitaire.getAneeEnCours(); i >= minYear ; i-- ){
