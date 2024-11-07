@@ -4,6 +4,7 @@
  */
 package annexe;
 
+import bean.CGenUtil;
 import bean.ClassEtat;
 import java.sql.Connection;
 
@@ -15,6 +16,7 @@ public class Faritra extends ClassEtat {
           
           String idFaritra;
           String nomFaritra;
+          int nombre;
           
           public Faritra(){
                     this.setNomTable("faritra");
@@ -51,8 +53,18 @@ public class Faritra extends ClassEtat {
                     this.preparePk("FRT",  "get_seqFaritra");
                     this.setIdFaritra( this.makePK(c) );
           }
+
+          public int getNombre() {
+                    return nombre;
+          }
+
+          public void setNombre(int nombre) {
+                    this.nombre = nombre;
+          }
           
-          
-          
+          public Faritra[] getGeneralisationFaritra( Connection connection ) throws Exception{
+                    this.setNomTable("v_count_mp_frt");
+                    return (Faritra[]) CGenUtil.rechercher(this, null, null, connection, "");
+          }
           
 }
