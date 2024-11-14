@@ -7,6 +7,10 @@ package utils;
 import com.google.gson.Gson;
 import evenement.Evenement;
 import evenement.dto.EvenementDTO;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.Vector;
 
 /**
  *
@@ -46,6 +50,58 @@ public class CalendarUtils {
                     }
                     Gson gson = new Gson();
                     return gson.toJson(validFormats);
+          }
+          
+          // Colors
+          public static String[] getColors(){
+                    return new String[]{
+                                        "#40E0D0", // Turquoise
+                                        "#228B22", // Forest Green
+                                        "#FF6347", // Tomato Red
+                                        "#DDA0DD", // Plum
+                                        "#FF00FF", // Fuchsia
+                                        "#E6E6FA", // Lavender
+                                        "#9DFFAC", // Seafoam Green
+                                        "#FF00FF", // Magenta
+                                        "#DE3163", // Cherry Red
+                                        "#C8A2C8", // Lilac
+                                        "#4B0082", // Indigo
+                                        "#FFDAB9", // Peach
+                                        "#E0B0FF", // Mauve
+                                        "#FF2400", // Scarlet
+                                        "#6B8E23", // Olive Drab
+                                        "#FA8072", // Salmon
+                                        "#DC143C", // Crimson
+                                        "#40E0D0", // Turquoise
+                                        "#007FFF", // Azure
+                                        "#808000", // Olive
+                                        "#FF7F50", // Coral
+                                        "#DE5D83", // Blush Pink
+                                        "#F0E68C", // Khaki
+                    };
+          }
+          
+          public static List<String> getColorsAsList(){
+                    String[] colors = getColors();
+                   Vector<String> nColors = new Vector<>();
+                   nColors.addAll(Arrays.asList(colors));
+                   return nColors;
+          }
+          
+          public static String getRandomColors( List<String> colors ){
+                    if( colors == null ) return "#40E0D0";
+                    Random random = new Random();
+                    int index = random.nextInt(colors.size());
+                    String color = colors.get(index);
+                    colors.remove(index);
+                    return color;
+          }
+          
+          public static String getColors( List<String> colors, int index ){
+                    if( colors == null ) return "#40E0D0";
+                    String color = colors.get(index);
+                    colors.remove(index);
+                    return color;
           }
           
 }

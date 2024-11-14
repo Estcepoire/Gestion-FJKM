@@ -153,22 +153,7 @@
           type: "line",
           data: {
             labels: <%= multi.getLabelsAsJson() %>,
-            datasets: [{
-                label: '2022',
-              data: [50*9850,6*9850,53*9850,56*9850,57*9850,58*9850,72*9850,67*9850,34*9850, 100*9850,69*98500,9850*42],
-              borderColor: '#C8A2C8',
-              fill: false
-            },{
-                label: '2023',
-              data: [50*20000,6*20000,53*20000,56*20000,57*20000,58*20000,72*20000,67*20000,34*20000, 100*20000,69*200000,20000*42],
-              borderColor: '#DDA0DD',
-              fill: false
-            },{
-                label: '2024',
-              data: <%= datas[1] %>,
-              borderColor: '#2e99bd',
-              fill: false
-            }]
+            datasets: <%= multi.getDatasetsJson() %>
           },
           options: {
                       ...options,
