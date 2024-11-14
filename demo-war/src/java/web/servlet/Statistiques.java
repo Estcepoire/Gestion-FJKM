@@ -9,7 +9,6 @@ import cotisation.DetailCotisationLib;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import statistique.EvolutionCroyant;
 import statistique.StastitiqueWrapper;
 import statistique.StatistiqueCotisation;
+import statistique.chart.MultilineChart;
 import utilitaire.UtilDB;
 
 /**
@@ -71,7 +71,15 @@ public class Statistiques extends HttpServlet {
                                         String moisFin = request.getParameter("mois2");
                                         DetailCotisationLib[] details = new StatistiqueCotisation().getPayementDetailsForYear(moisAns, moisFin, ans);
                                         out.println( gson.toJson(details) );
-
+                              }else if( acte.equalsIgnoreCase("comparaison-an") ){
+                                        String anMin = request.getParameter("dateMin");
+                                        String anMax = request.getParameter("dateMax");
+                                        String moisMin = request.getParameter("mois");
+                                        String moisMax = request.getParameter("mois2");
+                                        MultilineChart data= new StatistiqueCotisation().getDataComparatif(moisMin, moisMax, anMin, anMax);
+                                        out.println(gson.toJson(data));
+                                        // Inona le zavatra atao mila maka dataline
+                                        
                               }
                               
                     }catch(Exception e){

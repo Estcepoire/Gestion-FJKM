@@ -140,4 +140,19 @@ public class StatistiqueCotisation {
                     }
           }
           
+          public MultilineChart getDataComparatif( String moisDebut, String moisFin, String anDebut, String anFin ) throws Exception{
+                    try(Connection connection = new UtilDB().GetConn()){
+                              
+                              int m1 = Integer.parseInt(moisDebut);
+                              int m2 = Integer.parseInt(moisFin);
+                              int a1 = Integer.parseInt(anDebut);
+                              int a2 = Integer.parseInt(anFin);
+                              DetailCotisationLib[][] comparaisons = new DetailCotisationLib().getPayementsBetweenIntervals(m1, m2, a1, a2, connection);
+                              this.setDataPerPeriods(comparaisons);
+                              formatDatasetsMultiLine(a1, a2);
+                              return this.getMultiple();
+                              
+                    }
+          }
+          
 }

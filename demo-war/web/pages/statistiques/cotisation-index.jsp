@@ -73,23 +73,33 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="row">
-                        <form id="">
+                        <form id="comparaison-an">
                             <div class="my-md-3">
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
-                                        <div class="col-md-3">
-                                            <label class="form-label"> Du </label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="textbox" id="date-test" class="form-control" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
+                                        <label class="form-label"> Mois Sébut et Fin </label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                    <%= mois.getHtml() %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <%= moisFin.getHtml() %>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="col-md-3">
-                                            <label class="form-label"> Aù </label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="textbox" id="date-test-2" class="form-control" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
+                                            <label class="form-label"> Année à comparer </label>                          
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="number" min="2000" id="date-test-1" class="form-control" value="<%= utilitaire.Utilitaire.getAneeEnCours() - 3 %>" name="dateMin" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                 <input type="number" min="2000" id="date-test-2" class="form-control" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" onclick="fetchDataComparatif()" class="btn btn-primary"> Consulter </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -113,9 +123,11 @@
 
 <script src="${pageContext.request.contextPath}/assets/heatmap/heatmap.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/chart-js/Chart.js"></script>
+
 <script>
     
     var groupedBarChart ;
+    var mLinesChart;
     
     function updateChartPerYearData(datasets){
         let labels = [];
@@ -140,6 +152,44 @@
 
     }
     
+    function updateDataComparatif(response){
+        let labels = response.labels;
+        
+        
+        mLinesChart.data.labels = labels;
+        let newDataset = {
+            label: 'Montant récolté',
+            data: data,
+            fill: false,
+            borderColor: '#2e99bd'
+        };
+        mLinesChart.data.datasets = response.data;
+//        mLinesChart.data.datasets.push(newDataset);
+
+        mLinesChart.update();
+
+    }
+    
+    
+    function fetchDataComparatif(){
+        let form = document.getElementById("comparaison-an");
+        let formData = new FormData(form);
+        formData.append("acte", "comparaison-an");
+        fetch('/fjkm/statistiques', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+                .then( response => {
+                    console.log(response);
+            updateDataComparatif(response);
+        });
+    }
+    
+    /**
+     * 
+     * 
+     */
+    
     function fetchDataForAYear(event) {
         event.preventDefault();
         let forms = document.getElementById("payement-an");
@@ -150,8 +200,6 @@
             body: formData
         }) .then(response => response.json())
             .then( response => {
-                // Ato no mi-update anle chat ray
-                console.log(response);
                 updateChartPerYearData(response);
         });
         
@@ -204,7 +252,7 @@
             }
           }
         });
-        var mLinesChart = new Chart(cotisationAnLignes, {
+        mLinesChart = new Chart(cotisationAnLignes, {
           type: "line",
           data: {
             labels: <%= multi.getLabelsAsJson() %>,
