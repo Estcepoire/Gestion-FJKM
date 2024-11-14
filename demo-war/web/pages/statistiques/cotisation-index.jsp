@@ -4,6 +4,8 @@
     Author     : sarobidy
 --%>
 
+<%@page import="affichage.Champ"%>
+<%@page import="affichage.Liste"%>
 <%@page import="statistique.chart.MultilineChart"%>
 <%@page import="statistique.StatistiqueCotisation"%>
 <%
@@ -12,6 +14,11 @@
     stats.init();
     String[] datas = stats.getStatistiquesAnnees();
     MultilineChart multi = stats.getMultiple();
+    
+    Liste mois = new Liste("mois");
+    mois.makeListeMois();
+    Liste moisFin = new Liste("mois2");
+    moisFin.makeListeMois();
 
 %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/heatmap/heatmap.css"/>
@@ -30,19 +37,25 @@
             <div class="box box-success">
                 <div class="box-body">
                     <div class="row">
-                        <form id="">
+                        <form id="payement-an">
                             <div class="my-md-3">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="col-md-3">
-                                            <label class="form-label"> Année </label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="number" class="form-control" min="2000" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="an" />
-                                        </div>
+                                    
+                                    <div class="col-md-3">
+                                        <label class="form-label"> Mois Début </label>
+                                        <%= mois.getHtml() %>
                                     </div>
-                                        <div class="col-md-2">
-                                            <button class="btn btn-primary">
+                                    <div class="col-md-3">
+                                        <label class="form-label"> Mois Fin </label>
+                                        <%= moisFin.getHtml() %>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label class="form-label"> Année </label>
+                                            <input type="number" class="form-control" min="2000" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="an" />
+                                    </div>
+                                        <div class="col-md-3">
+                                            <label> &nbsp;&nbsp; </label>
+                                            <button type="button" onclick="fetchDataForAYear(event)" class="btn btn-primary">
                                                 Voir
                                             </button>
                                         </div>
@@ -102,6 +115,48 @@
 <script src="${pageContext.request.contextPath}/assets/js/chart-js/Chart.js"></script>
 <script>
     
+    var groupedBarChart ;
+    
+    function updateChartPerYearData(datasets){
+        let labels = [];
+        let data = [];
+        
+        datasets.forEach( dataset => {
+            labels.push( dataset.moisLib );
+            data.push( dataset.montant );
+        });
+        
+        groupedBarChart.data.labels = labels;
+        let newDataset = {
+            label: 'Montant récolté',
+            data: data,
+            fill: false,
+            borderColor: '#2e99bd'
+        };
+        groupedBarChart.data.datasets = [];
+        groupedBarChart.data.datasets.push(newDataset);
+
+        groupedBarChart.update();
+
+    }
+    
+    function fetchDataForAYear(event) {
+        event.preventDefault();
+        let forms = document.getElementById("payement-an");
+        let formData = new FormData(forms);
+        formData.append("acte", "paiement-an");
+        fetch( '/fjkm/statistiques', {
+            method: 'POST',
+            body: formData
+        }) .then(response => response.json())
+            .then( response => {
+                // Ato no mi-update anle chat ray
+                console.log(response);
+                updateChartPerYearData(response);
+        });
+        
+    }
+    
     $(document).ready(function() {
         
         // Mamadika champ ho lasa DatePicker
@@ -130,7 +185,7 @@
         };
         xValues = <%= datas[0] %>;
         
-        var groupedBarChart = new Chart(cotisationAn, {
+        groupedBarChart = new Chart(cotisationAn, {
           type: "line",
           data: {
             labels: xValues,
