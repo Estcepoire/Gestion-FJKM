@@ -39,8 +39,8 @@
          String[] libelles = {"Nom Complet", "Age (ans)", "Sexe"};
         pr.getTableau().setLibelleAffiche(libelles);
         MpivavakaLib[] liste=(MpivavakaLib[]) pr.getTableau().getData();
-        if(pr.getTableau().getHtml() != null)
-            out.println(pr.getTableau().getHtml());
+        if(pr.getTableau().getHtmlVaovao() != null)
+            out.println(pr.getTableau().getHtmlVaovao());
         else
             {
                %><center><h4>Aucune donnée trouvé</h4></center><%

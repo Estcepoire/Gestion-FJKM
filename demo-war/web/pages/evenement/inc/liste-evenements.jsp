@@ -36,8 +36,8 @@
         String[] libelles = {"ID", "D&eacute;scription", "Date d&eacute;but", "Heure D&eacute;but", "Date Fin", "Heure Fin"};
         pr.getTableau().setLibelleAffiche(libelles);
         Evenement[] liste=(Evenement[]) pr.getTableau().getData();
-        if(pr.getTableau().getHtml() != null)
-            out.println(pr.getTableau().getHtml());
+        if(pr.getTableau().getHtmlVaovao() != null)
+            out.println(pr.getTableau().getHtmlVaovao());
         else
             {
                %><center><h4>Aucune donnée trouvé</h4></center><%

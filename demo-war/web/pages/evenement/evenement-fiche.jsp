@@ -65,7 +65,7 @@
     <style>
         
         #map{
-                height: 400px;
+                height: 435px;
         }
     </style>
 </head>
@@ -114,8 +114,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div id="map"></div>
+        <div class="col-md-5">
+                    <div id="map"></div>
         </div>
     </div>
     <div class="row">

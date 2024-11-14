@@ -63,7 +63,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-5">
-                <div class="box">
+                <div class="box box-primary">
                     <div class="box-body">
                         <div class="row">
                             <form method="POST">
@@ -75,7 +75,7 @@
                 </div>
                 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 bg-white p-2">
                 <div id="calendar"> </div>
             </div>
         </div>
