@@ -131,7 +131,13 @@ public class StatistiqueCotisation {
                     multilines.setLabels(xAxes);
                     //
                     setMultiple(multilines);
-                    
+
+          }
+          
+          public DetailCotisationLib[] getPayementDetailsForYear(String mois1, String mois2, String an) throws Exception{
+                    try(Connection connection = new UtilDB().GetConn()){
+                             return new DetailCotisationLib().getPayementDetailsForYear(mois1, mois2, an, connection);
+                    }
           }
           
 }

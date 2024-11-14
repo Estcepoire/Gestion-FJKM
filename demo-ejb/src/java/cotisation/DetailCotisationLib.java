@@ -6,9 +6,8 @@ package cotisation;
 
 import bean.AdminGen;
 import bean.CGenUtil;
-import bean.GenUtil;
 import java.sql.Connection;
-import java.util.Vector;
+import utilitaire.UtilDB;
 
 /**
  *
@@ -61,6 +60,13 @@ public class DetailCotisationLib extends DetailCotisation {
                     return libs;
                     
           }
+          
+          public DetailCotisationLib[] getPayementDetailsForYear( String mois1, String mois2, String an, Connection connection ) throws Exception {
+                  
+                    DetailCotisationLib[] libs = ( DetailCotisationLib[] ) CGenUtil.rechercher( this, null, null, connection, " and mois >= " + mois1 + " and mois <= " + mois2 + " and annee = "  + an);
+                    return libs;
+          }
+          
           
           public DetailCotisationLib[][] getPayementsBetweenIntervals( int moisMin, int moisMax, int anneeMin, int anneeMax, Connection c ) throws Exception{
                     

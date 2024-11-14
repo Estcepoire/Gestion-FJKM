@@ -5,6 +5,7 @@
 package web.servlet;
 
 import com.google.gson.Gson;
+import cotisation.DetailCotisationLib;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import statistique.EvolutionCroyant;
 import statistique.StastitiqueWrapper;
+import statistique.StatistiqueCotisation;
 import utilitaire.UtilDB;
 
 /**
@@ -41,12 +43,6 @@ public class Statistiques extends HttpServlet {
           protected void processRequest(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
                     response.setContentType("application/json");
-                    // Ato isika izao
-                    // Inona no tsara apetraka ato
-                    // Voalohany aloha maka statistiques initiales an'ilay olona
-                    // Asiana connection ray foana ato
-                    // Inona no atao manaraka
-                    // Misy dateMin sy max foana any
                     String dateMin = request.getParameter("dateMin");
                     String dateMax = request.getParameter("dateMax");
                     PrintWriter out = response.getWriter();
@@ -69,6 +65,13 @@ public class Statistiques extends HttpServlet {
                               }else if( acte.equalsIgnoreCase("ev-mpandray") ){
                                         EvolutionCroyant[] evolutions = new EvolutionCroyant().getMpandrayEvolution(dateMin, dateMax, connection);
                                         out.println( gson.toJson(evolutions) );
+                              }else if( acte.equalsIgnoreCase("paiement-an") ){
+                                        String ans = request.getParameter("an");
+                                        String moisAns = request.getParameter("mois");
+                                        String moisFin = request.getParameter("mois2");
+                                        DetailCotisationLib[] details = new StatistiqueCotisation().getPayementDetailsForYear(moisAns, moisFin, ans);
+                                        out.println( gson.toJson(details) );
+
                               }
                               
                     }catch(Exception e){
