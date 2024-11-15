@@ -16,6 +16,15 @@
 
 %>
 
+<style>
+    
+    .statistics {
+        max-height: 500px;
+        min-height: 400px;
+    }
+    
+</style>
+
 
 <div class="content-wrapper">
     <!--- Banière contenant beaucoup d'informations -->
@@ -52,105 +61,129 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <form id="evolution-form">
-                    <div class="my-md-3">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année minimum </label>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
-                                </div>
+        <!-- Mila layout roa ray 6 de ray 5 -->
+        <div class="row">
+            <!--  Evolution des croyants -->
+            <div class="col-md-7 ">
+                    <div class="row">
+                        <div class="box box-primary statistics">
+                            <div class="box-title with-border my-3">
+                                <h3 class="text-center"> Evolution des croyants au fil des années </h3>
                             </div>
-                             <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année maximum </label>
+                            <div class="box-body">
+                                <div class="row">
+                                    <form id="evolution-form">
+                                        <div class="my-md-12">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <label class="form-label"> Année minimum </label>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-5">
+                                                     <div class="row">
+                                                            <div class="col-md-7">
+                                                                <label class="form-label"> Année maximum </label>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
+                                                            </div>
+                                                     </div>
+                                                </div>
+                                                    <div class="col-md-2">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <button type="button" onclick="fetchDataForEvolutionChart()" class="btn btn-primary">
+                                                                    Voir
+                                                                </button>     
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
                                 </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
-                                </div>
+                                <canvas id="cotisation-an"></canvas>
                             </div>
-                            <button type="button" onclick="fetchDataForEvolutionChart()" class="btn btn-primary">
-                                Voir
-                            </button>
                         </div>
                     </div>
-                    
-                </form>
             </div>
-            <canvas id="cotisation-an"></canvas>
-        </div>
-         <!---  Evolution des mpandray Statistiques --->
-        <div class="col-md-6">
-            <div class="row">
-                <form id="evolution-form-mpandray">
-                    <div class="my-md-3">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année minimum </label>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
+                                                            
+            <!-- Répartition des faritra -->
+            <div class="mx-1 col-md-4 statistics">
+                <div class="row h-100">
+                    <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <h3 class="text-center"> Repartition Générale des croyants par Faritra </h3>
+                                        <canvas id="mpandray-faritra"></canvas>
                                 </div>
                             </div>
-                             <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année maximum </label>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
-                                </div>
-                            </div>
-                            <button type="button" onclick="fetchDataForMpandrayChart()" class="btn btn-primary">
-                                Voir
-                            </button>
-                        </div>
+
                     </div>
-                    
-                </form>
+                </div>
             </div>
-            <canvas id="mpandray-evolution"></canvas>
         </div>
-                                
-        <div class="col-md-6">
-            <div class="row">
-                <form id="evolution-form-mpandray">
-                    <div class="my-md-3">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année minimum </label>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
-                                </div>
+
+        <div class="row">
+                <!---  Evolution des mpandray Statistiques --->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="box box-primary">
+                            <div class="box-title with-border">
+                                <h3 class="text-center"> Evolution de la croyance des mpandray </h3>
                             </div>
-                             <div class="col-md-6">
-                                <div class="col-md-3">
-                                    <label class="form-label"> Année maximum </label>
+                            <div class="box-body">
+                                <div class="row">
+                                    <form id="evolution-form-mpandray">
+                                        <div class="my-md-3">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label class="form-label"> Année minimum </label>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMin" />
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-5">
+                                                     <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label class="form-label"> Année maximum </label>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                              <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
+                                                          </div>
+                                                       </div>
+                                                </div>
+                                                       <div class="col-md-1">
+                                                            <button type="button" onclick="fetchDataForMpandrayChart()" class="btn btn-primary">
+                                                                Voir
+                                                            </button>
+                                                       </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
                                 </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" min="2000" max="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" step="1" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
-                                </div>
+
+                                 <canvas id="mpandray-evolution"></canvas>
                             </div>
-                            <button type="button" onclick="fetchDataForPieChart()" class="btn btn-primary">
-                                Voir
-                            </button>
                         </div>
+
                     </div>
-                    
-                </form>
-            </div>
-            <canvas id="mpandray-faritra"></canvas>
-        </div>
-                                
-                                
-                                
+                </div>
+        </div>  
     </div>
+                 
 </div>
 
 
@@ -207,7 +240,7 @@
                 label: 'Effectif',
                 data: data,
                 fill: false,
-                backgroundColor: 'blue'
+                backgroundColor: '#6CB4EE'
             };
             groupedBarChart.data.datasets = [];
             groupedBarChart.data.datasets.push(newDataset);
@@ -232,7 +265,7 @@
                 label: 'Effectif',
                 data: data,
                 fill: false,
-                backgroundColor: 'blue'
+                backgroundColor: '#007FFF'
             };
             mpandrayBarChart.data.datasets = [];
             mpandrayBarChart.data.datasets.push(newDataset);
@@ -281,7 +314,9 @@
                     type: 'line',
                     data: <%= evolutionCroyants[1] %>,
                     label: 'Effectif',
-                    fill: false
+                    fill: false,
+                    backgroundColor: "#6CB4EE",
+                    borderColor: "#6CB4EE"
                 }
             ]
           },
@@ -303,7 +338,8 @@
             labels: xValues,
             datasets: [{
                     label: 'Effectif',
-                    data: <%= evolutionMpandray[1] %>
+                    data: <%= evolutionMpandray[1] %>,
+                    backgroundColor: "#007FFF"
             }]
           },
           options: {
@@ -315,19 +351,54 @@
           }
         });
         xValues = <%= repartitionFaritra[0] %>;
+        const colors = [
+  "#40E0D0", // Turquoise
+  "#228B22", // Forest Green
+  "#FF6347", // Tomato Red
+  "#DDA0DD", // Plum
+  "#FF00FF", // Fuchsia
+  "#E6E6FA", // Lavender
+  "#9DFFAC", // Seafoam Green
+  "#FF00FF", // Magenta
+  "#DE3163", // Cherry Red
+  "#C8A2C8", // Lilac
+  "#4B0082", // Indigo
+  "#FFDAB9", // Peach
+  "#E0B0FF", // Mauve
+  "#FF2400", // Scarlet
+  "#6B8E23", // Olive Drab
+  "#FA8072", // Salmon
+  "#DC143C", // Crimson
+  "#40E0D0", // Turquoise
+  "#007FFF", // Azure
+  "#808000", // Olive
+  "#FF7F50", // Coral
+  "#DE5D83", // Blush Pink
+  "#F0E68C", // Khaki
+];
+
         repartitionChart = new Chart(mpandrayFaritra, {
           type: "doughnut",
           data: {
             labels: xValues,
             datasets: [ {
-                    data: <%= repartitionFaritra[1] %>
+                    data: <%= repartitionFaritra[1] %>,
+                    backgroundColor: colors
             }]
           },
           options: {
                       ...options,
             title:{
                 display: true,
-                text: 'évolution des nombres de croyants en confirmation'
+                text: 'Répartition Générale des croyants par Faritra'
+            },
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: "bottom",
+                align: "start"
+              }
             }
           }
         });
