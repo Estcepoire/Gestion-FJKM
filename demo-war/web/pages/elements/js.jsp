@@ -1,12 +1,13 @@
 <!-- jQuery 2.1.4 -->
 <!-- jQuery 2.1.4 -->
 <%--<script src="${pageContext.request.contextPath}/plugins/jQuery/jQuery-2.1.4.min.js"></script>--%>
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="${pageContext.request.contextPath}/dist/js/jquery-ui.min.js" type="text/javascript"></script>
 <!--<script src="${pageContext.request.contextPath}/assets/js/socket.io/socket.io.js"></script>-->
 <script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/assets/calmosaic/min/jquery.calmosaic.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script type="text/javascript">
     $.widget.bridge('uibutton', $.ui.button);
@@ -165,18 +166,18 @@
         "info": false,
         "autoWidth": false
     });
-    $(function () {
-        $(".select2").select2();
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
-    });
+//    $(function () {
+//        $(".select2").select2();
+//        $("#example1").DataTable();
+//        $('#example2').DataTable({
+//            "paging": true,
+//            "lengthChange": false,
+//            "searching": false,
+//            "ordering": true,
+//            "info": true,
+//            "autoWidth": false
+//        });
+//    });
     function CocheToutCheckbox(ref, name) {
         var form = ref;
 
@@ -376,7 +377,7 @@
        function fetchAutocomplete(request, response, affiche, valeur, colFiltre, nomTable, classe,useMocle) {
        if (request.term.length >= 1) {
            $.ajax({
-               url: "/demo/autocomplete",
+               url: "/fjkm/autocomplete",
                method: "GET",
                contentType: "application/x-www-form-urlencoded",
                dataType: "json",

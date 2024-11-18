@@ -6,6 +6,8 @@ package statistique;
 
 import bean.AdminGen;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import cotisation.DetailCotisation;
 import cotisation.DetailCotisationLib;
 import java.sql.Connection;
 import java.util.List;
@@ -40,13 +42,27 @@ public class StatistiqueCotisation {
           
           DetailCotisationLib[] detailsAnnee;
           DetailCotisationLib[][] dataPerPeriods;
-          
+          DetailCotisation[] frequenceAnnee;
           MultilineChart multiple;
+          DetailCotisationLib statistiqueAnnuelle;
+          
+          public static Gson gson = new GsonBuilder()
+                                                                      .setDateFormat("yyyy-MM-dd")
+                                                                      .excludeFieldsWithoutExposeAnnotation()
+                                                                      .setPrettyPrinting().create();
 
           public MultilineChart getMultiple() {
                     return multiple;
           }
 
+          public DetailCotisationLib getStatistiqueAnnuelle() {
+                    return statistiqueAnnuelle;
+          }
+
+          public void setStatistiqueAnnuelle(DetailCotisationLib statistiqueAnnuelle) {
+                    this.statistiqueAnnuelle = statistiqueAnnuelle;
+          }
+          
           public void setMultiple(MultilineChart multiple) {
                     this.multiple = multiple;
           }
@@ -75,6 +91,7 @@ public class StatistiqueCotisation {
                     this.setDataPerPeriods(comparaisons);
                     // Mila avadika de type JSon
                     formatDatasetsMultiLine(anneeDebut, anneeFin);
+                    this.getStats(connection);
                     
           }
           
@@ -94,8 +111,7 @@ public class StatistiqueCotisation {
                               labels[i] = this.getDetailsAnnee()[i].getMoisLib();
                               values[i] = String.valueOf(this.getDetailsAnnee()[i].getMontant());
                     }
-                    Gson g = new Gson();
-                    String[] responses = { g.toJson(labels), g.toJson(values)  };
+                    String[] responses = { gson.toJson(labels), gson.toJson(values)  };
                     return responses;
           }
           
@@ -142,7 +158,6 @@ public class StatistiqueCotisation {
           
           public MultilineChart getDataComparatif( String moisDebut, String moisFin, String anDebut, String anFin ) throws Exception{
                     try(Connection connection = new UtilDB().GetConn()){
-                              
                               int m1 = Integer.parseInt(moisDebut);
                               int m2 = Integer.parseInt(moisFin);
                               int a1 = Integer.parseInt(anDebut);
@@ -150,9 +165,50 @@ public class StatistiqueCotisation {
                               DetailCotisationLib[][] comparaisons = new DetailCotisationLib().getPayementsBetweenIntervals(m1, m2, a1, a2, connection);
                               this.setDataPerPeriods(comparaisons);
                               formatDatasetsMultiLine(a1, a2);
-                              return this.getMultiple();
-                              
+                              return this.getMultiple();     
                     }
+          }
+
+          public DetailCotisation[] getFrequenceAnnee() {
+                    return frequenceAnnee;
+          }
+
+          public void setFrequenceAnnee(DetailCotisation[] frequenceAnnee) {
+                    this.frequenceAnnee = frequenceAnnee;
+          }
+          
+          
+          
+          public void initFrequencePayement() throws Exception {
+                    // Bon eto isika izao
+                    // annee - 1 satria ny amzao mbola en cours
+                    int defaultAnnee = utilitaire.Utilitaire.getAneeEnCours();
+                    try(Connection connection = new UtilDB().GetConn()){
+                              DetailCotisation[] frequences = new DetailCotisation().getEtatPaiementPourAnnee(defaultAnnee, connection);
+                              this.setFrequenceAnnee(frequences);
+                              
+                    }catch(Exception e){
+                              e.printStackTrace();
+                    }
+          }
+          
+          public DetailCotisation[] getFrequenceParticipation(int an, Connection connection) throws Exception{
+                    int defaultAnnee = an;
+                    DetailCotisation[] frequences = new DetailCotisation().getEtatPaiementPourAnnee(defaultAnnee, connection);
+                    this.setFrequenceAnnee(frequences);
+                    return this.getFrequenceAnnee();
+                    
+          }
+          
+          // Otrany ahoana rehefa anao 
+          // Ny manaraka de ny maka azy en tant que json
+          public String getFrequences(){
+                    return gson.toJson(this.getFrequenceAnnee());
+          }
+          
+          public void getStats( Connection connection ) throws Exception{
+                    int year = utilitaire.Utilitaire.getAneeEnCours();
+                    this.setStatistiqueAnnuelle( new DetailCotisationLib().getStatistiquesTotales(year, connection) );
           }
           
 }
