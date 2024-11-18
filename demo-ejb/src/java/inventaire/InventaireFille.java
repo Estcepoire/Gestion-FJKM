@@ -19,6 +19,8 @@ public class InventaireFille extends ClassFille {
 
     String designation;
 
+    double ecart;
+
     public String getIdMagasin() {
         return idMagasin;
     }
@@ -148,5 +150,13 @@ public class InventaireFille extends ClassFille {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public double getEcart() {
+        return ecart;
+    }
+
+    public void setEcart(double ecart) {
+        this.ecart = ecart;
     }
 }

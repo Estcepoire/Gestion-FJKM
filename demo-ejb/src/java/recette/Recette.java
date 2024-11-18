@@ -16,6 +16,24 @@ public class Recette extends ClassEtat {
     double montant;
     String idlignecredit;
     String idCaisse;
+    String idOrigine;
+    String recu;
+
+    public String getIdOrigine() {
+        return idOrigine;
+    }
+
+    public void setIdOrigine(String idOrigine) {
+        this.idOrigine = idOrigine;
+    }
+
+    public String getRecu() {
+        return recu;
+    }
+
+    public void setRecu(String recu) {
+        this.recu = recu;
+    }
 
     String idtyperecettelib;
     String idlignecreditlib;

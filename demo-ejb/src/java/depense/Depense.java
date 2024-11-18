@@ -19,11 +19,13 @@ public class Depense extends ClassEtat {
     String idCaisse;
 
     String idOrigine;
+    String recu;
 
     String idtypedepenselib;
     String idlignecreditlib;
     String idOriginelib;
     String idCaisselib;
+
 
     public String getIdCaisse() {
         return idCaisse;
@@ -174,6 +176,14 @@ public class Depense extends ClassEtat {
             }
         }
         return idmvt;
+    }
+
+    public String getRecu() {
+        return recu;
+    }
+
+    public void setRecu(String recu) {
+        this.recu = recu;
     }
 
 }
