@@ -5,14 +5,17 @@
 package statistique.chart;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.Expose;
 
 /**
  *
  * @author sarobidy
  */
 public class MultilineChart {
-          
+          @Expose
+
           String[] labels;
+                    @Expose
           Object[] data;
 
           public String[] getLabels() {
@@ -40,4 +43,7 @@ public class MultilineChart {
                     return new Gson().toJson(this.getData());
           }
           
+          public String toJson(){
+                    return new Gson().toJson(this);
+          }
 }

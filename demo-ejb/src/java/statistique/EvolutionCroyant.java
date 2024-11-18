@@ -5,6 +5,7 @@
 package statistique;
 
 import bean.CGenUtil;
+import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import recensement.Recensement;
 
@@ -13,8 +14,9 @@ import recensement.Recensement;
  * @author sarobidy
  */
 public class EvolutionCroyant extends Recensement {
-          
+          @Expose
           int nombreNouveaux;
+          @Expose
           int nombreMoins;
           double pourcentageAugmentation;
 

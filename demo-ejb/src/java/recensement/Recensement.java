@@ -6,6 +6,7 @@ package recensement;
 
 import bean.CGenUtil;
 import bean.ClassMAPTable;
+import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 
 /**
@@ -16,7 +17,9 @@ public class Recensement extends ClassMAPTable {
           
           String idReportCroyant;
           String designation;
+          @Expose
           int annee;
+          @Expose
           int nombre;
           
           public Recensement(){
