@@ -4,7 +4,9 @@
  */
 package cotisation;
 
+import bean.CGenUtil;
 import bean.ClassFille;
+import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -15,8 +17,11 @@ import java.sql.Date;
 public class DetailCotisation extends ClassFille {
           
           String idDetailPaiement, idMpivavaka, idPaiementCotisation, referencePaiement, nomComplet;
+          @Expose
           double montant;
+          @Expose
           Date datePaiement;
+          
 
           @Override
           public void construirePK(Connection c) throws Exception {
@@ -106,7 +111,29 @@ public class DetailCotisation extends ClassFille {
                     super.controlerUpdate(c);
           }
           
-          
+          public DetailCotisation[] getEtatPaiementPourAnnee( int annee, Connection connection ) throws Exception{
+                    String sql = "select \n" +
+                                        "	date_trunc('day', e)::date as datepaiement,\n" +
+                                        "	coalesce ( paiement.nombrePayant, 0 ) as montant \n" +
+                                        "from \n" +
+                                        "	generate_series( '%d-01-01'::timestamp, '%d-12-31'::timestamp, '1 day' ) e\n" +
+                                        "\n" +
+                                        "left join\n" +
+                                        "	(\n" +
+                                        "		select \n" +
+                                        "			datepaiement , count(*) as nombrePayant\n" +
+                                        "		from \n" +
+                                        "			detailpaiementcotisation d\n" +
+                                        "		group by\n" +
+                                        "			datepaiement\n" +
+                                        "	) as paiement on paiement.datepaiement = date_trunc('day', e)::date ";
+                    sql = String.format(sql, annee, annee);
+                    DetailCotisation[] details = (DetailCotisation[]) CGenUtil.rechercher( this, sql, connection );
+                    for( DetailCotisation d : details ){
+                              System.out.println("eee === " + d.getDatePaiement());
+                    }
+                    return details;
+          }
           
           
           
