@@ -23,6 +23,7 @@
         pc.getChampByName("daty").setLibelle("Date de d&eacute;pense");
         pc.getChampByName("montant").setLibelle("Montant");
         pc.getChampByName("idCaisselib").setLibelle("Caisse");
+        pc.getChampByName("recu").setLibelle("Num&eacute;ro re&ccedil;u");
 
         pc.getChampByName("idtypedepense").setVisible(false);
         pc.getChampByName("idlignecredit").setVisible(false);

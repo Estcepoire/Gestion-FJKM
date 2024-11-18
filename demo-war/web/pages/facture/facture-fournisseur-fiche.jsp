@@ -8,6 +8,9 @@
 <%@page import="facture.*"%>
 <%@page import="caisse.*"%>
 <style>
+.container {
+    width: 999px !important;
+}
 .modal {
     display: none;
     position: fixed;
@@ -41,28 +44,6 @@
     color: #000;
     text-decoration: none;
 }
-
-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    appearance: none;
-    cursor: pointer;
-}
-
-select:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
-
-option {
-    padding: 10px;
-}
-
 
 </style>
  
@@ -162,21 +143,25 @@ option {
         <span id="closeModalBtn" class="close">&times;</span>
         <h2>Choisir une Caisse</h2>
         <form id="caisseForm" class='container' action="<%=lien%>?but=apresDecaisser.jsp" method="post">
-            <label for="caisseSelect">Caisse:</label>
-            <select id="caisseSelect" name="idCaisse">
-                <%
-                    Caisse[] caisses = (Caisse[]) CGenUtil.rechercher(new Caisse(),null,null,"");
-                    for (Caisse caisse : caisses) {
-                %>
-                    <option value="<%= caisse.getId() %>"><%= caisse.getVal() %></option>
-                <%
-                    }
-                %>
-            </select>
+            <div class="col-md-3">
+                <label for="caisseSelect">Caisse:</label>
+                <select id="caisseSelect" name="idCaisse" class="form-control">
+                    <%
+                        Caisse[] caisses = (Caisse[]) CGenUtil.rechercher(new Caisse(),null,null,"");
+                        for (Caisse caisse : caisses) {
+                    %>
+                        <option value="<%= caisse.getId() %>"><%= caisse.getVal() %></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
             <input type="hidden" value="<%=id%>" name="id" >
             <br>
             <br>
-            <button class="btn btn-success pull-right" type="submit">Valider</button>
+            <div class="col-md-3 clear-float" >
+                <button class="btn btn-success" type="submit">Valider</button>
+            </did>
         </form>
     </div>
 </div>

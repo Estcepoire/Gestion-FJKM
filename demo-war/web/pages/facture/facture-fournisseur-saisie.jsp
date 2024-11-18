@@ -42,7 +42,7 @@
 
         pi.getFormu().getChamp("etat").setVisible(false);
         
-        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT","","");
+        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT");
 
         pi.getFormufle().getChamp("quantite_0").setLibelle("Quantit&eacute;");
         pi.getFormufle().getChamp("remarque_0").setLibelle("Remarque");

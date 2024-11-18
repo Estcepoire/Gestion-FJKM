@@ -1,84 +1,72 @@
 <%@page import="bean.*"%>
 <%@page import="caisse.*"%>
-
-<!DOCTYPE html>
-<html >
-<head>
-    <meta charset="UTF-8">
-    <title>Suivie de Caisse par Mois</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+<title>Suivie de Caisse par Mois</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-        form {
-            margin-bottom: 20px;
-        }
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        select {
-            width: 20%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
 
-        select:focus {
-            border-color: #007BFF;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
+        #caisseChart {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
         }
 
 </style>
 
-<h2>Etat de Caisse par Mois</h2>
-
-<form  method="get">
-    <label for="annee">S&eacute;lectionnez l'ann&eacute;e :</label>
-    <input type="hidden" name="but" value="caisse/rapprochement.jsp">
-    <select id="annee" name="annee">
-        <% for (int y = 2020; y <= 2025; y++) { %>
-            <option value="<%= y %>" <%= request.getParameter("annee") != null && request.getParameter("annee").equals(String.valueOf(y)) ? "selected" : "" %>><%= y %></option>
-        <% } %>
-    </select>
-
-    <label for="idCaisse">S&eacute;lectionnez la caisse :</label>
-    <select id="idCaisse" name="idCaisse">
-        <% 
-            Caisse[] caisses = (Caisse[]) CGenUtil.rechercher(new Caisse(), null, null, "");
-            %>
-                <option value="tous" %>Tous</option>
-            <%
-            for (Caisse caisse : caisses) { 
-        %>
-            <option value="<%= caisse.getId() %>" <%= request.getParameter("idCaisse") != null && request.getParameter("idCaisse").equals(caisse.getId()) ? "selected" : "" %>><%= caisse.getVal() %></option>
-        <% } %>
-    </select>
-    
-    <button type="submit">Filtrer</button>
-</form>
-
-<canvas id="caisseChart"width="700" height="300"  ></canvas>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="box">
+                    <div>
+                        <h1>Etat de Caisse par Mois</h1>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <form  method="get">
+                                <div class="col-md-4">
+                                    <label for="annee">S&eacute;lectionnez l'ann&eacute;e :</label>
+                                    <input type="hidden" name="but" value="caisse/rapprochement.jsp">
+                                    <select id="annee" name="annee" class="form-control">
+                                        <% for (int y = 2020; y <= 2025; y++) { %>
+                                            <option value="<%= y %>" <%= request.getParameter("annee") != null && request.getParameter("annee").equals(String.valueOf(y)) ? "selected" : "" %>><%= y %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="idCaisse">S&eacute;lectionnez la caisse :</label>
+                                    <select id="idCaisse" name="idCaisse" class="form-control">
+                                        <% 
+                                            Caisse[] caisses = (Caisse[]) CGenUtil.rechercher(new Caisse(), null, null, "");
+                                            %>
+                                                <option value="tous" %>Tous</option>
+                                            <%
+                                            for (Caisse caisse : caisses) { 
+                                        %>
+                                            <option value="<%= caisse.getId() %>" <%= request.getParameter("idCaisse") != null && request.getParameter("idCaisse").equals(caisse.getId()) ? "selected" : "" %>><%= caisse.getVal() %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary" type="submit">Filtrer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <canvas id="caisseChart"width="700" height="300"  ></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 <%
     String anneeParam = request.getParameter("annee");
     String idCaisseParam = request.getParameter("idCaisse");
@@ -164,6 +152,3 @@
         config
     );
 </script>
-
-</body>
-</html>

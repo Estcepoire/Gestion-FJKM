@@ -8,8 +8,8 @@
     try {
         Recette recette = new Recette();
         recette.setNomTable("v_recette_date");
-        String listeCrt[] = {"idtyperecette"};
-        String listeInt[] = {};
+        String listeCrt[] = {"daty","idtyperecette"};
+        String listeInt[] = {"daty"};
         String libEntete[] = {"daty", "idtyperecettelib", "montant"};
         
         PageRecherche pr = new PageRecherche(recette, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
@@ -17,11 +17,12 @@
         pr.setTitre("Liste des Recettes par Date");
         pr.setUtilisateur((user.UserEJB) session.getValue("u"));
         pr.setLien((String) session.getValue("lien"));
-        pr.setApres("recette/recette-liste.jsp");
+        pr.setApres("recette/recette-date.jsp");
         
-        // pr.getFormu().getChamp("daty").setLibelle("Date");
-        // pr.getFormu().getChamp("daty").setType("Date");
-        // pr.getFormu().getChamp("daty").setDefaut(""+Utilitaire.dateDuJourSql());
+        pr.getFormu().getChamp("daty1").setLibelle("Date Min");
+        pr.getFormu().getChamp("daty2").setLibelle("Date Max");
+        pr.getFormu().getChamp("daty1").setDefaut(Utilitaire.dateDuJour());
+        pr.getFormu().getChamp("daty2").setDefaut(Utilitaire.dateDuJour());
 
         affichage.Champ[] liste = new affichage.Champ[1];
         TypeObjet typeRecette = new TypeObjet();

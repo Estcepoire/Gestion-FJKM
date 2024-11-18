@@ -31,30 +31,30 @@
       <![endif]-->
       <style>
         .img_logo_45 {
-          border-bottom: solid #00a65a 3px;
-          width: 158px;
-          height: 158px;
-          margin-bottom: 20px;
+          height: 95px;
         }
         .login-box-body {
           margin-top: 20%;
         }
-        .login-logo{
-            width : 150px !important;
-            height : 150px !important;
+        .btn-flat{
+          background-color:color: #000080 !important; 
         }
-        img{
-            width : 150px !important;
+        .text {
+          font-size: 15px;
+          color: #000080;
+          font-weight: bold;
         }
       </style>
     </head>
     <body class="login-page">
       <div class="login-box loginBody">
         <div class="login-box-body">
-           <%-- <p class="login-box-msg"><b>Identification</b></p> --%>
-          <center><div class="login-logo">
-              <a href="index.jsp"> <img src="${pageContext.request.contextPath}/assets/img/lo.jpg"/></a>
-          </div></center>
+          <div class="login-logo">
+            <a href="index.jsp">
+              <img src="${pageContext.request.contextPath}/assets/img/Logo99.png" alt="FJKM Logo" class="img_logo_45" />
+              <p class="text">FIANGONAN'I JESOA KRISTY ETO MADAGASIKARA</p>
+            </a>
+          </div>
           <form action="<%=but%>" method="post">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -69,7 +69,7 @@
                   <p style="font-size: 10px"><b>Version du : <%@include file="dateBuild.txt" %></b></p>
               </div><!-- /.cosl -->
               <div class="col-xs-5">
-                <button type="submit" class="btn btn-success btn-block btn-flat">Se connecter</button>
+                <button type="submit" class="btn btn-success btn-block btn-flat" >Se connecter</button>
               </div><!-- /.col -->
             </div>
           </form>

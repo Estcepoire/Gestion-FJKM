@@ -1,4 +1,4 @@
-<%@ page import="recette.*" %>
+<%@ page import="famille.*" %>
 <%@ page import="utilitaire.Utilitaire" %>
 <%@ page import="user.*" %>
 <%@ page import="bean.*" %>
@@ -8,31 +8,30 @@
 
 <%
     try {
-        Recette recette = new Recette();
+        Valopy recette = new Valopy();
         recette.setId(request.getParameter("id"));
-        recette.setNomTable("v_Recettelib");
+        recette.setNomTable("Valopylib");
         PageConsulte pc = new PageConsulte(recette, request, (user.UserEJB) session.getValue("u"));
         
-        recette = (Recette) pc.getBase();
+        recette = (Valopy) pc.getBase();
         String id = recette.getTuppleID();
-        pc.setTitre("Fiche Recette");
+        pc.setTitre("Fiche ");
 
-        pc.getChampByName("idtyperecettelib").setLibelle("Type de recette");
-        pc.getChampByName("idlignecreditlib").setLibelle("Ligne de cr&eacute;dit");
-        pc.getChampByName("daty").setLibelle("Date de recette");
+        pc.getChampByName("val").setLibelle("D&eacute;signation");
+        pc.getChampByName("desce").setLibelle("Description");
+        pc.getChampByName("daty").setLibelle("Date");
         pc.getChampByName("montant").setLibelle("Montant");
-        pc.getChampByName("idCaisselib").setLibelle("Caisse");
-        pc.getChampByName("idOrigine").setLibelle("Origine");
-        pc.getChampByName("recu").setLibelle("Num&eacute;ro re&ccedil;u");
-
-        pc.getChampByName("idtyperecette").setVisible(false);
-        pc.getChampByName("idlignecredit").setVisible(false);
-        pc.getChampByName("idCaisse").setVisible(false);
+        pc.getChampByName("Idfamillelib").setLibelle("Famille");
+        pc.getChampByName("IdMpivavakalib").setLibelle("Nom Payeur");
+        pc.getChampByName("IdMpivavakalib2").setLibelle("Prenom payeur");
+        pc.getChampByName("Idfamille").setVisible(false);
+        pc.getChampByName("IdMpivavaka").setVisible(false);
+        
 
         String lien = (String) session.getValue("lien");
-        String pageActuel = "recette/recette-fiche.jsp";
-        String pageModif = "recette/recette-modif.jsp";
-        String classe = "recette.Recette";
+        String pageActuel = "famille/valopy-fiche.jsp";
+        String pageModif = "famille/valopy-modif.jsp";
+        String classe = "famille.Valopy";
 %>
 <div class="content-wrapper">
     <div class="row">
@@ -53,7 +52,7 @@
                             <a class="btn btn-warning pull-left" href="<%= lien + "?but=" + pageModif + "&id=" + id %>" style="margin-right: 10px">Modifier</a>
                             <a href="<%= lien + "?but=apresTarif.jsp&id=" + id + "&acte=valider&bute="+pageActuel+"&classe=" + classe %>" class="btn btn-success">Valider</a>
                         <% } else { %>
-                            <a href="<%= lien + "?but=apresRecette.jsp&id=" + id + "&acte=valider&bute="+pageActuel+"&classe=" + classe %>" class="btn btn-primary">Entr&eacute;e de caisse</a>
+                            <a href="<%= lien + "?but=recette/recette-saisie.jsp&id=" + id %>" class="btn btn-primary">Entr&eacute;e de caisse</a>
                         <% } %>
                         </div>
                         <br/>

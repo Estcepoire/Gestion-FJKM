@@ -19,7 +19,7 @@
         pi.getFormu().getChamp("val").setLibelle("Designation");      
         pi.getFormu().getChamp("desce").setLibelle("Description");      
         pi.getFormu().getChamp("idTypelc").setLibelle("Type de ligne");      
-        pi.getFormu().getChamp("annee").setLibelle("Ann&eacute;e");      
+        pi.getFormu().getChamp("annnee").setLibelle("Ann&eacute;e");      
         pi.getFormu().getChamp("etat").setVisible(false);      
         pi.preparerDataFormu();
 %>

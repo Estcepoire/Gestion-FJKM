@@ -1,5 +1,4 @@
-<%@page import="facture.*"%>
-<%@page import="facture.details.*"%>
+<%@page import="inventaire.*"%>
 <%@ page import="user.*" %>
 <%@ page import="bean.*" %>
 <%@page import="affichage.*"%>
@@ -7,36 +6,29 @@
 
 <% 
     try {
-	    FactureFournisseur t = new FactureFournisseur();
-        t.setNomTable("facturefournisseur_cpl");
-	    String listeCrt[] = {"id", "val","daty", "idTiers",};
+	    Inventaire t = new Inventaire();
+        t.setNomTable("inventairelib");
+	    String listeCrt[] = {"id", "daty", "designation","remarque"};
 	    String listeInt[] = {"daty"};
-	    String libEntete[] = {"id", "val","daty", "montant","idtierslib"};
+	    String libEntete[] = {"id", "daty", "designation","remarque"};
 	    PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
-	    pr.setTitre("Liste des Facture");
+	    pr.setTitre("Liste des Inventaires");
 	    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
 	    pr.setLien((String) session.getValue("lien"));
-	    pr.setApres("facture/facture-fournisseur-liste.jsp");
-	    pr.getFormu().getChamp("val").setLibelle("D&eacute;signation");
+	    pr.setApres("inventaire/inventaire-liste.jsp");
+	    pr.getFormu().getChamp("designation").setLibelle("D&eacute;signation");
 	    pr.getFormu().getChamp("daty1").setLibelle("Date Min");
 	    pr.getFormu().getChamp("daty2").setLibelle("Date Max");
         pr.getFormu().getChamp("daty1").setDefaut(Utilitaire.dateDuJour());
         pr.getFormu().getChamp("daty2").setDefaut(Utilitaire.dateDuJour());
 
-        affichage.Champ[] liste = new affichage.Champ[1];      
-        TypeObjet unite = new TypeObjet();
-        unite.setNomTable("TIERS");
-        liste[0] = new Liste("idTiers", unite, "val", "id");    
-        pr.getFormu().changerEnChamp(liste);
-
-	    pr.getFormu().getChamp("idTiers").setLibelle("Tiers");
         String[] colSomme = null;
         pr.creerObjetPage(libEntete, colSomme);
-        String lienTableau[] = {pr.getLien() + "?but=facture/facture-fournisseur-fiche.jsp"};
+        String lienTableau[] = {pr.getLien() + "?but=inventaire/inventaire-fiche.jsp"};
         String colonneLien[] = {"id"};
         pr.getTableau().setLien(lienTableau);
         pr.getTableau().setColonneLien(colonneLien);
-        String libEnteteAffiche[] = {"ID", "D&eacute;signation", "Date", "Montant (Ar)", "Tiers"};
+        String libEnteteAffiche[] = {"ID", "Date","D&eacute;signation", "Remarques"};
         pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 %>
 
@@ -62,11 +54,7 @@
         %>
         <br>
     </section>
-
-
 </div>
-
-
 <%	
     } catch (Exception e) {
         e.printStackTrace();

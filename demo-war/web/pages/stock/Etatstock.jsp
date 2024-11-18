@@ -49,8 +49,16 @@
         etatstock.setDatyMax(daty2);
         EtatStock[] stock = etatstock.caculEtatStock();
         pr.creerObjetPage(libEntete, somDefaut);
+        
+        String[] lienTableau = {};
+        String[] colonneLien = {};
+        pr.getTableau().setLien(lienTableau);
+        pr.getTableau().setColonneLien(colonneLien);
+
+        String critereLienTab = "<a href=" + pr.getLien() + "?but=" + pr.getApres() + "&numPag=1" + pr.getApresLienPage() + pr.getFormu().getListeCritereString() + "";
+        
         String[] libEnteteAffiche = {"id","designation","type de produit","unite","magasin","entree", "sortie", "reste"} ;
-        pr.setTableau(new TableauRecherche(stock, libEntete));
+        pr.setTableau(new TableauRecherche(stock, libEntete,critereLienTab));
         pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 
 %>

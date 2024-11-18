@@ -3,12 +3,22 @@
 <%@ page import="bean.*" %>
 <%@ page import="utilitaire.*" %>
 <%@ page import="affichage.*" %>
+<%@ page import="famille.*" %>
 <%
     try {
         Recette recette = new Recette();
         PageInsert pi = new PageInsert(recette, request, (user.UserEJB) session.getValue("u"));
         pi.setLien((String) session.getValue("lien"));
         pi.setTitre("Enregistrement Recette");
+
+        if(request.getParameter("id") != null ){
+            String idValopy = (String) request.getParameter("id");
+            Valopy val = new Valopy();
+            val = (Valopy) val.getById(idValopy, val.getNomTable(), null);
+            pi.getFormu().getChamp("montant").setDefaut(""+val.getMontant());
+            pi.getFormu().getChamp("idOrigine").setDefaut(val.getId());
+        }
+
         affichage.Champ[] liste = new affichage.Champ[3];
 
         TypeObjet typeRecette = new TypeObjet();
@@ -18,7 +28,6 @@
         TypeObjet ligneCredit = new TypeObjet();
         ligneCredit.setNomTable("v_lignecredit_recette");
         liste[1] = new Liste("idlignecredit", ligneCredit, "val", "id");
-
         TypeObjet caisse = new TypeObjet();
         caisse.setNomTable("CAISSE");
         liste[2] = new Liste("idCaisse", caisse, "val", "id");
@@ -32,8 +41,10 @@
         pi.getFormu().getChamp("idtyperecette").setLibelle("Type de recette");
         pi.getFormu().getChamp("idlignecredit").setLibelle("Ligne de cr&eacute;dit");
         pi.getFormu().getChamp("idCaisse").setLibelle("Caisse");
+        pi.getFormu().getChamp("recu").setLibelle("Num&eacute;ro re&ccedil;u");
 
         pi.getFormu().getChamp("etat").setVisible(false);
+        pi.getFormu().getChamp("idOrigine").setVisible(false);
 
         pi.preparerDataFormu();
 %>

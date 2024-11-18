@@ -21,6 +21,18 @@
         pr.setUtilisateur(u);
         pr.setLien((String) session.getValue("lien"));
 
+        // affichage.Champ[] liste = new affichage.Champ[2];
+
+        // TypeObjet caisse = new TypeObjet();
+        // caisse.setNomTable("CAISSE");
+        // liste[0] = new Liste("idCaisse", caisse, "val", "id");
+
+        // TypeObjet typecaisse = new TypeObjet();
+        // typecaisse.setNomTable("typecaisse");
+        // liste[1] = new Liste("idtypecaisse", typecaisse, "val", "id");
+
+        // pi.getFormu().changerEnChamp(liste);
+
         pr.getFormu().getChamp("idcaisse").setLibelle("Caisse");
         pr.getFormu().getChamp("idtypecaisselib").setLibelle("Type Caisse");
         pr.getFormu().getChamp("daty1").setLibelle("Date min");
@@ -39,11 +51,19 @@
         etatcaisse.setDatyMin(daty1);
         etatcaisse.setDatyMax(daty2);
         EtatCaisse[] caisse = etatcaisse.caculEtatCaisse();
-        pr.creerObjetPage(libEntete, somDefaut);
+
         String[] libEnteteAffiche = {"id","Caisse","type de Caisse","Debit","Credit","report","reste"} ;
-        TableauRecherche tab = new TableauRecherche(caisse, libEntete);
-        tab.setLibelleAffiche(libEnteteAffiche);
+        pr.creerObjetPage(libEntete, somDefaut);
+        
+        String[] lienTableau = {};
+        String[] colonneLien = {};
+        pr.getTableau().setLien(lienTableau);
+        pr.getTableau().setColonneLien(colonneLien);
+
+        String critereLienTab = "<a href=" + pr.getLien() + "?but=" + pr.getApres() + "&numPag=1" + pr.getApresLienPage() + pr.getFormu().getListeCritereString() + "";
+        TableauRecherche tab = new TableauRecherche(caisse, libEntete,critereLienTab);
         pr.setTableau(tab);
+        pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 
 %>
         <script>

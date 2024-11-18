@@ -4,15 +4,15 @@
 <%@ page import="utilitaire.*" %>
 <%@ page import="affichage.*" %>
 
-<%@ page import="inventaire.*" %>
+<%@ page import="famille.*" %>
 
 <%
     try{
-    InventaireFille t = new InventaireFille();
-    t.setNomTable("inventaire_fille_cpl");
+    FamilleFille t = new FamilleFille();
+    t.setNomTable("familleFillelib");
     String listeCrt[] = {};
     String listeInt[] = {};
-    String libEntete[] = {"id","designation","quantitetheorique","quantite","ecart"};
+    String libEntete[] = {"id","idMpivavakalib","idMpivavakalib2","remarque"};
     PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
     pr.setUtilisateur((user.UserEJB) session.getValue("u"));
     pr.setLien((String) session.getValue("lien"));
@@ -25,15 +25,14 @@
 
 <div class="box-body">
     <%
-        String libEnteteAffiche[] =  {"Id","produit", "Quantite theorique","Quantite physique","Ecart"};
+        String libEnteteAffiche[] =  {"Id","Nom", "Pr&eacute;nom(s)","Remarque"};
         pr.getTableau().setLibelleAffiche(libEnteteAffiche);
         if(pr.getTableau().getHtml() != null){
             out.println(pr.getTableau().getHtml());
-        }else{
-            %>
-                <div style="text-align: center;"><h4>Aucune donnée trouvée</h4></div>
-            <%
-        } 
+         }else
+         {
+               %><div style="text-align: center;"><h4>Aucune donnée trouvée</h4></div><%
+         } 
     %>
 </div>
 <%

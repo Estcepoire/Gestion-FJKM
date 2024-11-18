@@ -9,7 +9,7 @@
         PageInsert pi = new PageInsert(depense, request, (user.UserEJB) session.getValue("u"));
         pi.setLien((String) session.getValue("lien"));
         pi.setTitre("Enregistrement D&eacute;pense");
-        affichage.Champ[] liste = new affichage.Champ[2];
+        affichage.Champ[] liste = new affichage.Champ[3];
 
         TypeObjet typeDepense = new TypeObjet();
         typeDepense.setNomTable("typedepense");
@@ -22,7 +22,7 @@
 
         TypeObjet caisse = new TypeObjet();
         caisse.setNomTable("CAISSE");
-        liste[1] = new Liste("idCaisse", caisse, "val", "id");
+        liste[2] = new Liste("idCaisse", caisse, "val", "id");
 
         pi.getFormu().changerEnChamp(liste);
 
@@ -33,6 +33,7 @@
         pi.getFormu().getChamp("idtypedepense").setLibelle("Type de d&eacute;pense");
         pi.getFormu().getChamp("idlignecredit").setLibelle("Ligne de cr&eacute;dit");
         pi.getFormu().getChamp("idCaisse").setLibelle("Caisse");
+        pi.getFormu().getChamp("recu").setLibelle("Num&eacute;ro re&ccedil;u");
 
         pi.getFormu().getChamp("etat").setVisible(false);
         pi.getFormu().getChamp("idOrigine").setVisible(false);

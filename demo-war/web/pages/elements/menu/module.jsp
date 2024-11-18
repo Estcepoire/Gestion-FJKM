@@ -1,4 +1,4 @@
-    <%@page import="java.util.Locale"%>
+<%@page import="java.util.Locale"%>
 <%@page import="java.util.ResourceBundle"%>
 <%@page import="javax.ejb.ConcurrentAccessTimeoutException"%>
 <%@page import="menu.MenuDynamique"%>
@@ -38,17 +38,12 @@
     }
  %>
  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" id="menuslider">
             <li class="header">Menu</li>
-            <%=MenuDynamique.renderMenu(arbre,currentMenu,tabMenu,RB) %>              
-
-           
+            <%=MenuDynamique.renderMenu(arbre,currentMenu,tabMenu,RB) %>                      
         </ul>
     </section>
-    <!-- /.sidebar -->
 </aside>
   <% }
   catch(ConcurrentAccessTimeoutException e){

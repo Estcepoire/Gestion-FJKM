@@ -1,40 +1,41 @@
-<%@page import="ligneCredit.*"%>
+<%@page import="famille.*"%>
+<%@page import="facture.details.*"%>
 <%@ page import="user.*" %>
 <%@ page import="bean.*" %>
 <%@page import="affichage.*"%>
+<%@page import="utilitaire.*"%>
 
 <% 
     try {
-	    LigneCredit t = new LigneCredit();
-        t.setNomTable("lignecreditlib");
-	    String listeCrt[] = {"id", "val", "desce", "credit", "idtypelc","annnee"};
-	    String listeInt[] = {"credit","annnee"};
-	    String libEntete[] = {"id", "val", "desce", "annnee","credit", "idTypelclib"};
+	    Famille t = new Famille();
+        t.setNomTable("famillelib");
+	    String listeCrt[] = {"id", "val","idFaritra",};
+	    String listeInt[] = {};
+	    String libEntete[] = {"id", "val","desce", "idFaritralib"};
 	    PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
-	    pr.setTitre("Liste des Ligne Credit");
+	    pr.setTitre("Liste des Famille");
 	    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
 	    pr.setLien((String) session.getValue("lien"));
-	    pr.setApres("ligne-credit/ligne-credit-liste.jsp");
 
-        affichage.Champ[] liste = new affichage.Champ[1];      
-        TypeObjet typelc = new TypeObjet();
-        typelc.setNomTable("typelc");
-        liste[0] = new Liste("idTypelc", typelc, "val", "id"); 
-    
+	    pr.setApres("famille/famille-liste.jsp");
+	    pr.getFormu().getChamp("val").setLibelle("D&eacute;signation");
+
+        affichage.Champ[] liste = new affichage.Champ[1]; 
+
+        TypeObjet faritra = new TypeObjet();
+        faritra.setNomTable("faritra");
+        liste[0] = new Liste("idFaritra", faritra, "val", "id");  
+
         pr.getFormu().changerEnChamp(liste);
 
-
-	    pr.getFormu().getChamp("val").setLibelle("D&eacute;signation");
-	    pr.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
-	    pr.getFormu().getChamp("credit1").setLibelle("credit Min");
-	    pr.getFormu().getChamp("annnee1").setLibelle("Annee Min");
-	    pr.getFormu().getChamp("annnee2").setLibelle("Annee Max");
-
-	    pr.getFormu().getChamp("idtypelc").setLibelle("Type");
+	    pr.getFormu().getChamp("idFaritra").setLibelle("Faritra");
         String[] colSomme = null;
         pr.creerObjetPage(libEntete, colSomme);
-        
-        String libEnteteAffiche[] = {"id", "designation", "description", "annn&eacute;e","credit", "Type"};
+        String lienTableau[] = {pr.getLien() + "?but=famille/famille-fiche.jsp"};
+        String colonneLien[] = {"id"};
+        pr.getTableau().setLien(lienTableau);
+        pr.getTableau().setColonneLien(colonneLien);
+        String libEnteteAffiche[] = {"ID", "D&eacute;signation", "Description", "Faritra"};
         pr.getTableau().setLibelleAffiche(libEnteteAffiche);
 %>
 
@@ -60,7 +61,11 @@
         %>
         <br>
     </section>
+
+
 </div>
+
+
 <%	
     } catch (Exception e) {
         e.printStackTrace();
