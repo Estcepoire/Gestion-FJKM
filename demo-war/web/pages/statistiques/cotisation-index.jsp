@@ -21,7 +21,8 @@
     moisFin.makeListeMois();
 
 %>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/heatmap/heatmap.css"/>
+
+
 
 <style>
     
@@ -32,11 +33,31 @@
 </style>
 
 <div class="content-wrapper">
+
     <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    Cotisations reçus en général : <%= stats.getStatistiqueAnnuelle().getMontant() %> Ar
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    Cotisations reçus cette année : <%= stats.getStatistiqueAnnuelle().getMontantAnnee() %> Ar
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
         <div class="col-md-10">
             <div class="box box-success">
                 <div class="box-body">
                     <div class="row">
+                        <h3 class="text-center">
+                            Etat de paiement par année
+                        </h3>
                         <form id="payement-an">
                             <div class="my-md-3">
                                 <div class="row">
@@ -73,6 +94,9 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="row">
+                        <h3 class="text-center">
+                            Comparaison des evolutions de paiements
+                        </h3>
                         <form id="comparaison-an">
                             <div class="my-md-3">
                                 <div class="row">
@@ -112,16 +136,11 @@
             </div>
             
         </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div id="heatmap"></div>
-            </div>
-        </div>
-    </div>
+        
 </div>
 
 
-<script src="${pageContext.request.contextPath}/assets/heatmap/heatmap.js"></script>
+
 <script src="${pageContext.request.contextPath}/assets/js/chart-js/Chart.js"></script>
 
 <script>

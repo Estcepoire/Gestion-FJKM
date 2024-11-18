@@ -5,6 +5,7 @@
 package web.servlet;
 
 import com.google.gson.Gson;
+import cotisation.DetailCotisation;
 import cotisation.DetailCotisationLib;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,7 +47,7 @@ public class Statistiques extends HttpServlet {
                     String dateMin = request.getParameter("dateMin");
                     String dateMax = request.getParameter("dateMax");
                     PrintWriter out = response.getWriter();
-                    Gson gson = new Gson();
+                    Gson gson = StatistiqueCotisation.gson;
                     try( Connection connection = new UtilDB().GetConn() ){
 
                               String acte = request.getParameter("acte");
@@ -77,9 +78,12 @@ public class Statistiques extends HttpServlet {
                                         String moisMin = request.getParameter("mois");
                                         String moisMax = request.getParameter("mois2");
                                         MultilineChart data= new StatistiqueCotisation().getDataComparatif(moisMin, moisMax, anMin, anMax);
-                                        out.println(gson.toJson(data));
-                                        // Inona le zavatra atao mila maka dataline
-                                        
+                                        out.println(data.toJson() );
+                              }else if( acte.equalsIgnoreCase("participation") ){
+                                        // Raha participation de recuperena ilay mois iny
+                                        int an = Integer.parseInt( request.getParameter("an") );
+                                        DetailCotisation[] frequences = new StatistiqueCotisation().getFrequenceParticipation(an, connection);
+                                        out.println(gson.toJson(frequences));
                               }
                               
                     }catch(Exception e){
