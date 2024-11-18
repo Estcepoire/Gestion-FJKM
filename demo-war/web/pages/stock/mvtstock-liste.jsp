@@ -28,7 +28,7 @@
     liste[0] = new Liste("idTypeMvStock",typemvt,"val","id");    
     Magasin magasin = new Magasin();
     liste[1] = new Liste("idMagasin",magasin,"val","id");
-    pi.getFormu().changerEnChamp(liste);
+    pr.getFormu().changerEnChamp(liste);
 
     pr.getFormu().getChamp("id").setLibelle("Id");
     pr.getFormu().getChamp("designation").setLibelle("D&eacute;signation");

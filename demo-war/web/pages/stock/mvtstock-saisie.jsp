@@ -13,7 +13,7 @@
         UserEJB u = u = (UserEJB) session.getValue("u");
         String classeMere = "stock.MvtStock",
                classeFille = "stock.MvtStockFille",
-               titre = "Saisie mouvement de stock",
+               titre = "Correction de stock",
 			   redirection = "stock/mvtstock-fiche.jsp";
         String colonneMere = "idMere";
         int taille = 10;
@@ -27,25 +27,23 @@
         PageInsertMultiple pi = new PageInsertMultiple(mere, fille, request, taille, u);
         pi.setLien((String) session.getValue("lien")); 
 
-        Liste[] liste = new Liste[2];
+        Liste[] liste = new Liste[1];
 
         TypeMvtStock typemvt = new TypeMvtStock();
         liste[0] = new Liste("idTypeMvStock",typemvt,"val","id");
         
-        Magasin magasin = new Magasin();
-        liste[1] = new Liste("idMagasin",magasin,"val","id");
-
         pi.getFormu().changerEnChamp(liste);
     
-        pi.getFormu().getChamp("idMagasin").setLibelle("Magasin");
+        pi.getFormu().getChamp("idMagasin").setDefaut("UNIT000001");
         pi.getFormu().getChamp("idTypeMvStock").setLibelle("Type mouvement de stock");
         pi.getFormu().getChamp("designation").setLibelle("D&eacute;signation*");
         pi.getFormu().getChamp("daty").setLibelle("Date");
         pi.getFormu().getChamp("daty").setDefaut(""+Utilitaire.dateDuJourSql());
 
         pi.getFormu().getChamp("etat").setVisible(false);
+        pi.getFormu().getChamp("idMagasin").setVisible(false);
         
-        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT","","");
+        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idproduit"),"annexe.Produit","id","PRODUIT");
 
         pi.getFormufle().getChamp("quantites_0").setLibelle("Quantit&eacute;");
         pi.getFormufle().getChamp("remarque_0").setLibelle("Remarque");
