@@ -15,6 +15,7 @@ public class ConstanteFJKM {
           
           public static String MEMBRE = "mb";
           static String fichierLocalisation = "/home/mounts/GitHub/Gestion-FJKM/demo-war/web/default.txt";
+          public static String downloadPath = "/home/mounts/GitHub/Gestion-FJKM/uploads/";
           
           public static String getDefaultLocalisation(){
                     return fichierLocalisation;
