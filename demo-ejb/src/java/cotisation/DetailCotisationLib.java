@@ -6,6 +6,7 @@ package cotisation;
 
 import bean.AdminGen;
 import bean.CGenUtil;
+import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import utilitaire.UtilDB;
 
@@ -14,10 +15,14 @@ import utilitaire.UtilDB;
  * @author sarobidy
  */
 public class DetailCotisationLib extends DetailCotisation {
-          
+          @Expose
           String moisLib;
+          @Expose
           int mois;
+          @Expose
           int annee;
+          @Expose
+          double montantAnnee;
           
           public DetailCotisationLib() throws Exception{
                     super();
@@ -97,6 +102,25 @@ public class DetailCotisationLib extends DetailCotisation {
                     
                     return separatedDetails;
                     
+          }
+
+          public double getMontantAnnee() {
+                    return montantAnnee;
+          }
+
+          public void setMontantAnnee(double montantAnnee) {
+                    this.montantAnnee = montantAnnee;
+          }
+          
+          public DetailCotisationLib getStatistiquesTotales( int year, Connection connection ) throws Exception {
+                    String sql = "SELECT \n" +
+                              "    SUM(montant)::double precision AS montant,\n" +
+                              "    SUM(CASE WHEN EXTRACT(YEAR FROM datePaiement) = %d THEN montant ELSE 0 END)::double precision AS montantAnnee \n" +
+                              " FROM detailpaiementcotisation";
+                    sql = String.format(sql, year);
+                    this.setNomTable("v_map_stat_an");
+                    DetailCotisationLib detail = ((DetailCotisationLib[]) CGenUtil.rechercher( this, sql, connection ))[0];
+                    return detail;
           }
           
 }
