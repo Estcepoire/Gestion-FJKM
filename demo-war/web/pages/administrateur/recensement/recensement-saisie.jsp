@@ -24,10 +24,11 @@
     pi.getFormu().getChamp("annee").setType("number");
     pi.getFormu().getChamp("annee").setDefaut(utilitaire.Utilitaire.getAnneeEnCours());
     pi.getFormu().getChamp("annee").setAutre("min='1970'");
-    pi.getFormu().getChamp("nombre").setLibelle("Croyant Recens&eacute;");
+    pi.getFormu().getChamp("nombre").setLibelle("Fid&eagrave;le Recens&eacute;");
     
     pi.preparerDataFormu();
-    pi.getFormu().makeHtmlInsertTabIndex();
+    pi.getFormu().setTitre(pi.getTitre());
+    pi.getFormu().makeHtmlInsertTabVaovao();
     
     String apresPost = "administrateur/recensement/recensement-fiche.jsp",
     mappingClass = "recensement.Recensement",
@@ -36,11 +37,7 @@
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pi.getTitre() %>
-    </h1>
     
-
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">
         <%= pi.getFormu().getHtmlInsert() %>
         <input name="acte" type="hidden" id="nature" value="insert">

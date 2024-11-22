@@ -28,7 +28,7 @@
     pi.getFormu().getChamp("annee").setType("number");
     pi.getFormu().getChamp("annee").setAutre("min='1970'");
     pi.getFormu().getChamp("annee").setDefaut( utilitaire.Utilitaire.dateDuJour() );
-    pi.getFormu().getChamp("nombre").setLibelle("Croyant Recens&eacute;");
+    pi.getFormu().getChamp("nombre").setLibelle("Fid&eagrave;le Recens&eacute;");
     
     pi.preparerDataFormu();
     pi.getFormu().makeHtmlInsertTabIndex();
@@ -40,9 +40,7 @@
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pi.getTitre() %>
-    </h1>
+    
 
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp&idReportCroyant=<%= rec.getTuppleID() %>" data-parsley-validate method="post">
         <%= pi.getFormu().getHtmlInsert() %>
