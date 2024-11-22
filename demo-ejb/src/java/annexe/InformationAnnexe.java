@@ -15,6 +15,9 @@ public class InformationAnnexe extends ClassEtat {
           String id;
           String val;
           String desce;
+          String valeurPossible;
+          String idTypeChamp;
+          // Okey efa azoko eto ito de lasa miampy valeur possible sy idTypeChamp
           
           public InformationAnnexe(){
                     this.setNomTable("infoannexe");
@@ -59,6 +62,21 @@ public class InformationAnnexe extends ClassEtat {
           public String getAttributIDName() {
                     return "id";
           }
-          
+
+          public String getValeurPossible() {
+                    return valeurPossible;
+          }
+
+          public void setValeurPossible(String valeurPossible) {
+                    this.valeurPossible = valeurPossible;
+          }
+
+          public String getIdTypeChamp() {
+                    return idTypeChamp;
+          }
+
+          public void setIdTypeChamp(String idTypeChamp) {
+                    this.idTypeChamp = idTypeChamp;
+          }
           
 }
