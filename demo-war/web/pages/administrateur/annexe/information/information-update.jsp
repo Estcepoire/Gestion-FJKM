@@ -4,6 +4,8 @@
     Author     : sarobidy
 --%>
 
+<%@page import="affichage.Liste"%>
+<%@page import="affichage.TypeChamp"%>
 <%@page import="annexe.InformationAnnexe"%>
 <%@page import="annexe.Faritra" %>
 <%@page import="affichage.PageUpdate" %>
@@ -22,6 +24,13 @@
         pi.getFormu().getChamp("etat").setVisible(false);
         pi.getFormu().getChamp("id").setVisible(false);
         
+            TypeChamp type = new TypeChamp();
+            Liste[] list = { new Liste("idTypeChamp", type, "val", "id") };
+
+            pi.getFormu().changerEnChamp(list);
+            pi.getFormu().getChamp("valeurPossible").setLibelle("Les valeurs possibles(optionnelle)");
+            pi.getFormu().getChamp("idTypeChamp").setLibelle("Type de champ");
+        
         pi.preparerDataFormu();
         role = (InformationAnnexe) pi.getBase();
         pi.setTitre("Modification Information suppl&eacute;mentaire : " + role.getVal());
@@ -29,20 +38,15 @@
         String classe = "annexe.InformationAnnexe";
         String bute = "administrateur/annexe/information/information-fiche.jsp";
         String nomTable = "infoannexe";
+        pi.getFormu().setTitre(pi.getTitre());
 
 %>
 
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box-fiche">
-                <div class="box">
-                    <h1> 
-                        <%= pi.getTitre() %>
-                    </h1>
+    
                     <form action="<%= pi.getLien() %>?but=apresTarif.jsp&id=<%= role.getTuppleID() %>" method="post">
                         <%
-                            pi.getFormu().makeHtmlInsertTabIndex();
+                            pi.getFormu().makeHtmlInsertTabVaovao();
                             out.println(pi.getFormu().getHtmlInsert());
                         %>
                         <input name="acte" type="hidden" id="acte" value="update">
@@ -52,10 +56,7 @@
                         <input name="nomtable" type="hidden" id="nomtable" value="<%= nomTable %>">
 
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 </div>
 
 <%
