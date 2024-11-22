@@ -26,13 +26,12 @@
             String afterPost = "administrateur/annexe/faritra/faritra-fiche.jsp";
             String mappingClass = "annexe.Faritra";
             String nomTable = "faritra";
-          pi.getFormu().makeHtmlInsertTabIndex();
+            pi.getFormu().setTitre(pi.getTitre());
+          pi.getFormu().makeHtmlInsertTabVaovao();
   
 %>
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pi.getTitre() %>
-    </h1>
+   
     
 
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">
