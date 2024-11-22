@@ -21,15 +21,13 @@
 
         // Apres tarif variables
         String mappingClass = "utilisateur.Role",
-                afterPost = "administrateur/role/creation.jsp",
+                afterPost = "administrateur/role/role-saisie.jsp",
                 pageTitle = "Cr&eacute;ation role",
                 nomTable = "roles";
         
         pageInsert.preparerDataFormu();
         pageInsert.getFormu().makeHtmlInsertTabIndex();
-            
     
-
 %>
 <div class="content-wrapper">
     <h1 class="text-align-center">

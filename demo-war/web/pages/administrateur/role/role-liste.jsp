@@ -29,7 +29,7 @@
         String[] labels = {"Identifiant", "D&eacute;scription", "Rang" };
         pageRecherche.getTableau().setLibelleAffiche(labels);
 
-        String[] links = { pageRecherche.getLien() + "?but=administrateur/role/fiche.jsp" };
+        String[] links = { pageRecherche.getLien() + "?but=administrateur/role/role-fiche.jsp" };
         String[] linksColumn = { "idrole" }; // les colonnes pour mettre les liens
         String[] attribute = { "id" };
         String[] valeurLien = { "id" };

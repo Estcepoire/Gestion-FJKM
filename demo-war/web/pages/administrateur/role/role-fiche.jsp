@@ -17,7 +17,7 @@
 
     pc.setTitre("Fiche Role");
     String lien = (String) session.getValue("lien");
-    String pageModif = "administrateur/role/update.jsp";
+    String pageModif = "administrateur/role/role-update.jsp";
     String classe = "utilisateur.Role";
 
     String id = role.getTuppleID();

@@ -20,7 +20,7 @@
         pi.setTitre("Modification Role : " + role.getIdrole());
 
         String classe = "utilisateur.Role";
-        String bute = "administrateur/role/fiche.jsp";
+        String bute = "administrateur/role/role-fiche.jsp";
         String nomTable = "roles";
 
 %>
