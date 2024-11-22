@@ -18,7 +18,7 @@
         pi.setTitre("Modification Role : " + role.getVal());
 
         String classe = "bureaux.TypeBureau";
-        String bute = "administrateur/bureau/type/fiche.jsp";
+        String bute = "administrateur/bureau/type/type-fiche.jsp";
         String nomTable = "typebureaux";
 
 %>

@@ -16,7 +16,7 @@
 
     pc.setTitre("Fiche Type de Bureau : " + role.getVal());
     String lien = (String) session.getValue("lien");
-    String pageModif = "administrateur/bureau/type/update.jsp";
+    String pageModif = "administrateur/bureau/type/type-update.jsp";
     String classe = "bureaux.TypeBureau";
 
     String id = role.getTuppleID();

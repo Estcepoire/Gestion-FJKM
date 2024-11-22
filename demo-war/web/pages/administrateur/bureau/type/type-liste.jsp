@@ -18,7 +18,7 @@
         pageRecherche.setTitre(titre);
         pageRecherche.setUtilisateur(user);
         pageRecherche.setLien(lien);
-        pageRecherche.setApres("administrateur/bureau/type/liste.jsp");
+        pageRecherche.setApres("administrateur/bureau/type/type-liste.jsp");
 
         pageRecherche.getFormu().getChamp("val").setLibelle("Type");
         pageRecherche.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
@@ -29,7 +29,7 @@
         String[] labels = {"Identifiant", "Type de Bureaux", "D&eacute;scription" };
         pageRecherche.getTableau().setLibelleAffiche(labels);
 
-        String[] links = { pageRecherche.getLien() + "?but=administrateur/bureau/type/fiche.jsp" };
+        String[] links = { pageRecherche.getLien() + "?but=administrateur/bureau/type/type-fiche.jsp" };
         String[] linksColumn = { "id" }; // les colonnes pour mettre les liens
 
         pageRecherche.getTableau().setLien(links);

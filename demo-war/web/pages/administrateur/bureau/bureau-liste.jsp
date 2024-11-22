@@ -20,7 +20,7 @@
         PageRecherche pr = new PageRecherche(mapping, request, criteres, intervalles, 3, whatToShow, whatToShow.length);
         UserEJB user = (UserEJB) session.getValue("u");
         String lien = (String) session.getValue("lien");
-        pr.setApres("administrateur/bureau/liste.jsp");
+        pr.setApres("administrateur/bureau/bureau-liste.jsp");
         pr.setLien(lien);
         pr.setUtilisateur(user);
         pr.setTitre("Liste des Bureaux");

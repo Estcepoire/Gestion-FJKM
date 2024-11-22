@@ -20,7 +20,7 @@
 
         // Apres tarif variables
         String mappingClass = "bureaux.TypeBureau",
-                afterPost = "administrateur/bureau/type/fiche.jsp",
+                afterPost = "administrateur/bureau/type/type-fiche.jsp",
                 pageTitle = "Cr&eacute;ation type de bureau",
                 nomTable = "typebureaux";
         
