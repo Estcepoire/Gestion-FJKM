@@ -40,9 +40,10 @@
     pi.setTitre("Ajouter un nouveau Croyant");
     
     pi.preparerDataFormu();
-    pi.getFormu().makeHtmlInsertTabIndex();
+    pi.getFormu().setTitre(pi.getTitre());
+    pi.getFormu().makeHtmlInsertTabVaovao();
     
-    String afterPost = "croyance/mpivavaka/fiche.jsp";
+    String afterPost = "croyance/mpivavaka/mpivavaka-fiche.jsp";
     String mappingClass = "croyance.Mpivavaka";
     String nomTable = "mpivavaka";
     
@@ -50,12 +51,9 @@
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-            <%= pi.getTitre() %>
-    </h1>
     
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="POST">
-        <%= pi.getFormu().getHtmlInsert() %>
+        <%= pi.getFormu().getHtmlInsert()%>
         <input name="acte" type="hidden" id="nature" value="insert">
         <input name="bute" type="hidden" id="bute" value="<%= afterPost %>">
         <input name="classe" type="hidden" id="classe" value="<%= mappingClass %>">

@@ -23,9 +23,9 @@
             pr.setTitre("Liste des Croyants");
             pr.setUtilisateur(user);
             pr.setLien(lien);
-            pr.setApres("croyance/mpivavaka/liste.jsp");
+            pr.setApres("croyance/mpivavaka/mpivavaka-liste.jsp");
             
-            String[] liens = { pr.getLien() +  "?but=croyance/mpivavaka/fiche.jsp", pr.getLien() +  "?but=croyance/mpivavaka/fiche.jsp"};
+            String[] liens = { pr.getLien() +  "?but=croyance/mpivavaka/mpivavaka-fiche.jsp", pr.getLien() +  "?but=croyance/mpivavaka/mpivavaka-fiche.jsp"};
             String[] colonne = {"nom", "prenom"};
             String[] attributLien = {"idMpivavaka", "idMpivavaka"};            
             String[] valeursLien = {"idMpivavaka", "idMpivavaka"};
@@ -39,7 +39,7 @@
             pr.getFormu().getChamp("nom").setLibelle("Nom");
             pr.getFormu().getChamp("prenom").setLibelle("Pr&eacute;nom");
             pr.getFormu().getChamp("datenaissance1").setLibelle("Date naissance min");            
-            pr.getFormu().getChamp("datenaissance1").setDefaut( utilitaire.Utilitaire.datetostring( java.sql.Date.valueOf("2000-01-01") ) );
+            pr.getFormu().getChamp("datenaissance1").setDefaut( "2000-01-01" );
             pr.getFormu().getChamp("datenaissance2").setLibelle("Date naissance max");
             pr.getFormu().getChamp("datenaissance2").setDefaut(utilitaire.Utilitaire.dateDuJour());
 
@@ -78,14 +78,14 @@
     <section class="content">
         <form action="<%= pr.getLien()%>?but=<%= pr.getApres() %>" method="post">
             <%
-                out.println(pr.getFormu().getHtmlEnsemble());
+                out.println(pr.getFormu().getHtmlEnsembleVaovao());
             %>
         </form>
         <%
             out.println(pr.getTableauRecap().getHtmlRecap());%>
         <br>
         <%
-            out.println(pr.getTableau().getHtml());
+            out.println(pr.getTableau().getHtmlVaovao());
             out.println(pr.getBasPage());
         %>
     </section>

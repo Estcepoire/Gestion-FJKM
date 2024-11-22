@@ -28,12 +28,14 @@
           pc.getChampByName("lieuDeNaissance").setLibelle("Lieu de Naissance");
           pc.getChampByName("addresse").setLibelle("Adresse");
           pc.getChampByName("nomFaritra").setLibelle("Faritra");
-          pc.getChampByName("idFaritra").setVisible(false);
+          pc.getChampByName("idFaritra").setVisible(false);    
+          pc.getChampByName("nomComplet").setLibelle("Nom Complet");
+
           
           pc.setLien(lien);
           
-       String pageModif = "croyance/mpivavaka/update.jsp";       
-       String actuel = "croyance/mpivavaka/fiche.jsp";
+       String pageModif = "croyance/mpivavaka/mpivavaka-update-new.jsp";       
+       String actuel = "croyance/mpivavaka/mpivavaka-fiche.jsp";
 
         String classe = "croyance.Mpivavaka";
 
@@ -51,21 +53,21 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="box-fiche">
-                <div class="box">
+                <div class="box bg-white p-3 rounded">
                     <div class="box-title with-border">
-                        <h1 class="box-title">
+                        <h2 class="box-title">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
                             <%= pc.getTitre() %>
-                        </h1>
+                        </h2>
                     </div>
                     <div class="box-body">
                         <%
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer">
+                        <div class="box-footer d-flex justify-content-end">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpivavaka=" + id%>" style="margin-right: 10px">
                                 Modifier
                             </a>

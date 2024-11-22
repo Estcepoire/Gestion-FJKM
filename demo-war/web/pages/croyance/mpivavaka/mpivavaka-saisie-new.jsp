@@ -59,7 +59,7 @@
     
     pi.preparerData();
     pi.getFormulaire().setTitre("Informations supplémentaire");
-    String afterPost = "croyance/mpivavaka/fiche.jsp";
+    String afterPost = "croyance/mpivavaka/mpivavaka-fiche.jsp";
     String mappingClass = "croyance.Mpivavaka";
     String nomTable = "mpivavaka";
     String classeFille = "croyance.information.InformationMpivavaka";
