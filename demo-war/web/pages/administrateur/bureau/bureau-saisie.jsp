@@ -39,15 +39,13 @@
                 nomTable = "bureaux";
         
         pageInsert.preparerDataFormu();
-        pageInsert.getFormu().makeHtmlInsertTabIndex();
+        pageInsert.getFormu().setTitre(pageInsert.getTitre());
+        pageInsert.getFormu().makeHtmlInsertTabVaovao();
             
     
 
 %>
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pageTitle %>
-    </h1>
     
 
     <form action="<%= pageInsert.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">

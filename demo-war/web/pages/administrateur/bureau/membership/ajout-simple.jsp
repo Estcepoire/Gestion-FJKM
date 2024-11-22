@@ -48,7 +48,8 @@
             
             
             pi.preparerDataFormu();
-            pi.getFormu().makeHtmlInsertTabIndex();
+            pi.getFormu().setTitre(pi.getTitre());
+            pi.getFormu().makeHtmlInsertTabVaovao();
             
             String afterPost = "administrateur/bureau/bureau-liste.jsp";
             String mappingClass = "bureaux.membership.MembreBureaux";
@@ -59,9 +60,6 @@
 
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <%= pi.getTitre() %>
-    </section>
     <section class="content">
         <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">
         <%= pi.getFormu().getHtmlInsert() %>

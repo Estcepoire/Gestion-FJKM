@@ -41,16 +41,11 @@
 %>
 
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box-fiche">
-                <div class="box">
-                    <h1> 
-                        <%= pi.getTitre() %>
-                    </h1>
+   
                     <form action="<%= pi.getLien() %>?but=apresTarif.jsp&id=<%= role.getTuppleID() %>" method="post">
                         <%
-                            pi.getFormu().makeHtmlInsertTabIndex();
+                            pi.getFormu().setTitre(pi.getTitre());
+                            pi.getFormu().makeHtmlInsertTabVaovao();
                             out.println(pi.getFormu().getHtmlInsert());
                         %>
                         <input name="acte" type="hidden" id="acte" value="update">
@@ -58,12 +53,6 @@
                         <input name="bute" type="hidden" id="bute" value="<%= bute %>">
                         <input name="classe" type="hidden" id="classe" value="<%= classe %>">
                         <input name="nomtable" type="hidden" id="nomtable" value="<%= nomTable %>">
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <%

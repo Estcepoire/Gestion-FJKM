@@ -45,7 +45,7 @@
     <section class="content">
         <form action="<%= pageRecherche.getLien()%>?but=<%= pageRecherche.getApres() %>" method="post">
             <%
-                out.println(pageRecherche.getFormu().getHtmlEnsemble());
+                out.println(pageRecherche.getFormu().getHtmlEnsembleVaovao());
             %>
         </form>
         <%

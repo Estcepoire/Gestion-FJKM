@@ -102,7 +102,8 @@ public class FormulaireChamp extends Formulaire {
                               td += this.getChamps()[i].getVal();
                               td += " </label> ";
                               td += "<input type='hidden' name='idInfoAnnexe_" + i +"' value='" + this.getChamps()[i].getTuppleID() +"' />";
-                              td += "<input type='hidden' name='idInfoMpivavaka_" + i +"' value='" + this.getChamps()[i].getIdInfoMpivavaka()+"' />";
+                              if( this.getChamps()[i].getIdInfoMpivavaka() != null )
+                                        td += "<input type='hidden' name='idInfoMpivavaka_" + i +"' value='" + this.getChamps()[i].getIdInfoMpivavaka()+"' />";
                               td += "</td>";
                               td += "<td>";
                               td += this.getChamps()[i].getHtml();

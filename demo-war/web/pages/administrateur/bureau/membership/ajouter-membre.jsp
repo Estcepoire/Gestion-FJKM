@@ -79,11 +79,14 @@
                 pi.setTitre("Ajout des membres pour le bureau");
 
                 pi.setLien(lien);
+                
+                 pi.getFormu().setTitre(pi.getTitre());
+            pi.getFormufle().setTitre(null);
 
-              pi.getFormu().makeHtmlInsertTabIndex();
-              pi.getFormufle().makeHtmlInsertTableauIndex();
+              pi.getFormu().makeHtmlInsertTabVaovao();
+              pi.getFormufle().makeHtmlInsertTableauVaovao();
 
-              String butApresPost = "administrateur/bureau/fiche.jsp",
+              String butApresPost = "administrateur/bureau/bureau-fiche.jsp",
                       classeMere = "bureaux.Bureaux",
                       classeFille = "bureaux.membership.MembreBureaux",
                       colonneMere = "idBureaux";
@@ -93,13 +96,10 @@
 
 <div class="content-wrapper">
     <!-- A modifier -->
-    <h1>
-        <%= pi.getTitre() %>
-    </h1>
+    
     <!--  -->
     <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp" method="post" >
         <%
-            
             out.println(pi.getFormu().getHtmlInsert());
             out.println(pi.getFormufle().getHtmlTableauInsert());
         %>

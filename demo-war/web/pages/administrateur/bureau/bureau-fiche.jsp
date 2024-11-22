@@ -43,21 +43,19 @@
             <div class="box-fiche">
                 <div class="box bg-white rounded p-3">
                     <div class="box-title with-border">
-                        <h1 class="box-title">
+                        <h2 class="text-center">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
-                            <h2 class="text-center">
                                 <%= pc.getTitre() %>
-                            </h2>
-                        </h1>
+                        </h2>
                     </div>
                     <div class="box-body">
                         <%
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer d-flex justify-content-center">
+                        <div class="box-footer d-flex justify-content-end">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idBureaux=" + id%>" style="margin-right: 10px">Modifier</a>
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageAjoutMembre +"&idBureaux=" + id%>" style="margin-right: 10px">Ajouter des Membres</a>
                             <a href="<%= lien + "?but=apresTarif.jsp&idBureaux="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=bureaux" %>"><button class="btn btn-danger">Supprimer</button></a>

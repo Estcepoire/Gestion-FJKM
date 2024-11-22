@@ -90,9 +90,11 @@
                 pi.setTitre("Ajout des membres pour le bureau");
 
                 pi.setLien(lien);
-
-              pi.getFormu().makeHtmlInsertTabIndex();
-              pi.getFormufle().makeHtmlInsertTableauIndex();
+                
+              pi.getFormu().setTitre(pi.getTitre());
+              pi.getFormufle().setTitre("Les membres du bureaux");
+              pi.getFormu().makeHtmlInsertTabVaovao();
+              pi.getFormufle().makeHtmlInsertTableauVaovao();
 
               String butApresPost = "administrateur/bureau/bureau-fiche.jsp",
                       classeMere = "bureaux.Bureaux",
