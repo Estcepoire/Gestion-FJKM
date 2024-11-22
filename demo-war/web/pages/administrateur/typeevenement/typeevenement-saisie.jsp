@@ -20,7 +20,8 @@
           pi.getFormu().getChamp("val").setLibelle("Type d&apos;evenement");
           pi.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
           pi.preparerDataFormu();
-          pi.getFormu().makeHtmlInsertTabIndex();
+          pi.getFormu().setTitre(pi.getTitre());
+          pi.getFormu().makeHtmlInsertTabVaovao();
           
           String apresPost = "administrateur/typeevenement/typeevenement-fiche.jsp",
             mappingClass = "evenement.TypeEvenement",
@@ -29,11 +30,7 @@
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pi.getTitre() %>
-    </h1>
     
-
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">
         <%= pi.getFormu().getHtmlInsert() %>
         <input name="acte" type="hidden" id="nature" value="insert">
