@@ -34,7 +34,7 @@
         pi.setTitre("Modification Promotion : " + role.getNomPromotion());
 
         String classe = "croyance.promotion.Promotion";
-        String bute = "administrateur/promotion/fiche.jsp";
+        String bute = "administrateur/promotion/promotion-fiche.jsp";
         String nomTable = "Promotionmpandray";
 
 %>

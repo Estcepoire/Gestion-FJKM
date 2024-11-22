@@ -23,7 +23,7 @@
     pr.setUtilisateur(user);
     pr.setLien(lien);
     
-    pr.setApres("administrateur/promotion/liste.jsp");
+    pr.setApres("administrateur/promotion/promotion-liste.jsp");
     String[] colSomme = null;
     
     pr.getFormu().getChamp("nomPromotion").setLibelle("Nom de la Promotion");
@@ -41,7 +41,7 @@
     String[] labels = {"Promotion", "Annee", "Date de Sortie"};
     pr.getTableau().setLibelleAffiche(labels);
     
-    String[] liens = { pr.getLien() + "?but=administrateur/promotion/fiche.jsp" };
+    String[] liens = { pr.getLien() + "?but=administrateur/promotion/promotion-fiche.jsp" };
     String[] colonnes = {"nomPromotion"};
     String[] attributes = {"idPromotion"};
     String[] values = {"idPromotion"};

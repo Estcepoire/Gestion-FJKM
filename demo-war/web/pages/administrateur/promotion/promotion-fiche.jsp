@@ -36,7 +36,7 @@
     pc.setTitre("Fiche Promotion : " + promotion.getNomPromotion());
     
     String lien = (String) session.getValue("lien");
-    String pageModif = "administrateur/promotion/update.jsp";
+    String pageModif = "administrateur/promotion/promotion-update.jsp";
     String classe = "croyance.promotion.Promotion";
 
     String id = promotion.getTuppleID();

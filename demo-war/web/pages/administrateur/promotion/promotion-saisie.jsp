@@ -20,7 +20,7 @@
     pi.setTitre("Cr&eacute;ation de Promotion");
     pi.setLien(lien);
     pi.preparerDataFormu();
-    String afterPost = "administrateur/promotion/liste.jsp",
+    String afterPost = "administrateur/promotion/promotion-fiche.jsp",
                 mappingClass = "croyance.promotion.Promotion",
                 nomTable = "promotionmpandray";
     

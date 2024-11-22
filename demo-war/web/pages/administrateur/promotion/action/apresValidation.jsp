@@ -21,7 +21,7 @@
     Promotion promotion = new Promotion();
     UserEJB user = (UserEJB) session.getValue("u");
     String lien = (String) session.getValue("lien");
-    String apres = "administrateur/promotion/fiche.jsp&idPromotion="+idPromotion;
+    String apres = "administrateur/promotion/promotion-fiche.jsp&idPromotion="+idPromotion;
     
     try{
         promotion.setIdPromotion(idPromotion);
