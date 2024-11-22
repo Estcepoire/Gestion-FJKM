@@ -71,7 +71,7 @@
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpivavaka=" + id%>" style="margin-right: 10px">
                                 Modifier
                             </a>
-                                <a href="<%= lien %>?but=croyance/fandraisana/saisie.jsp&idMpivavaka=<%= id %>">
+                                <a href="<%= lien %>?but=croyance/fandraisana/fandraisana-saisie.jsp&idMpivavaka=<%= id %>">
                                     <button class="btn btn-primary">
                                         Ho Mpandray
                                     </button>

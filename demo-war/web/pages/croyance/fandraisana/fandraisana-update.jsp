@@ -41,7 +41,7 @@
          
          pi.setTitre("Modification Mpandray");
          
-        String afterPost = "croyance/fandraisana/fiche.jsp";
+        String afterPost = "croyance/fandraisana/fandraisana-fiche.jsp";
         String mappingClass = "croyance.fandraisana.Mpandray";
         String nomTable = "mpandray";
 

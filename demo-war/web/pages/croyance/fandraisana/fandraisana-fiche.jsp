@@ -46,7 +46,7 @@
     
     pc.setLien(lien);
     
-    String pageModif = "croyance/fandraisana/update.jsp";
+    String pageModif = "croyance/fandraisana/fandraisana-update.jsp";
     String id = mpandray.getTuppleID();
     String classe = "croyance.fandraisana.Mpandray";
     String nomTable = "mpandray";
@@ -80,7 +80,7 @@
                             <a href="<%= lien + "?but=apresTarif.jsp&idMpandray="+ id+"&acte=delete&bute=#&classe="+classe %>">
                                 <button class="btn btn-danger">Supprimer</button>
                             </a>
-                                <a href="<%= lien %>?but=apresTarif.jsp&id=<%= id %>&acte=valider&bute=croyance/fandraisana/fiche.jsp&classe=<%= classe %>">
+                                <a href="<%= lien %>?but=apresTarif.jsp&id=<%= id %>&acte=valider&bute=croyance/fandraisana/fandraisana-fiche.jsp&classe=<%= classe %>">
                                     <button class="btn btn-success">
                                             Confirmer
                                     </button>

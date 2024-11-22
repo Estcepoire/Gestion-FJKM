@@ -24,9 +24,9 @@
             pr.setTitre("Liste des Mpandray");
             pr.setUtilisateur(user);
             pr.setLien(lien);
-            pr.setApres("croyance/fandraisana/liste.jsp");
+            pr.setApres("croyance/fandraisana/fandraisana-liste.jsp");
             
-            String[] liens = { pr.getLien() +  "?but=croyance/fandraisana/fiche.jsp", pr.getLien() +  "?but=croyance/fandraisana/fiche.jsp"};
+            String[] liens = { pr.getLien() +  "?but=croyance/fandraisana/fandraisana-fiche.jsp", pr.getLien() +  "?but=croyance/fandraisana/fandraisana-fiche.jsp"};
             String[] colonne = {"nomComplet", "numeroMpandray"};
             String[] attributLien = {"idMpivavaka", "idMpivavaka"};            
             String[] valeursLien = {"idMpivavaka", "idMpivavaka"};
