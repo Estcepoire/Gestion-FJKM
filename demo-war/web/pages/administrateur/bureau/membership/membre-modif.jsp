@@ -94,7 +94,7 @@
               pi.getFormu().makeHtmlInsertTabIndex();
               pi.getFormufle().makeHtmlInsertTableauIndex();
 
-              String butApresPost = "administrateur/bureau/fiche.jsp",
+              String butApresPost = "administrateur/bureau/bureau-fiche.jsp",
                       classeMere = "bureaux.Bureaux",
                       classeFille = "bureaux.membership.MembreBureaux",
                       colonneMere = "idBureaux";

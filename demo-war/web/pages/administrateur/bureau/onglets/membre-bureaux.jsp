@@ -26,7 +26,7 @@
     pr.setLien(lien);
     
     
-    pr.setApres("administrateur/bureau/fiche.jsp&idBureaux=" + id);
+    pr.setApres("administrateur/bureau/bureau-fiche.jsp&idBureaux=" + id);
     
     pr.setAWhere(" and idBureaux ='" + id + "'");
     pr.setNpp(10);
