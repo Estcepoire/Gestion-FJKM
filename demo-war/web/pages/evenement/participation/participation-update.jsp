@@ -87,8 +87,11 @@
 
                 pi.setLien(lien);
 
-              pi.getFormu().makeHtmlInsertTabIndex();
-              pi.getFormufle().makeHtmlInsertTableauIndex();
+                   pi.getFormu().setTitre(pi.getTitre());
+              pi.getFormufle().setTitre(null);
+              pi.getFormu().makeHtmlInsertTabVaovao();
+              pi.getFormufle().makeHtmlInsertTableauVaovao();
+
 
               String butApresPost = "evenement/evenement-fiche.jsp",
                       classeMere = "evenement.Evenement",

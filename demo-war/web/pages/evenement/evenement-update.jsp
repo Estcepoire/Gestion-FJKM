@@ -62,7 +62,8 @@
          pi.getFormu().getChamp("lieu").setLibelle("Lieu");
          
          pi.preparerDataFormu();
-         pi.getFormu().makeHtmlInsertTabIndex();
+         pi.getFormu().setTitre(pi.getTitre());
+         pi.getFormu().makeHtmlInsertTabVaovao();
          
          String afterPost = "evenement/evenement-fiche.jsp",
             mappingClass = "evenement.Evenement",
@@ -81,9 +82,7 @@
 </head>
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <%= pi.getTitre() %>
-    </section>
+
     <section class="content">
         <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="POST">
             <div class="row">

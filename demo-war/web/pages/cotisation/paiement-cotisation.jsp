@@ -62,8 +62,10 @@
     
     pi.preparerDataFormu();
     
-    pi.getFormu().makeHtmlInsertTabIndex();
-    pi.getFormufle().makeHtmlInsertTableauIndex();
+    pi.getFormu().setTitre(pi.getTitre());
+    pi.getFormufle().setTitre(null);
+    pi.getFormu().makeHtmlInsertTabVaovao();
+    pi.getFormufle().makeHtmlInsertTableauVaovao();
     
     String bute = "cotisation/cotisation-fiche.jsp",
     classe = "cotisation.Cotisation",
@@ -74,11 +76,7 @@
 
 %>
 
-<div class="content-wrapper">
-    <h1> 
-        <%= pi.getTitre() %>
-    </h1>
-                    
+<div class="content-wrapper">    
                     <form action="<%= pi.getLien() %>?but=apresMultiple.jsp" method="post">
                         <%
                             out.println(pi.getFormu().getHtmlInsert());

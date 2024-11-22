@@ -65,14 +65,14 @@
     String classeFille = "croyance.information.InformationMpivavaka";
     String colonneMere = "idMpivavaka";
     
-//    pi.getFormulaire().setTitre( pi.getTitre() );
+//    pi.getFormu().setTitre( pi.getTitre() );
 
 %>
 
 <div class="content-wrapper">
     
     <form action="<%= pi.getLien() %>?but=apresMultiple.jsp" data-parsley-validate method="POST">
-        <%= pi.getFormu().getHtmlInsert() %>
+        <%= pi.getFormu().getHtmlInsert()%>
         <%= pi.getFormulaire().createHTML()%>
         <input name="acte" type="hidden" id="nature" value="insert">
         <input name="bute" type="hidden" id="bute" value="<%= afterPost %>">
