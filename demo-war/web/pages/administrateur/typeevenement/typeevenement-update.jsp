@@ -26,7 +26,7 @@
         pi.setTitre("Modification Type d&apos;evenement : " + role.getDesce());
 
         String classe = "evenement.TypeEvenement";
-        String bute = "administrateur/typeevenement/fiche.jsp";
+        String bute = "administrateur/typeevenement/typeevenement-fiche.jsp";
         String nomTable = "typeEvenement";
 
 %>

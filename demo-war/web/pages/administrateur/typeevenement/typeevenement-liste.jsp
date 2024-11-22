@@ -21,7 +21,7 @@
     PageRecherche pr = new PageRecherche(type, request, criteres, intervalles, 3, entetes, entetes.length);
     pr.setUtilisateur(u);
     pr.setLien(lien);
-    pr.setApres("administrateur/typeevenement/liste.jsp");
+    pr.setApres("administrateur/typeevenement/typeevenement-liste.jsp");
     
     pr.getFormu().getChamp("val").setLibelle("Type");
     pr.getFormu().getChamp("desce").setLibelle("D&eacute;scription");
@@ -33,7 +33,7 @@
     pr.getTableau().setLibelleAffiche(aff);
     
     String[] colonnes = {"id"};
-    String[] liens = { pr.getLien() + "?but=administrateur/typeevenement/fiche.jsp" };
+    String[] liens = { pr.getLien() + "?but=administrateur/typeevenement/typeevenement-fiche.jsp" };
     
     pr.getTableau().setColonneLien(colonnes);
     pr.getTableau().setLien(liens);

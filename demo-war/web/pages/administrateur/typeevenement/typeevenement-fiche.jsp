@@ -21,7 +21,7 @@
         
         pc.setTitre("Fiche Type d&apos;evenement");
         String lien = (String) session.getValue("lien");
-        String pageModif = "administrateur/typeevenement/update.jsp";
+        String pageModif = "administrateur/typeevenement/typeevenement-update.jsp";
         String classe = "evenement.TypeEvenement";
 
         String id = type.getTuppleID();

@@ -22,7 +22,7 @@
           pi.preparerDataFormu();
           pi.getFormu().makeHtmlInsertTabIndex();
           
-          String apresPost = "administrateur/typeevenement/fiche.jsp",
+          String apresPost = "administrateur/typeevenement/typeevenement-fiche.jsp",
             mappingClass = "evenement.TypeEvenement",
             nomTable = "typeevenement";
 
