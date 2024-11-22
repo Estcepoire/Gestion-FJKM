@@ -18,7 +18,7 @@
           
           
         String lien = pc.getLien();
-        String pageModif = "administrateur/annexe/faritra/update.jsp";
+        String pageModif = "administrateur/annexe/faritra/faritra-update.jsp";
         String classe = "annexe.Faritra";
 
         String id = faritra.getTuppleID();
@@ -47,7 +47,7 @@
                         <br/>
                         <div class="box-footer">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idFaritra=" + id%>" style="margin-right: 10px">Modifier</a>
-                            <a href="<%= lien + "?but=apresTarif.jsp&idMpivavaka="+ id+"&acte=delete&bute=administrateur/annexe/faritra/liste.jsp&classe="+classe + "&nomtable=faritra" %>"><button class="btn btn-danger">Supprimer</button></a>
+                            <a href="<%= lien + "?but=apresTarif.jsp&idFaritra="+ id+"&acte=delete&bute=administrateur/annexe/faritra/faritra-liste.jsp&classe="+classe + "&nomtable=faritra" %>"><button class="btn btn-danger">Supprimer</button></a>
                         </div>
                         <br/>
 

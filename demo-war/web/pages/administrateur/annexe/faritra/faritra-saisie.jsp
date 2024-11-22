@@ -23,7 +23,7 @@
 
             pi.preparerDataFormu();
 
-            String afterPost = "administrateur/annexe/faritra/fiche.jsp";
+            String afterPost = "administrateur/annexe/faritra/faritra-fiche.jsp";
             String mappingClass = "annexe.Faritra";
             String nomTable = "faritra";
           pi.getFormu().makeHtmlInsertTabIndex();

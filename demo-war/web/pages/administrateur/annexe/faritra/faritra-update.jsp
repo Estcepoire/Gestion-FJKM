@@ -25,7 +25,7 @@
         pi.setTitre("Modification Faritra : " + role.getNomFaritra());
 
         String classe = "annexe.Faritra";
-        String bute = "administrateur/annexe/faritra/fiche.jsp";
+        String bute = "administrateur/annexe/faritra/faritra-fiche.jsp";
         String nomTable = "faritra";
 
 %>

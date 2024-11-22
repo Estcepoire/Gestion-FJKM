@@ -19,7 +19,7 @@
          
         pr.setTitre(" Liste des Faritra ");
         
-        pr.setApres("administrateur/annexe/faritra/liste.jsp");
+        pr.setApres("administrateur/annexe/faritra/faritra-liste.jsp");
         pr.getFormu().getChamp("nomFaritra").setLibelle("Nom Faritra");
         
         String[] colSomme = null;
@@ -28,7 +28,7 @@
         String[] labels = {"Identifiant", "Nom Faritra"};
         pr.getTableau().setLibelleAffiche(labels);
         
-        String[] liens = { pr.getLien() + "?but=administrateur/annexe/faritra/fiche.jsp" };
+        String[] liens = { pr.getLien() + "?but=administrateur/annexe/faritra/faritra-fiche.jsp" };
         String[] colonnes = {"idFaritra"};
         
         pr.getTableau().setColonneLien(colonnes);
