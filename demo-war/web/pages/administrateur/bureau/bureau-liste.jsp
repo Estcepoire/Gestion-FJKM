@@ -45,7 +45,7 @@
         String[] labels = {"Nom", "Description", "Cr&eacute;&eacute; le", "Type"};
         pr.getTableau().setLibelleAffiche(labels);
         
-        String[] liens = {pr.getLien() + "?but=administrateur/bureau/fiche.jsp"};
+        String[] liens = {pr.getLien() + "?but=administrateur/bureau/bureau-fiche.jsp"};
         String[] colonnes = {"nomBureaux"};
         String[] attributsLien = {"idBureaux"};
         String[] valeurLien = {"idBureaux"};
@@ -65,14 +65,14 @@
     <section class="content">
         <form action="<%= pr.getLien()%>?but=<%= pr.getApres() %>" method="post">
             <%
-                out.println(pr.getFormu().getHtmlEnsemble());
+                out.println(pr.getFormu().getHtmlEnsembleVaovao());
             %>
         </form>
         <%
             out.println(pr.getTableauRecap().getHtml());%>
         <br>
         <%
-            out.println(pr.getTableau().getHtml());
+            out.println(pr.getTableau().getHtmlVaovao());
             out.println(pr.getBasPage());
         %>
     </section>

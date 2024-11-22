@@ -26,7 +26,7 @@
     
     
     String lien = (String) session.getValue("lien");
-    String pageModif = "administrateur/bureau/update.jsp";
+    String pageModif = "administrateur/bureau/bureau-update.jsp";
     String classe = "bureaux.Bureaux";
     String pageAjoutMembre = "administrateur/bureau/membership/ajouter-membre.jsp";
 
@@ -41,13 +41,15 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="box-fiche">
-                <div class="box">
+                <div class="box bg-white rounded p-3">
                     <div class="box-title with-border">
                         <h1 class="box-title">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
-                            <%= pc.getTitre() %>
+                            <h2 class="text-center">
+                                <%= pc.getTitre() %>
+                            </h2>
                         </h1>
                     </div>
                     <div class="box-body">
@@ -55,10 +57,10 @@
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer">
+                        <div class="box-footer d-flex justify-content-center">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idBureaux=" + id%>" style="margin-right: 10px">Modifier</a>
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageAjoutMembre +"&idBureaux=" + id%>" style="margin-right: 10px">Ajouter des Membres</a>
-                            <a href="<%= lien + "?but=apresTarif.jsp&id="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=bureaux" %>"><button class="btn btn-danger">Supprimer</button></a>
+                            <a href="<%= lien + "?but=apresTarif.jsp&idBureaux="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=bureaux" %>"><button class="btn btn-danger">Supprimer</button></a>
                         </div>
                         <br/>
                     </div>
@@ -68,6 +70,11 @@
     </div>
                         
     <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                
+            </div>
+        </div>
         <jsp:include page="onglets/membre-bureaux.jsp" >
             <jsp:param name="idBureaux" value="<%= id %>" />
         </jsp:include>

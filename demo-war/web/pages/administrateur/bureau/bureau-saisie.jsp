@@ -34,7 +34,7 @@
 
         // Apres tarif variables
         String mappingClass = "bureaux.Bureaux",
-                afterPost = "administrateur/bureau/saisie.jsp",
+                afterPost = "administrateur/bureau/bureau-fiche.jsp",
                 pageTitle = "Cr&eacute;ation de Bureau",
                 nomTable = "bureaux";
         
