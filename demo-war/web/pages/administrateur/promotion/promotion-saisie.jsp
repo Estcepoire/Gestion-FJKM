@@ -23,15 +23,11 @@
     String afterPost = "administrateur/promotion/promotion-fiche.jsp",
                 mappingClass = "croyance.promotion.Promotion",
                 nomTable = "promotionmpandray";
-    
-    pi.getFormu().makeHtmlInsertTabIndex();
+    pi.getFormu().setTitre(pi.getTitre());
+    pi.getFormu().makeHtmlInsertTabVaovao();
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-        <%= pi.getTitre() %>
-    </h1>
-    
 
     <form action="<%= pi.getLien() %>?but=apresTarif.jsp" data-parsley-validate method="post">
         <%= pi.getFormu().getHtmlInsert() %>

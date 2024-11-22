@@ -58,19 +58,19 @@
             <div class="box-fiche">
                 <div class="box">
                     <div class="box-title with-border">
-                        <h1 class="box-title">
+                        <h2 class="box-title">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
                             <%= pc.getTitre() %>
-                        </h1>
+                        </h2>
                     </div>
                     <div class="box-body">
                         <%
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer">
+                        <div class="box-footer d-flex justify-content-end">
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idPromotion=" + id%>" style="margin-right: 10px">Modifier</a>
                             <a class="btn btn-warning pull-left"  href="<%= lien + "?but=administrateur/promotion/action/apresValidation.jsp" +"&idPromotion=" + id%>" style="margin-right: 10px">Sortie de Promotion</a>
                             <a href="<%= lien + "?but=apresTarif.jsp&idPromotion="+ id+"&acte=delete&bute=#&classe="+classe + "&nomtable=promotionmpandray" %>"><button class="btn btn-danger">Supprimer</button></a>

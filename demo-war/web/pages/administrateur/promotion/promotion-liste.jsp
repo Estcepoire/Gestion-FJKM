@@ -60,7 +60,7 @@
     <section class="content">
         <form action="<%= pr.getLien()%>?but=<%= pr.getApres() %>" method="post">
             <%
-                out.println(pr.getFormu().getHtmlEnsemble());
+                out.println(pr.getFormu().getHtmlEnsembleVaovao());
             %>
         </form>
         <%

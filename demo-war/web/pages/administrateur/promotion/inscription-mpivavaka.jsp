@@ -72,21 +72,23 @@
         
         pi.setLien(lien);
 
-        pi.getFormu().makeHtmlInsertTabIndex();
-        pi.getFormufle().makeHtmlInsertTableauIndex();
         
         String butApresPost = "",
                    classeMere = "croyance.promotion.Promotion",
                    classeFille = "croyance.fandraisana.Mpandray",
                    colonneMere = "idPromotion";
+        
+         pi.getFormu().setTitre(pi.getTitre());
+         pi.getFormufle().setTitre(null);
+         
+
+        pi.getFormu().makeHtmlInsertTabVaovao();
+        pi.getFormufle().makeHtmlInsertTableauVaovao();
 %>
 
 <div class="content-wrapper">
-    <!-- A modifier -->
-    <h1>
-        <%= pi.getTitre() %>
-    </h1>
-    <!--  -->
+    
+    
     <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp" method="post" >
         <%
             

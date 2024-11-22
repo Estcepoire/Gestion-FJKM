@@ -36,20 +36,16 @@
         String classe = "croyance.promotion.Promotion";
         String bute = "administrateur/promotion/promotion-fiche.jsp";
         String nomTable = "Promotionmpandray";
+        
+        pi.getFormu().setTitre(pi.getTitre());
 
 %>
 
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box-fiche">
-                <div class="box">
-                    <h1> 
-                        <%= pi.getTitre() %>
-                    </h1>
+   
                     <form action="<%= pi.getLien() %>?but=apresTarif.jsp&idPromotion=<%= role.getTuppleID() %>" method="post">
                         <%
-                            pi.getFormu().makeHtmlInsertTabIndex();
+                            pi.getFormu().makeHtmlInsertTabVaovao();
                             out.println(pi.getFormu().getHtmlInsert());
                         %>
                         <input name="acte" type="hidden" id="acte" value="update">
@@ -59,10 +55,6 @@
                         <input name="nomtable" type="hidden" id="nomtable" value="<%= nomTable %>">
 
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <%

@@ -25,11 +25,9 @@
 %>
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1><%= pr.getTitre() %></h1>
-    </section>
     <section class="content">
-        <%= pr.getTableau().getHtml() %>
+        <h1><%= pr.getTitre() %></h1>
+        <%= pr.getTableau().getHtmlVaovao()%>
     </section>
 </div>
     
