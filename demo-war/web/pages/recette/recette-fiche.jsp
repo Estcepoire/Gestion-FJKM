@@ -22,7 +22,7 @@
         pc.getChampByName("daty").setLibelle("Date de recette");
         pc.getChampByName("montant").setLibelle("Montant");
         pc.getChampByName("idCaisselib").setLibelle("Caisse");
-        pc.getChampByName("idOrigine").setLibelle("Origine");
+        pc.getChampByName("idorigine").setLibelle("Origine");
         pc.getChampByName("recu").setLibelle("Num&eacute;ro re&ccedil;u");
 
         pc.getChampByName("idtyperecette").setVisible(false);

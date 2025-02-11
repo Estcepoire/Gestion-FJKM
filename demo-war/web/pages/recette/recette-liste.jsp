@@ -14,7 +14,7 @@
 	    String listeInt[] = {"daty"};
 	    String libEntete[] = {"id", "designation","daty", "montant","idCaisselib"};
 	    PageRecherche pr = new PageRecherche(t, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
-	    pr.setTitre("Liste des Facture");
+	    pr.setTitre("Liste des Recettes");
 	    pr.setUtilisateur((user.UserEJB) session.getValue("u"));
 	    pr.setLien((String) session.getValue("lien"));
 	    pr.setApres("recette/recette-liste.jsp");

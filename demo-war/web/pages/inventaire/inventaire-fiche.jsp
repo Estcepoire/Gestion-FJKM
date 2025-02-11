@@ -59,7 +59,7 @@
                         %>
                         <br/>
                         <div class="box-footer">
-                            <a class="btn btn-success pull-right" href="<%= (String) session.getValue("lien") + "?but=apresTarif.jsp&acte=valider&id=" + request.getParameter("id") + "&bute=vitafoam/production/fabrication-fiche.jsp&classe=" + classe %> " style="margin-right: 10px">Valider</a>
+                            <a class="btn btn-success pull-right" href="<%= (String) session.getValue("lien") + "?but=apresTarif.jsp&acte=valider&id=" + request.getParameter("id") + "&bute=inventaire/inventaire-fiche.jsp&classe=" + classe %> " style="margin-right: 10px">Valider</a>
                             <a class="btn btn-warning pull-right" href="<%= (String) session.getValue("lien") + "?but=#&id=" + request.getParameter("id")%>" style="margin-right: 5px">Modifier</a>
                         </div>
                         <br/>

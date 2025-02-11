@@ -22,7 +22,7 @@
         double[] predict = p.algo( 0.7 , ps);
     %>
 <div class="content-wrapper">
-    <h1>R&eacute;sultats de la Pr&eacute;diction de recette Rakitra 1 </h1>
+    <h1>Statisitique des moyennes</h1>
      <div class="box-body">
         <div class="col-md-9">
             <form  method="get">

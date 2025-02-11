@@ -16,15 +16,15 @@ public class Recette extends ClassEtat {
     double montant;
     String idlignecredit;
     String idCaisse;
-    String idOrigine;
+    String idorigine;
     String recu;
 
-    public String getIdOrigine() {
-        return idOrigine;
+    public String getIdorigine() {
+        return idorigine;
     }
 
-    public void setIdOrigine(String idOrigine) {
-        this.idOrigine = idOrigine;
+    public void setIdorigine(String idorigine) {
+        this.idorigine = idorigine;
     }
 
     public String getRecu() {
