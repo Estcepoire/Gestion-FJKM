@@ -1,5 +1,4 @@
 <!-- jQuery 2.1.4 -->
-<!-- jQuery 2.1.4 -->
 <%--<script src="${pageContext.request.contextPath}/plugins/jQuery/jQuery-2.1.4.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -9,13 +8,12 @@
 <script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/assets/calmosaic/min/jquery.calmosaic.min.js"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="${pageContext.request.contextPath}/dist/js/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script type="text/javascript">
     $.widget.bridge('uibutton', $.ui.button);
-    $(".show-btn").click(function() {
-    $(".show-btn").toggleClass('reverse');
-    $(".hidden-input").toggleClass('inactive');
-});
 </script>
 <!-- Bootstrap 3.3.2 JS -->
 <!-- <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
@@ -60,7 +58,6 @@
 <script src="${pageContext.request.contextPath}/plugins/parsley/dist/parsley.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/sparkline/jquery.sparkline.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-<%--<script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.2.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/assets/js/apj-script.js"></script>
 <script type="text/javascript">
     window.ParsleyValidator.setLocale('fr');
@@ -138,7 +135,7 @@
         var lesValeur=[new Option("-","",false,false)];  
         $.ajax({
             type:'GET',
-            url:'/tiatanindrazana/Deroulante',
+            url:'/demo/Deroulante',
             contentType: 'application/json',
             data:param,
             success:function(ma){
@@ -240,7 +237,7 @@
         var lesValeur=[new Option("-","",false,false)];  
         $.ajax({
             type: 'GET',
-            url: '/tiatanindrazana/Deroulante',
+            url: '/demo/Deroulante',
             contentType: 'application/json',
             data: param,
             success: function (ma) {
@@ -276,7 +273,7 @@
         var valeur = "";
         $.ajax({
             type: 'GET',
-            url: '/spat/Deroulante',
+            url: '/demo/Deroulante',
             contentType: 'application/json',
             data: param,
             success: function (ma) {
@@ -305,7 +302,7 @@
         var valeur = "";
         $.ajax({
             type: 'GET',
-            url: '/spat/Deroulante?estListe=false',
+            url: '/demo/Deroulante?estListe=false',
             contentType: 'application/json',
             data: param,
             success: function (ma) {
@@ -376,7 +373,7 @@
 
     });
     
-       function fetchAutocomplete(request, response, affiche, valeur, colFiltre, nomTable, classe,useMocle) {
+    function fetchAutocomplete(request, response, affiche, valeur, colFiltre, nomTable, classe,useMocle) {
        if (request.term.length >= 1) {
            $.ajax({
                url: "/fjkm/autocomplete",

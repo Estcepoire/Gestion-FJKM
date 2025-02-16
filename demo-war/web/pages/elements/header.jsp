@@ -4,10 +4,6 @@
 <%@page import="bean.CGenUtil"%>
 <%@page import="mg.cnaps.messagecommunication.Message"%>
 <%@page import="historique.MapUtilisateur"%>
-<%@page import="mg.cnaps.utilisateur.CNAPSUser"%>
-<%@page import="menu.MenuDynamique"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="user.UserEJB"%>
 
 <%@page import="user.UserEJB"%>
 <%@ page import="bean.Constante" %>
@@ -17,7 +13,6 @@
 %>  
 <%
     String lien = (String) session.getValue("lien");
-    int inboxNotif = 2;
     try {
         UserEJB ue = (UserEJB) session.getValue("u");
         MapUtilisateur u = ue.getUser();
@@ -26,28 +21,6 @@
         String awhere = " and receiver='" + receiver + "' ";
         String home_page=ue.getHome_page();
         MapUtilisateur[] u2 = (MapUtilisateur[]) (CGenUtil.rechercher(new MapUtilisateur(), null, null, ""));
-
-        if(sess.getAttribute("lang")!=null){
-            lang = String.valueOf(sess.getAttribute("lang"));
-        }
-        ResourceBundle RB = ResourceBundle.getBundle("text", new Locale(lang));
-
-          if(request.getParameter("currentMenu")!=null && request.getParameter("currentMenu")!=""){
-              session.setAttribute("currentMenu", request.getParameter("currentMenu"));
-          }
-          String  currentMenu =(String) request.getSession().getAttribute("currentMenu");  ;
-          CNAPSUser cnapsUser = ue.getCnapsUser();
-          ArrayList<ArrayList<MenuDynamique>> arbre =null;
-          if(session.getAttribute("MENU")==null){
-              arbre = MenuDynamique.getElementMenu(request, ue.getUser(), cnapsUser);
-              session.setAttribute("MENU", arbre);
-          }else{
-              arbre = (ArrayList<ArrayList<MenuDynamique>>) session.getAttribute("MENU");
-          }
-          MenuDynamique[] tabMenu = null;
-          if(request.getServletContext().getAttribute("tabMenu")!=null){
-              tabMenu=(MenuDynamique[])request.getServletContext().getAttribute("tabMenu");
-          }
 %>
 <script>
     function verifEditerTef(et, name){
@@ -85,10 +58,8 @@
         padding-left: 20px;
     }
     
-</style>
-                            
-                            
-                            
+    
+</style>                
                             
     <div class="header d-flex justify-content-between p-3">
         <div class="d-flex">
@@ -104,12 +75,24 @@
                 <a class="btn-utilisateur">
                     <img src="${pageContext.request.contextPath}/assets/img/Male User.png " alt=" " srcset=" ">
                 </a>
-                <span><%=map.getLoginuser()%></span>
-                <div class="utilisateur-block inactive">
-                    <div class="form-group">
-                        <button class="btn btn-light"><a href="<%= lien%>?but=deconnexion.jsp">Déconnexion</a></button>
-                    </select>
-                    </div>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs" style="color:<%=Constante.constanteCouleur%>"><%=map.getLoginuser()%></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- Menu Body -->
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="deconnexion.jsp" class="btn btn-default btn-flat">Dï¿½connexion</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -156,7 +139,8 @@
                                     <a href="module.jsp?but=notification/message-envoi.jsp&to=<%=utilisateur.getTeluser()%>"> <%=utilisateur.getNomuser()%></a> 
                           
                             </li><br/>
-                            <%}
+                            <%
+                            }
                             %>
                             </ul>
                         </div>

@@ -1,4 +1,3 @@
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@page import="javax.ejb.ConcurrentAccessTimeoutException"%>
 <%@page import="user.UserEJB"%>
 <%@ page import="utilitaire.*" %>
@@ -47,24 +46,30 @@
     
     <body class="layout-top-nav">
         <!-- Site wrapper -->
-        <!-- Header -->
+        <div class="wrapper" style="max-width:none !important;">
+            <!-- Header -->
             <jsp:include page='elements/header.jsp'/>
             <!-- =============================================== -->
             <!-- Menu Gauche -->
-            <%--<jsp:include page='elements/menu/module.jsp'/>--%>
+            <jsp:include page='elements/menu/module.jsp'/>
             <!-- =============================================== -->
             <!-- Content -->
             <% try {%>
-            <div class="container-apj">
-                 <jsp:include page='<%=but%>'/>
-            </div>
-           
+            <jsp:include page='<%=but%>'/>
             <% } catch (Exception e) {%>
             <script language="JavaScript"> alert('<%=e.getMessage().toUpperCase()%>');
                 history.back();</script>
                 <%
                     }
                 %>
+            <!-- =============================================== -->
+            <!-- Footer -->
+            <jsp:include page='elements/footer.jsp'/>
+            <!-- =============================================== -->
+            <!-- Panel -->
+            <jsp:include page='elements/panel.jsp'/>
+            <!-- =============================================== -->
+        </div>
         <!-- ./wrapper -->
         <jsp:include page='elements/js.jsp'/>
         <script>
