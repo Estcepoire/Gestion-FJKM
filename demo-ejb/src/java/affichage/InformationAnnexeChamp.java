@@ -37,6 +37,8 @@ public class InformationAnnexeChamp extends InformationAnnexeLib {
                     
                     if( this.getTypeChamp().contains("text") ) {
                               this.prepareTextInput();
+                    }else if( this.getTypeChamp().contains("number") ) {
+                              this.prepareNumberInput();
                     }else if( this.getTypeChamp().contains("date") ){
                               this.prepareDateInput();
                     }else if( this.getTypeChamp().contains("select") ){
@@ -45,14 +47,19 @@ public class InformationAnnexeChamp extends InformationAnnexeLib {
                               this.prepareTextInput();
                     }
           }
-          
+
+          void prepareNumberInput() {
+                    String text = "<input name='%s' id='%s' value='%s' class='form-control' type='number' />";
+                    text = String.format(text, this.getName(), this.getName(), this.getValeur() );
+                    this.setHtml(text);
+          }
           void prepareTextInput() {
                     String text = "<input name='%s' id='%s' value='%s' class='form-control' type='text' />";
                     text = String.format(text, this.getName(), this.getName(), this.getValeur() );
                     this.setHtml(text);
           }
           void prepareDateInput() {
-                    String text = "<input name='%s' id='%s' value='%s  class='form-control' type='date' />";
+                    String text = "<input name='%s' id='%s' value='%s'  class='form-control' type='date' />";
                     text = String.format(text, this.getName(), this.getName(), this.getValeur() );
                     this.setHtml(text);
           }

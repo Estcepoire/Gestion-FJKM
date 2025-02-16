@@ -59,7 +59,7 @@
     <section class="content">
         <form action="<%=pr.getLien()%>" method="get" name="analyse" id="analyse">
             <input type="hidden" name="but" value="<%= pr.getApres() %>" />
-<%--            <%out.println(pr.getFormu().getHtmlEnsemble());%>--%>       <%= pr.getFormu().getHtmlEnsemble() %>
+<%--            <%out.println(pr.getFormu().getHtmlEnsemble());%>--%>       <%= pr.getFormu().getHtmlEnsembleVaovao()%>
         </form>
         <%
 
@@ -67,7 +67,7 @@
         %>
         <br>
         <%
-            out.println(pr.getTableau().getHtml());
+            out.println(pr.getTableau().getHtmlVaovao());
 //            out.println(pr.getBasPage());
         %>
     </section>

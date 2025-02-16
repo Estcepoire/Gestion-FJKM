@@ -146,6 +146,7 @@
         <%= pi.getTitre() %>
     </h1>
     <!--  -->
+
     <form class='container' action="<%=pi.getLien()%>?but=apresMultiple.jsp<%= ajoutId %>" method="post" >
         <div class="row">
             <div class="col-md-6">
@@ -153,10 +154,16 @@
             </div>
             <div class="col-md-6">
                     <div id="map"></div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div id="map"></div>
+                    </div>
                 </div>
+            </div>
         </div>
         
         <div class="row">
+        <div class="row bg-white ">
             <h3> 
                 Ajouter des Participants
                 <button class="btn btn-success" type="button" onclick="pagePopUp('modulePopup.jsp?but=<%= pageAppelMultiple %>&champReturn=<%=champReturn%>&champUrl=<%= champURL %>')">

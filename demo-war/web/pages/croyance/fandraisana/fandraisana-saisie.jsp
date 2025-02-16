@@ -43,9 +43,12 @@
          
          pi.getFormu().getChamp("idPromotion").setLibelle("Promotion");
          
+         pi.setTitre("Raisina ho mpandray");
+         pi.getFormu().setTitre(pi.getTitre());
          
          pi.preparerDataFormu();
          pi.getFormu().makeHtmlInsertTabIndex();
+         pi.getFormu().makeHtmlInsertTabVaovao();
          
          pi.setTitre("Raisina ho mpandray");
          

@@ -3,7 +3,8 @@
 <%--<script src="${pageContext.request.contextPath}/plugins/jQuery/jQuery-2.1.4.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="${pageContext.request.contextPath}/dist/js/jquery-ui.min.js" type="text/javascript"></script>
+<!-- <script src="${pageContext.request.contextPath}/dist/js/jquery-ui.min.js" type="text/javascript"></script> -->
+<script src="${pageContext.request.contextPath}/dist/css/jquery-1.12.js" type="text/javascript"></script>
 <!--<script src="${pageContext.request.contextPath}/assets/js/socket.io/socket.io.js"></script>-->
 <script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
 
@@ -17,7 +18,8 @@
 });
 </script>
 <!-- Bootstrap 3.3.2 JS -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+<script src="${pageContext.request.contextPath}/assets/js/bs5/bootstrap.bundle.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.tablesorter.min.js" type="text/javascript"></script>

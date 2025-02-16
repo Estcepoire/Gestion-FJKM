@@ -57,12 +57,10 @@
 
 
 <div class="content-wrapper">
-    <section class="content-header">
-        Les Evenements
-    </section>
+    
     <section class="content">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-body">
                         <div class="row">
@@ -75,7 +73,10 @@
                 </div>
                 
             </div>
-            <div class="col-md-6 bg-white p-2">
+            <div class="col-md-8 bg-white p-2">
+                <h2 class="text-center text-decoration-underline">
+                    Planning
+                </h2>
                 <div id="calendar"> </div>
             </div>
         </div>
@@ -89,11 +90,25 @@
         var data = <%= eventJSON %>;
         // var events = JSON.parse(data);
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          locale: 'fr',
+          themeSystem: 'bootstrap5',
           headerToolbar: {
-            left: 'prev,next today',
+            left: "prev,next today",
             center: 'title',
-            right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
           },
+          buttonText: {
+            today: "Ajourd'hui",
+            month: 'Mois',
+            week: 'Semaine',
+            day: 'Jour',
+            list: 'Liste'
+            
+        },
+        buttonIcons: {
+            prev: 'chevron-left',
+            next: 'chevron-right'
+        },
           initialDate: "<%= utilitaire.Utilitaire.dateDuJourSql().toString() %>",
           navLinks: true, // can click day/week names to navigate views
           editable: true,
@@ -105,7 +120,7 @@
               start = start.toISOString();
               let end = dateInfo.end;
               end = end.toISOString();
-              let url = "/fjkm/evenements?dateMin=" + start + "&dateMax=" + end + "&redirection-link=" + redirection;   
+              let url = "/fjkm/evenements?dateMin=" + start + "&dateMax=" + end + "&redirection-link=<%= redirection %>";   
               await fetchEvents(url);
           }
     });

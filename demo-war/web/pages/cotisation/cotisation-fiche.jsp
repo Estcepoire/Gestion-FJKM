@@ -64,21 +64,21 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="box-fiche">
-                <div class="box">
+                <div class="box box-primary bg-white p-3 rounded-3">
                     <div class="box-title with-border">
-                        <h1 class="box-title">
+                        <h3 class="box-title">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
                             <%= pc.getTitre() %>
-                        </h1>
+                        </h3>
                     </div>
                     <div class="box-body">
                         <%
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer">
+                        <div class="box-footer d-flex justify-content-end">
                             <% if( cotisation.getEtat() == -5 ) { %>
                             
                              <a class="btn btn-warning pull-left"  href="<%= lien + "?but=cotisation/apresOuverture.jsp&mois=" + mois + "&annee=" + annee %>" style="margin-right: 10px">

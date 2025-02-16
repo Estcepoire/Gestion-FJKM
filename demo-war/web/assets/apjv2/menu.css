@@ -12,7 +12,13 @@ and open the template in the editor.
 
 .dropdown-submenu {
     position: relative;
+    border: none;
     list-style-type: none;
+}
+
+.dropdown-submenu .dropdown-menu {
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
 }
 
 .dropdown-submenu .dropdown-menu:first-of-type {
@@ -25,11 +31,12 @@ and open the template in the editor.
     top: 0;
     left: 100%;
     margin-top: -1px;
+    margin-top: 5px;
 }
 
 
 .btn-menu:hover {
-    background-color: #00B4DB !important;
+    background-color: #0047ab !important;
     color: white !important;
 }
 
@@ -40,8 +47,16 @@ and open the template in the editor.
     justify-items: center;
 }
 
+.dropdown-submenu > li {
+    margin-left: 5px;
+}
+
 .dropdown-submenu > a, li{
     font-size: 15px;
     text-decoration: none;
     font-family: 'Inter';
+}
+
+.apj-menu-nouveau{
+    padding: 5px 4px;
 }

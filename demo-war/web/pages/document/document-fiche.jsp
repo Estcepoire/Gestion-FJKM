@@ -29,13 +29,12 @@
 
 <div class="content-wrapper">
     <div class="row">
-        <div class="col-md-1"></div>
         <div class="col-md-6">
             <div class="box box-success bg-white p-3">
                 <div class="box-title">
-                    <h3 class="text-center my-2">
+                    <h2 class="text-center my-2">
                          <%= pc.getTitre() %>
-                    </h3>
+                    </h2>
                 </div>
                 <div class="box-body">
                     <%= pc.getHtml() %>
@@ -54,7 +53,7 @@
                 
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="row">
                 <div class="nav-tabs-custom">
                     <ul class="nav-tabs">

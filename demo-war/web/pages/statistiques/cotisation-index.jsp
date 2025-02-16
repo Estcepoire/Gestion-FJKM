@@ -29,113 +29,130 @@
     .ui-datepicker-year{
         display: none;
     }
+
+    .img-icon {
+        width: 100px;
+    }
     
 </style>
 
-<div class="content-wrapper">
+<div class="content-wrapper my-2">
 
     <div class="row">
+        <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-body">
-                    Cotisations reçus en général : <%= stats.getStatistiqueAnnuelle().getMontant() %> Ar
+                <div class="card-body border-1">
+                    <div class="row justify-content-center">
+                        <img src="${pageContext.request.contextPath}/assets/img/stats/statistic.png" alt="" class="img-icon">
+                    </div>
+                    Cotisations reçus en général : <%= utilitaire.Utilitaire.formaterAr(stats.getStatistiqueAnnuelle().getMontant()) %> Ar
                 </div>
             </div>
         </div>
         <div class="col-md-5">
             <div class="card">
-                <div class="card-body">
-                    Cotisations reçus cette année : <%= stats.getStatistiqueAnnuelle().getMontantAnnee() %> Ar
+                <div class="card-body text-center">
+                    <div class="row justify-content-center">
+                        <img src="${pageContext.request.contextPath}/assets/img/stats/calendar.png" alt="" class="img-icon">
+                    </div>
+                    Montant cette année : <%= utilitaire.Utilitaire.formaterAr(stats.getStatistiqueAnnuelle().getMontantAnnee()) %> Ar
                 </div>
             </div>
         </div>
     </div>
     <div class="row my-3">
-        <div class="col-md-10">
-            <div class="box box-success">
-                <div class="box-body">
-                    <div class="row">
-                        <h3 class="text-center">
-                            Etat de paiement par année
-                        </h3>
-                        <form id="payement-an">
-                            <div class="my-md-3">
-                                <div class="row">
-                                    
-                                    <div class="col-md-3">
-                                        <label class="form-label"> Mois Début </label>
-                                        <%= mois.getHtml() %>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label"> Mois Fin </label>
-                                        <%= moisFin.getHtml() %>
-                                    </div>
-                                    <div class="col-md-3">
-                                            <label class="form-label"> Année </label>
-                                            <input type="number" class="form-control" min="2000" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="an" />
-                                    </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="box box-success">
+                    <div class="box-body">
+                        <div class="row">
+                            <h3 class="text-center">
+                                Etat de paiement par année
+                            </h3>
+                            <form id="payement-an">
+                                <div class="my-md-3">
+                                    <div class="row">
+                                        
                                         <div class="col-md-3">
-                                            <label> &nbsp;&nbsp; </label>
-                                            <button type="button" onclick="fetchDataForAYear(event)" class="btn btn-primary">
-                                                Voir
-                                            </button>
+                                            <label class="form-label"> Mois Début </label>
+                                            <%= mois.getHtml() %>
                                         </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label"> Mois Fin </label>
+                                            <%= moisFin.getHtml() %>
+                                        </div>
+                                        <div class="col-md-3">
+                                                <label class="form-label"> Année </label>
+                                                <input type="number" class="form-control" min="2000" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="an" />
+                                        </div>
+                                            <div class="col-md-3">
+                                                <label> &nbsp;&nbsp; </label>
+                                                <button type="button" onclick="fetchDataForAYear(event)" class="btn btn-primary">
+                                                    Voir
+                                                </button>
+                                            </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </form>
+                            </form>
+                        </div>
+                        <canvas id="cotisation-an"></canvas>
                     </div>
-                    <canvas id="cotisation-an"></canvas>
                 </div>
             </div>
         </div>
-                                
-        <div class="col-md-10">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="row">
-                        <h3 class="text-center">
-                            Comparaison des evolutions de paiements
-                        </h3>
-                        <form id="comparaison-an">
-                            <div class="my-md-3">
-                                <div class="row">
-                                    
-                                    <div class="col-md-6">
-                                        <label class="form-label"> Mois Sébut et Fin </label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                    <%= mois.getHtml() %>
-                                            </div>
-                                            <div class="col-md-6">
-                                                    <%= moisFin.getHtml() %>
+        
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="row">
+                            <h3 class="text-center">
+                                Comparaison des evolutions de paiements
+                            </h3>
+                            <form id="comparaison-an">
+                                <div class="my-md-3">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">
+                                            <label class="form-label"> Mois Sébut et Fin </label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                        <%= mois.getHtml() %>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <%= moisFin.getHtml() %>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                            <label class="form-label"> Année à comparer </label>                          
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="number" min="2000" id="date-test-1" class="form-control" value="<%= utilitaire.Utilitaire.getAneeEnCours() - 3 %>" name="dateMin" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                 <input type="number" min="2000" id="date-test-2" class="form-control" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button type="button" onclick="fetchDataComparatif()" class="btn btn-primary"> Consulter </button>
+                                        <div class="col-md-6">
+                                                <label class="form-label"> Année à comparer </label>                          
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="number" min="2000" id="date-test-1" class="form-control" value="<%= utilitaire.Utilitaire.getAneeEnCours() - 3 %>" name="dateMin" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                     <input type="number" min="2000" id="date-test-2" class="form-control" value="<%= utilitaire.Utilitaire.getAnneeEnCours() %>" name="dateMax" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button type="button" onclick="fetchDataComparatif()" class="btn btn-primary"> Consulter </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </form>
+                            </form>
+                        </div>
+                        <canvas id="cotisation-an-lignes"></canvas>
                     </div>
-                    <canvas id="cotisation-an-lignes"></canvas>
                 </div>
             </div>
-            
         </div>
+        
         
 </div>
 

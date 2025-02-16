@@ -66,6 +66,9 @@
     
     Champ.setDefaut(pi.getFormufle().getChampFille("datePaiement"), utilitaire.Utilitaire.dateDuJour());
     
+    for( int i = 0; i < details.length ; i++ ){
+        pi.getFormufle().getChamp("idMpivavaka_"+i).setAutoCompleteLibelle(details[i].getNomComplet());
+    }
     
     
     String[] ordres = {"idMpivavaka", "datePaiement", "referencePaiement","montant"};
@@ -73,8 +76,11 @@
     
     pi.preparerDataFormu();
     
-    pi.getFormu().makeHtmlInsertTabIndex();
-    pi.getFormufle().makeHtmlInsertTableauIndex();
+    pi.getFormu().setTitre( pi.getTitre() );
+    pi.getFormufle().setTitre(null);
+    
+    pi.getFormu().makeHtmlInsertTabVaovao();
+    pi.getFormufle().makeHtmlInsertTableauVaovao();
     
     String bute = "cotisation/cotisation-fiche.jsp",
     classe = "cotisation.Cotisation",
@@ -86,9 +92,6 @@
 %>
 
 <div class="content-wrapper">
-    <h1> 
-        <%= pi.getTitre() %>
-    </h1>
                     
         <form action="<%= pi.getLien() %>?but=apresMultiple.jsp&idPaiementCotisation=<%= request.getParameter(cotisation.getAttributIDName()) %>" method="post">
                         <%

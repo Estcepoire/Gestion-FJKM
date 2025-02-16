@@ -37,6 +37,7 @@
     pc.getChampByName("heureFin").setLibelle("Heure Fin");
     pc.getChampByName("typeEvenement").setLibelle("Type d&apos;evenement");
     pc.getChampByName("ouvert").setLibelle("Ouvert &agrave; tous");
+    pc.getChampByName("ouvert").setVisible(false);
     pc.getChampByName("latLong").setLibelle("Coordonn&eacute;&eacute;s (Lat, Long)");
     
     // Visibilité
@@ -75,36 +76,36 @@
         <div class="col-md-1"></div>
         <div class="col-md-6">
             <div class="box-fiche">
-                <div class="box">
-                    <div class="box-title with-border">
-                        <h1 class="box-title">
+                <div class="box box-success">
+                    <div class="box-title with-borde my-1r">
+                        <h2 class="text-center">
                             <a href="#">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </a>
                             <%= pc.getTitre() %>
-                        </h1>
+                        </h2>
                     </div>
                     <div class="box-body">
                         <%
                             out.println(pc.getHtml());
                         %>
                         <br/>
-                        <div class="box-footer">
-                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&" + evenement.getAttributIDName() + "=" + id%>" style="margin-right: 10px">
+                        <div class="box-footer d-flex justify-content-end">
+                            <a class="btn btn-warning pull-left mx-1"  href="<%= lien + "?but="+ pageModif +"&" + evenement.getAttributIDName() + "=" + id%>" style="margin-right: 10px">
                                     Modifier
                             </a>
                              <% if( evenement.getOuvert() == false ) { %>
-                                <a href="<%= lien + "?but=evenement/participation/participation-saisie.jsp&idEvenement=" + id %> ">
+                                <a class="mx-1" href="<%= lien + "?but=evenement/participation/participation-saisie.jsp&idEvenement=" + id %> ">
                                    <button class="btn btn-primary">Ajouter participants</button>
                                </a>
                               <% } %>
-                              <a href="<%= lien + "?but=" + redirectionFille %>">
+                              <a class="mx-1" href="<%= lien + "?but=" + redirectionFille %>">
                                 <button class="btn btn-primary">Lier Evenement </button>
                             </a>
-                            <a href="<%= lien + "?but=evenement/apresEvenement.jsp&bute=evenement/evenement-fiche.jsp&acte=terminer&idEvenement=" + id %>">
-                                <button class="btn btn-primary">Terminer l'evenement </button>
+                            <a class="mx-1" href="<%= lien + "?but=evenement/apresEvenement.jsp&bute=evenement/evenement-fiche.jsp&acte=terminer&idEvenement=" + id %>">
+                                <button class="btn btn-success">Terminer l'evenement </button>
                             </a>
-                            <a href="<%= lien + "?but=apresTarif.jsp&" + evenement.getAttributIDName() + "="+ id+"&acte=delete&bute=#&classe="+classe %>">
+                            <a class="mx-1" href="<%= lien + "?but=apresTarif.jsp&" + evenement.getAttributIDName() + "="+ id+"&acte=delete&bute=#&classe="+classe %>">
                                 <button class="btn btn-danger">Supprimer</button>
                             </a>
                         </div>
@@ -115,7 +116,11 @@
             </div>
         </div>
         <div class="col-md-5">
+            <div class="box box-success">
+                <div class="box-body">
                     <div id="map"></div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">

@@ -6582,3 +6582,11 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+.table-borderless > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
+.table-borderless > :not(:first-child) {
+  border-top-width: 0;
+}

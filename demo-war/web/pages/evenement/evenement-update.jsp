@@ -90,7 +90,11 @@
                         <%= pi.getFormu().getHtmlInsert() %>
                 </div>
                 <div class="col-md-6">
-                    <div id="map"></div>
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div id="map"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <input name="acte" type="hidden" id="nature" value="update">

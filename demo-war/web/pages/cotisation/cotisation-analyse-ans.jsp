@@ -54,7 +54,7 @@
         %>
         <br>
         <%
-            out.println(pr.getTableau().getHtml());
+            out.println(pr.getTableau().getHtmlVaovao());
 //            out.println(pr.getBasPage());
         %>
     </section>

@@ -53,10 +53,12 @@
     pi.getFormufle().getChamp("valeur_0").setLibelle("Valeur");
     
     pi.preparerDataFormu();
-    pi.getFormu().makeHtmlInsertTabIndex();
-    pi.getFormufle().makeHtmlInsertTableauIndex();
+    pi.getFormu().setTitre(  pi.getTitre()  );
+    pi.getFormufle().setTitre(  "Informations supplémentaires"  );
+    pi.getFormu().makeHtmlInsertTabVaovao();
+    pi.getFormufle().makeHtmlInsertTableauVaovao();
     
-    String afterPost = "croyance/mpivavaka/fiche.jsp";
+    String afterPost = "croyance/mpivavaka/mpivavaka-fiche.jsp";
     String mappingClass = "croyance.Mpivavaka";
     String nomTable = "mpivavaka";
     String classeFille = "croyance.information.InformationMpivavaka";
@@ -66,9 +68,6 @@
 %>
 
 <div class="content-wrapper">
-    <h1 class="text-align-center">
-            <%= pi.getTitre() %>
-    </h1>
     
     <form action="<%= pi.getLien() %>?but=apresMultiple.jsp" data-parsley-validate method="POST">
         <%= pi.getFormu().getHtmlInsert() %>
@@ -79,6 +78,7 @@
         <input name="classefille" type="hidden" id="classefille" value="<%= classeFille %>">
         <input name="nombreLigne" type="hidden" id="nombreLigne" value="<%= nbLine %>">
         <input name="colonneMere" type="hidden" id="colonneMere" value="<%= colonneMere %>">
+        <input name="nomtable" type="hidden" id="colonneMere" value="<%= nomTable %>">
     </form>
     
 </div>

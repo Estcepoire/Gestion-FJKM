@@ -95,7 +95,6 @@
             <div class=" logo-container d-flex align-items-end ">
                 <img src="${pageContext.request.contextPath}/assets/img/logo.png" alt="logo " srcset=" ">
             </div>
-            <%=MenuDynamique.renderMenuHorizontal(arbre,currentMenu,tabMenu,RB) %>
         </div>
         <div class="col-2 header-menu d-flex align-items-center justify-content-end ">
             <a href="<%= lien%>?but=notification-liste.jsp">
@@ -115,9 +114,12 @@
             </div>
         </div>
     </div>
-                            
-                            
-                            
+
+    <div class="header my-0 d-flex justify-content-between mb-2 p-3">
+        <div class="d-flex">
+            <%=MenuDynamique.renderMenuHorizontal(arbre,currentMenu,tabMenu,RB) %>
+        </div>
+    </div>
                             
                     
             <div class="modal fade" id="modalSendMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

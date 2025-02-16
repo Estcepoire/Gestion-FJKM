@@ -56,6 +56,7 @@
          pi.getFormu().getChamp("heureFin").setLibelle("Heure Fin");
          pi.getFormu().getChamp("idTypeEvenement").setLibelle("Type d&apos;evenement");
          pi.getFormu().getChamp("ouvert").setLibelle("Ouvert &agrave; tous");
+//         pi.getFormu().getChamp("ouvert").setVisible(false);
          pi.getFormu().getChamp("lieu").setLibelle("Lieu");
 
 
@@ -92,7 +93,11 @@
                         <%= pi.getFormu().getHtmlInsert() %>
                 </div>
                 <div class="col-md-6">
-                    <div id="map"></div>
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div id="map"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <input name="acte" type="hidden" id="nature" value="insert">
