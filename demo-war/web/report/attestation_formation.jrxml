@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attestation_formation" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd5034df-d7aa-4a70-bfd0-0a343b443bfe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="employe" class="java.lang.String"/>
+	<field name="formation" class="java.lang.String"/>
+	<field name="date_debut" class="java.lang.String"/>
+	<field name="date_fin" class="java.lang.String"/>
+	<field name="formateur" class="java.lang.String"/>
+	<field name="dg" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="802" height="555" uuid="730182f5-1dec-4534-a846-3a439b3921ca"/>
+				<imageExpression><![CDATA["attestation_bordure_2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="64" y="62" width="680" height="20" uuid="c97802d3-6cb7-435e-986c-5f5ec549fc3f"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R  E  P  O  B  L  I  K  A  N  '   I   M  A  D  A  G  A  S  I  K  A  R  A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="81" width="680" height="20" uuid="c1707708-0d6d-4370-a13e-214e14aa8b0e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[F i t i a v a n a - T a n i n d r a z a n a - F a n d r o s o a n a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="100" width="680" height="18" uuid="726f3d9e-7577-4c27-901a-cd836511753e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Société du Port à gestion Autonome de Toamasina]]></text>
+			</staticText>
+			<image>
+				<reportElement x="368" y="127" width="43" height="68" uuid="41f2d490-0b04-4bce-9f1a-a948ffd8ec68"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="64" y="195" width="680" height="34" uuid="b4b96fdb-bd31-4193-8a54-4399f247d8a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[A    T    T    E    S    T    A    T    I    O    N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="229" width="680" height="20" uuid="bb844a1a-63a4-4ec4-b2bc-dc34385d54f0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[d  é  c  e  r  n  é  e    à]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="64" y="249" width="680" height="28" uuid="4f0623f6-4483-41d4-a690-6fe6d76caf9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="277" width="680" height="28" uuid="9181af11-cf46-4cc9-bdcc-56525909cf60"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["qui a participé  avec assiduité à la formation '' " +$F{formation} + " '' organisée  par la Direction Générale du "+$F{date_debut}+" au "+$F{date_fin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="64" y="459" width="680" height="18" uuid="5963f2e2-7864-4b88-bfc7-4088cfcf76a0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[S'agissant d'une formation pument interne, cette attestation ne devra, en aucun cas, donner lieu à une bonification quelconque .]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="344" width="230" height="18" uuid="6715c33a-ba53-40d4-82c1-b11b00e8cf88"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[L'INTÉRESSÉ (E)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="64" y="413" width="230" height="20" uuid="cdeb922f-9b4f-4c92-84f3-a7aa7b4a2008"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="313" y="344" width="216" height="18" uuid="88cabfc1-f1f2-4143-873e-a4a2110aa57a"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[LE FORMATEUR]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="313" y="413" width="216" height="20" uuid="feaa2d15-e8bc-4548-ba13-90d7ad334238"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{formateur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="539" y="316" width="216" height="15" uuid="6be46a9b-1d14-4591-ba1d-69e856f8270d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Fait à Antananarivo, le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="539" y="344" width="216" height="18" uuid="37f65f0e-aee1-4b11-9d3f-b13d4aae8b15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Le Directeur Général]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="539" y="413" width="216" height="20" uuid="62963c9e-852e-4e2a-a9e0-5731f5c96c94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dg}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

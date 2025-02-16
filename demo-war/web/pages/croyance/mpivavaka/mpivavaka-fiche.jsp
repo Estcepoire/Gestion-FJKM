@@ -1,0 +1,109 @@
+<%-- 
+    Document   : fiche
+    Created on : Oct 6, 2024, 8:57:23 AM
+    Author     : sarobidy
+--%>
+<%@page import="croyance.MpivavakaLib"%>
+<%@page import="croyance.Mpivavaka" %>
+<%@page import="affichage.*" %>
+<%@page import="user.UserEJB" %>
+
+<%
+          MpivavakaLib mapping = new MpivavakaLib();
+          UserEJB user = (UserEJB) session.getValue("u");
+          String lien = (String) session.getValue("lien");
+          
+          PageConsulte pc = new PageConsulte( mapping, request, user );
+          mapping = (MpivavakaLib) pc.getBase();
+          
+          
+          pc.setTitre( "Fiche du croyant : "  + mapping.getPrenom());
+          
+          pc.getChampByName("idMpivavaka").setLibelle("Identifiant");
+          pc.getChampByName("prenom").setLibelle("Pr&eacute;nom");
+          pc.getChampByName("datenaissance").setLibelle("N&eacute;e le");
+          pc.getChampByName("sexe").setVisible(false);
+          pc.getChampByName("ageActuelle").setLibelle("Age");
+          pc.getChampByName("ageActuelle").setValeur( mapping.getAgeActuelle() +  " an(s)");
+          pc.getChampByName("lieuDeNaissance").setLibelle("Lieu de Naissance");
+          pc.getChampByName("addresse").setLibelle("Adresse");
+          pc.getChampByName("nomFaritra").setLibelle("Faritra");
+          pc.getChampByName("idFaritra").setVisible(false);    
+          pc.getChampByName("nomComplet").setLibelle("Nom Complet");
+
+          
+          pc.setLien(lien);
+          
+       String pageModif = "croyance/mpivavaka/mpivavaka-update-new.jsp";       
+       String actuel = "croyance/mpivavaka/mpivavaka-fiche.jsp";
+
+        String classe = "croyance.Mpivavaka";
+
+        String id = mapping.getTuppleID();
+        Onglet onglet = new Onglet("info-sup");
+        onglet.addPage("info-sup", "info");
+        String tab = (String) request.getParameter("tab");
+        String pageActuel = onglet.getCurrentPage(tab);
+
+%>
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="box-fiche">
+                <div class="box bg-white p-3 rounded">
+                    <div class="box-title with-border">
+                        <h2 class="box-title">
+                            <a href="#">
+                                <i class="fa fa-arrow-circle-left"></i>
+                            </a>
+                            <%= pc.getTitre() %>
+                        </h2>
+                    </div>
+                    <div class="box-body">
+                        <%
+                            out.println(pc.getHtml());
+                        %>
+                        <br/>
+                        <div class="box-footer d-flex justify-content-end">
+                            <a class="btn btn-warning pull-left"  href="<%= lien + "?but="+ pageModif +"&idMpivavaka=" + id%>" style="margin-right: 10px">
+                                Modifier
+                            </a>
+                                <a href="<%= lien %>?but=croyance/fandraisana/fandraisana-saisie.jsp&idMpivavaka=<%= id %>">
+                                    <button class="btn btn-primary">
+                                        Ho Mpandray
+                                    </button>
+                                </a>
+                            <a href="<%= lien + "?but=apresTarif.jsp&id="+ id+"&acte=delete&bute=#&classe="+classe %>">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </a>
+                        </div>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <!-- a modifier -->
+                        <li class="<%= onglet.isActive("info-sup") %>">
+                            <a href="<%= lien %>?but=<%= actuel %>&idMpivavaka=<%= id %>&tab=info">Informations Supplémentaires</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="tab-content">       
+                        <jsp:include page="<%= pageActuel %>" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</div>

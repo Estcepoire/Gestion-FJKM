@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="journal_caisse_etat" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="54ae039f-10fe-4233-9e2e-a7c19c588666">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="d4264a47-ee37-4f4c-9c33-6e27ea39efbc"/>
+	<subDataset name="Table Dataset 1" uuid="7c4afb56-08cb-42b9-a4c1-3968776f878d">
+		<parameter name="debit" class="java.lang.Double"/>
+		<parameter name="soldeAnterieur" class="java.lang.Double"/>
+		<parameter name="soldeActuel" class="java.lang.Double"/>
+		<parameter name="totalDebitEtat" class="java.lang.Double"/>
+		<parameter name="totalCreditEtat" class="java.lang.Double"/>
+		<parameter name="credit" class="java.lang.Double"/>
+		<field name="numPiece" class="java.lang.String"/>
+		<field name="libelle" class="java.lang.String"/>
+		<field name="credit" class="java.lang.Double"/>
+		<field name="debit" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="dataset2" uuid="0dd57b7f-ec88-42e2-8e0f-404052160059"/>
+	<parameter name="daty" class="java.util.Date"/>
+	<parameter name="list_table" class="java.util.List"/>
+	<parameter name="debit" class="java.lang.Double"/>
+	<parameter name="soldeAnterieur" class="java.lang.Double"/>
+	<parameter name="soldeActuel" class="java.lang.Double"/>
+	<parameter name="totalDebitEtat" class="java.lang.Double"/>
+	<parameter name="totalCreditEtat" class="java.lang.Double"/>
+	<parameter name="credit" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="369" height="20" uuid="0fe890c7-0d5d-4a3e-8ad8-1aa36cae767b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOCIETE DU PORT A GESTION AUTONOME DE TOAMASINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="35" width="65" height="20" uuid="c6268544-309c-4b71-9814-e6e4a674017c"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[FOLIO N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="35" width="100" height="20" uuid="f579df0e-97e2-424a-a268-4024a04ece97"/>
+				<text><![CDATA[226/21]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="0" width="127" height="20" uuid="39a087d5-096a-4644-aa7d-91c1968c6647"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JOURNAL DE CAISSE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="20" width="127" height="20" uuid="d9d0b57f-3277-4c4e-b7a6-bdd9529ae17b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAISSE DEPENSE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="75" height="20" uuid="bcb702b0-c58b-4bce-92b7-565696974962"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[JOURNEE DU]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" x="0" y="40" width="555" height="48" uuid="ddcb13a6-0717-44b3-9900-b32feb9a6cb6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="f0cf47ac-78da-40cc-8799-d01cdc2f55e2">
+						<datasetParameter name="debit">
+							<datasetParameterExpression><![CDATA[$P{debit}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="soldeAnterieur">
+							<datasetParameterExpression><![CDATA[$P{soldeAnterieur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="soldeActuel">
+							<datasetParameterExpression><![CDATA[$P{soldeActuel}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="totalDebitEtat">
+							<datasetParameterExpression><![CDATA[$P{totalDebitEtat}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="totalCreditEtat">
+							<datasetParameterExpression><![CDATA[$P{totalCreditEtat}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="credit">
+							<datasetParameterExpression><![CDATA[$P{credit}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{list_table})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="83" uuid="037c5ffe-5259-4aba-880d-0d74142b3e40">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="17" uuid="be05032e-5335-4c36-8b1a-d51994965aa5"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[NUM PIECE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="75" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:tableFooter>
+						<jr:detailCell height="12" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="83" height="12" uuid="191dc4f0-4697-4d2a-9097-8bf52f7ec01e"/>
+								<textElement>
+									<font size="9"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{numPiece}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="298" uuid="170a5ca6-f486-47bc-881b-8ae5f5fe401e">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="17" uuid="8c76f969-1f5e-4246-94e2-c21f7b86ca73"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[LIBELLE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="75" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="12" uuid="e9bbdb63-9a0a-4678-8f43-d7791789bc33"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<text><![CDATA[]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="12" width="298" height="14" uuid="b506614d-0179-47f5-90a3-35ce6790e361"/>
+								<textElement>
+									<font size="10"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[2 -REPORTS]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="24" width="298" height="14" uuid="4ba003d4-e4db-453e-9282-f567d88b7f39"/>
+								<textElement>
+									<font size="10"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[3 -CUMULS ( 1+2 )]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="36" width="298" height="14" uuid="b263f4cb-decc-4e42-b477-d94349dfe272"/>
+								<textElement>
+									<font size="10"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[4 -SOLDE ANTERIEUR]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="48" width="298" height="14" uuid="d652bb58-daa2-4adb-a07c-d5e8e317d069"/>
+								<textElement>
+									<font size="10"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[5 -SOLDE ACTUEL]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="60" width="298" height="14" uuid="0edaffa8-a208-4935-9adb-7b3e0a2fa61a"/>
+								<textElement>
+									<font size="10"/>
+								</textElement>
+								<text><![CDATA[]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:detailCell height="12" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="298" height="12" uuid="e79bb52a-ca06-4540-ba62-f1c780160238"/>
+								<textElement>
+									<font size="9"/>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="84" uuid="61e2795f-86c2-462b-a7ff-13729be9e931">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="84" height="17" uuid="10d6b6d6-a2af-4e6c-a837-01605350dee3"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[DEBIT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="75" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="84" height="12" uuid="c569629e-acbc-4998-97c5-6315de320258"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{debit}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="12" width="84" height="12" uuid="faa6d250-381b-45ed-95d5-59a88392da27"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="24" width="84" height="12" uuid="4bbdd7d2-1a98-4a21-a577-bb324e427125"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="36" width="84" height="12" uuid="199071e5-fe5d-4b98-ae35-39aa039c0339"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{soldeAnterieur}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="48" width="84" height="12" uuid="241c5216-783e-496e-be6b-9feb32925f11"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="60" width="84" height="15" uuid="d82dc1be-77e3-4ad0-bb31-66b506bcef99"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{totalDebitEtat}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:detailCell height="12" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="84" height="12" uuid="129c1128-3971-4dc8-babd-51d94332519e"/>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="88" uuid="c18985f9-71e6-49ae-b01e-3f100dbbed8a">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="88" height="17" uuid="99745a2b-98ff-42b2-93b3-3ac112b02998"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[CREDIT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="75" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="88" height="12" uuid="278f2696-aef4-4441-9bda-6255589a470b"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{credit}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="12" width="88" height="12" uuid="0afa41ee-ad88-4229-9a0d-1c102ce706c4"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="24" width="88" height="12" uuid="9fb75d73-e09c-4c26-878c-e5a5de0776d0"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="36" width="88" height="12" uuid="06a36838-ba8e-4f1a-ac10-18b2c54602b0"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+							</textField>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="48" width="88" height="12" uuid="a75cc00a-450b-42ec-8f29-1262f0277740"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{soldeActuel}]]></textFieldExpression>
+							</textField>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="60" width="88" height="15" uuid="176d97a6-d17f-435b-9f68-eda0742fd239"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{totalCreditEtat}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:detailCell height="12" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="88" height="12" uuid="3e3b63b3-1dd7-4550-8b7d-969538eb09b1"/>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+									<paragraph rightIndent="2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="415" y="0" width="100" height="20" uuid="38d3b519-3a9b-42e5-81c3-ba6660e49c68"/>
+				<textFieldExpression><![CDATA[$P{daty}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="199">
+			<staticText>
+				<reportElement x="143" y="61" width="127" height="20" uuid="65ad1017-fea8-4c9b-9f4f-73228f81c3a0"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[COFFRE BMOI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="178" width="57" height="20" uuid="705640ac-24d7-4c76-b672-5b7bcfa42f85"/>
+				<text><![CDATA[Vérifié par:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="178" width="57" height="20" uuid="01815ea5-90af-4d50-828d-876757e6188e"/>
+				<text><![CDATA[Etabli par:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="416" y="41" width="100" height="20" uuid="40983c38-7a1c-439a-b619-b55826849f64"/>
+				<textFieldExpression><![CDATA[$P{daty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="331" y="41" width="75" height="20" uuid="12a03d60-df4a-456d-b6fe-b1048b7e6a40"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[JOURNEE DU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="57" height="20" uuid="42b9c370-3446-42d1-a748-8bdec80bda3d"/>
+				<text><![CDATA[Vérifié par:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="57" height="20" uuid="aeaac17f-21b6-4ba1-91dd-1c4f015191b8"/>
+				<text><![CDATA[Etabli par:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" x="0" y="82" width="555" height="96" uuid="3fb4e938-5d56-4685-a5ac-e3922420a5ba"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="02d1e90d-c8de-4236-a228-ab1ea2d56ab7">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="83" uuid="0f2191cb-586f-4b9e-ad3f-9d81cbc67772">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="17" uuid="b415093d-eff1-4e2e-b94e-329276e28035"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[NUM PIECE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnFooter height="18" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:columnFooter>
+						<jr:detailCell height="44" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="298" uuid="cacbe504-8377-4461-a7ab-dc82f59d1bb6">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="17" uuid="d3ca6ad4-7815-439c-b4d2-1c238c5a85e2"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[LIBELLE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="16" uuid="77ab0650-2d03-461e-8666-f577818ed71a"/>
+								<textElement textAlignment="Right"/>
+								<text><![CDATA[COFFRE BMOI]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnFooter height="18" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="18" uuid="71124933-866e-4445-bd51-c7063ca189f6"/>
+								<textElement textAlignment="Right"/>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell height="44" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="298" height="14" uuid="e6f90394-ecc4-4363-b9db-0dbfa71cc276"/>
+								<textElement>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Espèces en coffre BMOI]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="14" width="298" height="14" uuid="0a9ebdd7-d30f-449d-aa66-0c95ff1de7a1"/>
+								<textElement>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Entrée coffre BMOI]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="28" width="298" height="14" uuid="cc5531fb-71e2-4e4d-bfa0-ee2d05af769d"/>
+								<textElement>
+									<paragraph leftIndent="2"/>
+								</textElement>
+								<text><![CDATA[Sortie coffre BMOI]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="84" uuid="dc6ee537-56eb-4a0b-b819-8f30bf1fadd7">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="84" height="17" uuid="dd9ab347-a077-4704-b183-8928306c63d3"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[DEBIT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnFooter height="18" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:columnFooter>
+						<jr:detailCell height="44" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="88" uuid="9f16304d-b093-479c-a752-3fa91ebc1b9e">
+						<jr:tableHeader height="17" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="88" height="17" uuid="4c8021b1-6ae2-44b3-8d56-28fb1ee63346"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[CREDIT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter height="16" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:tableFooter>
+						<jr:columnFooter height="18" rowSpan="1">
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:columnFooter>
+						<jr:detailCell height="44" rowSpan="1">
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="143" y="41" width="127" height="20" uuid="8a31dd0b-2c64-4f44-a2a4-aeb47757098d"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[JOURNAL DE CAISSE]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

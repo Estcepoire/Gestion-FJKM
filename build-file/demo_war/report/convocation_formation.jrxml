@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="convocation_formation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8a3a22c-84f9-4da2-800d-2ddb717ea319">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CNAPS_LOGO" class="java.lang.Object"/>
+	<parameter name="date_debut" class="java.lang.String"/>
+	<parameter name="date_fin" class="java.lang.String"/>
+	<parameter name="DATE_JOUR" class="java.lang.String"/>
+	<parameter name="HEURE_DEBUT" class="java.lang.String"/>
+	<field name="employe" class="java.lang.String"/>
+	<field name="matricule" class="java.lang.String"/>
+	<field name="fonction" class="java.lang.String"/>
+	<field name="service" class="java.lang.String"/>
+	<field name="idformation" class="java.lang.String"/>
+	<field name="objet" class="java.lang.String"/>
+	<field name="sexe" class="java.lang.String"/>
+	<field name="formation" class="java.lang.String"/>
+	<field name="date_debut" class="java.lang.String"/>
+	<field name="date_fin" class="java.lang.String"/>
+	<field name="materiel" class="java.lang.String"/>
+	<field name="drh" class="java.lang.String"/>
+	<field name="autres" class="java.lang.String"/>
+	<field name="heure_debut" class="java.lang.String"/>
+	<field name="date_jour" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="97" y="184" width="352" height="20" uuid="aff6dc47-4ba2-488a-971c-6c34681911dc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employe}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="97" y="209" width="352" height="20" uuid="b38b4d2b-d135-4906-9264-2795c15e1ddd"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="97" y="235" width="352" height="20" uuid="5abed02e-8222-47ad-8c2a-34a633570160"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fonction} + " / " + $F{service}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="261" width="527" height="20" uuid="e9e706a0-39c6-4ad9-a01e-13d8b18c1e3d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N° " + $F{idformation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="287" width="40" height="20" uuid="777d47fc-ad96-4882-b3f9-fc44606a70c0"/>
+				<textElement>
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Objet]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="287" width="123" height="20" uuid="63a16447-ef85-4246-97b4-cc4205853c12"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{objet}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="39" y="321" width="153" height="20" uuid="40eb7493-2d3c-46dc-9ad6-f8ee0867c518"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexe}.equals( "0" ) ? "Madame," : "Monsieur,"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="22" y="341" width="517" height="44" uuid="de9673d1-2903-43e0-a277-a184e04f20eb"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{formation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="22" y="422" width="517" height="35" uuid="0c47ceae-bf0e-435f-8c89-b65b6543ca73"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{materiel}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="268" y="525" width="251" height="16" uuid="8bcaa94f-fc92-497a-9fd8-0bcc58691fa1"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Antananarivo, le " + $F{date_jour}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="268" y="552" width="251" height="16" uuid="ea10bce6-de1d-4055-ab9d-957de25aac8a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pour le Directeur Général,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="568" width="251" height="16" uuid="60bd6aa8-51db-4873-a285-c499be841190"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Le Directeur des Ressources Humaines,]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="268" y="667" width="251" height="16" uuid="8324bb44-14a7-4e25-b3b4-7de6fe15721e"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drh}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="22" y="394" width="486" height="20" uuid="3c37d115-2725-41d6-b22b-31fa4353c0aa"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Du "+ $F{date_debut} + " au " + $F{date_fin} + " à " + $F{heure_debut}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="92" y="93" width="386" height="84" uuid="8d4900cb-54e0-485c-be0b-13204f378050"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SOCIÉTÉ DU PORT À GESTION AUTONOME DE TOAMASINA
+DIRECTION GENERALE
+DIRECTION DES RESSOURCES HUMAINES
+SERVICE DU PERSONNEL ET DE LA FORMATION
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="22" y="59" width="59" height="82" uuid="ee6d3a53-e95b-4e58-ba4b-6890a9928ced"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="205" y="0" width="150" height="79" uuid="34ef97bb-b47a-436e-8371-040fceed29ae"/>
+				<imageExpression><![CDATA["drapeau.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="684" width="555" height="118" uuid="76184558-09ef-48d8-a3da-20ff95292aa7"/>
+				<imageExpression><![CDATA["basdepage.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="22" y="461" width="517" height="53" uuid="cf5aa477-d9a3-4a35-824a-136042fa2fb3"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{autres}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="483" y="59" width="59" height="82" uuid="1b881fb7-6a15-433d-ba69-eebbfd5ffefc"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

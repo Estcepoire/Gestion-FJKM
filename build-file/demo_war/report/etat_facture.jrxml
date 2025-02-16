@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etat_facture" pageWidth="1200" pageHeight="842" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5c52eca1-7bf2-45c4-ad7b-adf9ba10906f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="489"/>
+	<property name="ireport.y" value="0"/>
+	<field name="tierslib" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="montant" class="java.lang.Double"/>
+	<field name="montantpaye" class="java.lang.Double"/>
+	<field name="montantreste" class="java.lang.Double"/>
+	<field name="montantprov" class="java.lang.Double"/>
+	<field name="montantavoir" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String"/>
+	<variable name="montant_1" class="java.lang.Double" resetType="Group" resetGroup="tiers" calculation="Sum">
+		<variableExpression><![CDATA[$F{montant}]]></variableExpression>
+	</variable>
+	<variable name="montantpaye_1" class="java.lang.Double" resetType="Group" resetGroup="tiers" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantpaye}]]></variableExpression>
+	</variable>
+	<variable name="montantreste_1" class="java.lang.Double" resetType="Group" resetGroup="tiers" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantreste}]]></variableExpression>
+	</variable>
+	<variable name="montantprov_1" class="java.lang.Double" resetType="Group" resetGroup="tiers" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantprov}]]></variableExpression>
+	</variable>
+	<variable name="montantavoir_1" class="java.lang.Double" resetType="Group" resetGroup="tiers" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantavoir}]]></variableExpression>
+	</variable>
+	<group name="tiers">
+		<groupExpression><![CDATA[$F{tierslib}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<line>
+					<reportElement x="0" y="3" width="1160" height="1" uuid="337a8c97-08e2-40f1-a34e-31e1de86f398"/>
+				</line>
+				<textField>
+					<reportElement x="0" y="4" width="380" height="25" uuid="cd46de9c-5247-4141-b9ea-ed75b52bbca4"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tierslib}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1060" y="3" width="100" height="26" uuid="0bac64b4-c8c2-4934-8196-181d99238fd2"/>
+					<box>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="27">
+				<textField pattern="#,##0.00">
+					<reportElement x="510" y="0" width="130" height="24" uuid="1fbfe102-bdfc-42f4-b218-0bde8c491a2a"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{montant_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="640" y="0" width="130" height="24" uuid="228f1d3d-eb07-4f6c-ae18-b09bfc8a61c8"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{montantpaye_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="1030" y="0" width="130" height="24" uuid="f8f2eef4-7d6e-4590-99bb-9aab3a0fd761"/>
+					<box>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{montantreste_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="900" y="0" width="130" height="24" uuid="126c150d-7518-4974-a998-edf971b88936"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{montantprov_1}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="24" width="1160" height="1" uuid="b215be65-64ad-413e-b81e-74c3497ab95c"/>
+				</line>
+				<textField pattern="#,##0.00">
+					<reportElement x="770" y="0" width="130" height="24" uuid="4e0ac37d-b846-4b84-9aa5-4a1b9721b821"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{montantavoir_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="24" uuid="49f9b3b7-762b-45ad-9cbb-1426a7c8ee02"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="72" height="59" uuid="37464c10-cad3-43cd-8ea3-105f48289105"/>
+				<imageExpression><![CDATA["cnaps_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="25" uuid="08d25690-3fb8-4704-9547-3e406a616017"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="410" height="25" uuid="20c035e4-caeb-4626-b7c3-380d1182bb73"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="0" width="130" height="25" uuid="d27bb390-2db2-4af7-82e3-3c7500083977"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="0" width="130" height="25" uuid="84fe9c9e-6e32-404d-b51b-f3406aab8084"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Paye]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1030" y="0" width="130" height="25" uuid="5f1a90d0-9a4c-4df9-9c55-0ada0ec7fc8d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Reste]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="0" width="130" height="25" uuid="d3981d76-7a33-4a29-a3a6-8d99a961deef"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Provision]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="770" y="0" width="130" height="25" uuid="5e62a672-0fcc-401e-8b97-62eaaa817d49"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Avoir]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="410" height="25" uuid="38319bac-d0bb-48c3-8d93-4855a8f05c55"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="510" y="0" width="130" height="25" uuid="032d9ad9-6d72-44fc-bae8-dbf3cb804e16"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="640" y="0" width="130" height="25" uuid="29724ffd-e808-4aa7-9bd6-6385eef7e7cc"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantpaye}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="900" y="0" width="130" height="25" uuid="3fbb43ed-4ef4-49e3-ad81-2f6174668209"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantprov}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="770" y="0" width="130" height="25" uuid="14858584-d883-46cb-ad2d-a6c8dd52f9bf"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantavoir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="25" uuid="3564b70f-7818-4a78-8583-e25319f90e5b"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="1030" y="0" width="130" height="25" uuid="ed2439fa-0ed6-47da-9584-cd9e0577252e"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantreste}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

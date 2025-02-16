@@ -1,0 +1,131 @@
+<project name="deploy-ejb" default="deploy" basedir="./build-file">
+    <property environment="env"/>
+    <property name="wildfly" value="E:\BICI\wildfly-10\wildfly-10"/>
+    <property name="demo-warname" value="demo.war"/>
+    <property name="demo-jarname" value="demo-ejb.jar"/>
+    <property name="demo-earname" value="demo.ear"/>
+    <property name="srcejb-dir" value="./demo-ejb/src/"/>
+    <property name="srcwar-dir" value="./demo-war/src/java"/>
+    
+    <property name="build-demo-war_war" value="${basedir}/demo_war" />
+    <property name="build-demo-ejb_jar" value="${basedir}/demo_jar" />
+    <property name="build-demo-lib" value="${basedir}/lib" />
+    
+    <property name="buildEar.dir" value="${basedir}/ear"/>
+    <property name="webcontent.dir" value="../demo-war/web"/>
+    
+    <property name="srcproperties.dir" value="../demo-ejb/src/java/resources"/>
+
+
+    <path id="classpath">
+        <fileset dir="${wildfy}\modules\system\layers\base\apj\core\main">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+	
+	
+
+	
+    <target name="clean" >
+        <echo> 
+            ---- Compilation demo ----------------
+        </echo>
+        <echo>JDK ${ant.java.version}  ${ant.version}  </echo>
+        <echo> clean </echo>
+        
+        <delete file="${build-demo-ejb_jar}" />
+        <delete file="${build-demo-war_war}" />
+        <delete file="${build-demo-lib}" />
+        <delete file="${basedir}/${demo-earname}" />
+        <delete file="${buildEar.dir}/${demo-earname}" />
+		
+        <echo> clean done </echo>
+    </target>
+	
+    <tstamp>
+        <format property="dateDuJour" pattern="dd/MM/yyyy hh:mm aa" />
+    </tstamp>
+	
+    <target name="init" depends="clean">
+        <echo> initialisation ${dateDuJour} </echo>
+        
+        <mkdir dir="${build-demo-war_war}"/>
+        <mkdir dir="${build-demo-war_war}/WEB-INF"/>
+        <mkdir dir="${build-demo-war_war}/WEB-INF/lib"/>
+        <mkdir dir="${build-demo-war_war}/WEB-INF/classes"/>
+        <mkdir dir="${build-demo-war_war}/WEB-INF/classes/META-INF"/>
+        
+        <mkdir dir="${build-demo-ejb_jar}"/>
+		
+		
+        <echo file="${webcontent.dir}/dateBuild.txt" append="false" message="${dateDuJour}" />
+        
+        <copy todir="${build-demo-war_war}/">
+            <fileset dir="${webcontent.dir}"/>
+        </copy>
+
+        
+		<copy file="../demo-ejb/src/java/apj.properties" tofile="${build-demo-ejb_jar}/apj.properties" />
+        <echo>  initialisation done </echo>
+    </target>
+	
+    <target name="compile" depends="init">
+        <echo> compilation </echo>	
+        <javac srcdir="../demo-ejb/src/java" destdir="${build-demo-ejb_jar}" nowarn="true" debug="on" deprecation="off" classpathref="classpath" includeantruntime="false" encoding="iso-8859-1">
+        </javac>
+        <echo> compilation done </echo>	
+    </target>
+    
+    <target name="buildEjbJar" depends="compile">
+        <echo>Build EJB JAR</echo>
+        <jar basedir="${build-demo-ejb_jar}" destfile="${buildEar.dir}/${demo-jarname}" />
+        <copy file="${buildEar.dir}/${demo-jarname}" todir="${build-demo-war_war}/WEB-INF/lib/">
+        </copy>
+        <echo>End Build EJB JAR</echo>
+    </target>
+
+    <target name="compileWar" depends="buildEjbJar">
+        <echo> compilation </echo>
+        <javac srcdir="../demo-war/src/java" destdir="${build-demo-war_war}/WEB-INF/classes/" nowarn="true" debug="on" deprecation="off" classpathref="classpath" includeantruntime="false" encoding="iso-8859-1">
+            <classpath>
+                <pathelement location="${buildEar.dir}/${demo-jarname}" />
+            </classpath>
+        </javac>
+        <echo> compilation done</echo>
+    </target>
+
+
+    <target name="copieProperties" depends="compileWar">
+        <echo> Copie des properties</echo>
+        <!--<copy file="${srcproperties.dir}/text.properties" todir="${build-demo-war_war}/WEB-INF/classes">
+        </copy>
+        <copy file="${srcproperties.dir}/text_zh.properties" todir="${build-demo-war_war}/WEB-INF/classes">
+        </copy>-->
+        <echo> Fin de la copie </echo>
+    </target>
+	
+	
+    <target name="deploy" depends="copieProperties">	
+        <echo>${env.JBOSS_HOME}</echo>
+        <!--<echo> deployement ear </echo>-->
+        <!--                <copy todir="${deploy.dir}">
+            <fileset dir="${build.dir}" >
+                <include name="${ketrika-earname}"/>
+            </fileset>	
+        </copy>-->
+        <copy todir="${wildfly}/standalone/deployments/demo.war">
+            <fileset dir="${build-demo-war_war}" >
+                <include name="**/*"/>
+            </fileset>	
+        </copy>
+        <touch file="${wildfly}/standalone/deployments/demo.war.dodeploy"/>
+        <echo> deployement exploded war done </echo>	
+        <echo> 
+            Compilation demo GENIUS_ART_C [DONE]----------------
+        </echo>
+		
+    </target>	
+	
+	
+
+</project>

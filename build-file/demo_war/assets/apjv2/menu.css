@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+
+/* 
+    Created on : Feb 13, 2024, 2:38:15 PM
+    Author     : RazOnTheFloor
+*/
+
+.dropdown-submenu {
+    position: relative;
+    list-style-type: none;
+}
+
+.dropdown-submenu .dropdown-menu:first-of-type {
+    top: 80%;
+    left: 0;
+    margin-top: -1px;
+}
+
+.dropdown-submenu .dropdown-menu ul:not(:first-child) {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+
+.btn-menu:hover {
+    background-color: #00B4DB !important;
+    color: white !important;
+}
+
+.dropdown-submenu:has(.btn-menu){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.dropdown-submenu > a, li{
+    font-size: 15px;
+    text-decoration: none;
+    font-family: 'Inter';
+}
