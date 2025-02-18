@@ -49,17 +49,17 @@
     <section class="content">
         <form action="<%=pr.getLien()%>?but=<%= pr.getApres() %>" method="post">
             <%
-                out.println(pr.getFormu().getHtmlEnsemble());
+                out.println(pr.getFormu().getHtmlEnsembleVaovao());
             %>
         </form>
         <br>
         <br>
         <%
-            out.println(pr.getTableauRecap().getHtml());%>
+            out.println(pr.getTableauRecap().getHtmlVaovao());%>
         <br>
         <br>
         <%
-            out.println(pr.getTableau().getHtml());
+            out.println(pr.getTableau().getHtmlVaovao());
             out.println(pr.getBasPage());
         %>
         <br>

@@ -35,7 +35,7 @@
 
     String id = pu.getBase().getTuppleID();
     pu.preparerDataFormu();
-    pu.getFormu().makeHtmlInsertTabIndex();
+    pu.getFormu().makeHtmlInsertTabVaovao();
 %>
 <div class="content-wrapper">
     <h1><%=titre%></h1>

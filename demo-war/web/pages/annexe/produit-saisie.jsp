@@ -28,7 +28,7 @@
     <h1> <%=pi.getTitre()%> </h1>
     <form action="<%=pi.getLien()%>?but=apresTarif.jsp" method="post" data-parsley-validate>
     <%
-        pi.getFormu().makeHtmlInsertTabIndex();
+        pi.getFormu().makeHtmlInsertTabVaovao();
         out.println(pi.getFormu().getHtmlInsert());
     %>
     <input name="acte" type="hidden" id="nature" value="insert">
