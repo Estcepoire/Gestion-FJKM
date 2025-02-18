@@ -7,7 +7,7 @@
 <!--<link href="${pageContext.request.contextPath}/assets/apjv2/menu.css" rel="stylesheet" type="text/css"/>-->
 <link href="${pageContext.request.contextPath}/assets/css/fontawesome.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
-<!--<link href="${pageContext.request.contextPath}/assets/apjv2/box.css" rel="stylesheet" type="text/css"/>-->
+<link href="${pageContext.request.contextPath}/assets/apjv2/box.css" rel="stylesheet" type="text/css"/>
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
 <script src="${pageContext.request.contextPath}/assets/js/jquery3.7.0.js"></script>

@@ -55,7 +55,9 @@
             <!-- =============================================== -->
             <!-- Content -->
             <% try {%>
-            <jsp:include page='<%=but%>'/>
+            <div class="container-apj">
+                            <jsp:include page='<%=but%>'/>
+            </div>
             <% } catch (Exception e) {%>
             <script language="JavaScript"> alert('<%=e.getMessage().toUpperCase()%>');
                 history.back();</script>
@@ -65,9 +67,6 @@
             <!-- =============================================== -->
             <!-- Footer -->
             <jsp:include page='elements/footer.jsp'/>
-            <!-- =============================================== -->
-            <!-- Panel -->
-            <jsp:include page='elements/panel.jsp'/>
             <!-- =============================================== -->
         </div>
         <!-- ./wrapper -->
@@ -88,6 +87,6 @@
 </html>
 <%
     } catch (ConcurrentAccessTimeoutException e) {
-        out.println("<script language='JavaScript'> document.location.replace('/cnaps-war/');</script>");
+        out.println("<script language='JavaScript'> document.location.replace('/fjkm/');</script>");
     }
 %>

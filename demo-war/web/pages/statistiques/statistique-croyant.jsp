@@ -19,8 +19,9 @@
 <style>
     
     .statistics {
-        max-height: 500px;
+        max-height: 550px;
         min-height: 400px;
+        height: 500px;
     }
     
 </style>
@@ -37,7 +38,7 @@
         Misy classe ray zany any manao anzay fotsiny ny asany hoe maka données ana statistique
         
     -->
-    <div class="row">
+    <div class="row my-2">
         <div class="col-md-4">
             <div class='card'>
                 <div class="card-body">
@@ -62,12 +63,12 @@
     </div>
     <div class="row">
         <!-- Mila layout roa ray 6 de ray 5 -->
-        <div class="row">
+        <div class="row my-2">
             <!--  Evolution des croyants -->
-            <div class="col-md-7 ">
+            <div class="col-md-7 statistics ">
                     <div class="row">
                         <div class="box box-primary statistics">
-                            <div class="box-title with-border my-3">
+                            <div class="box-title bg-white with-border my-3">
                                 <h3 class="text-center"> Evolution des croyants au fil des années </h3>
                             </div>
                             <div class="box-body">
@@ -109,7 +110,10 @@
 
                                     </form>
                                 </div>
-                                <canvas id="cotisation-an"></canvas>
+                                                            <div class="statistics">
+                                                                                                <canvas id="cotisation-an"></canvas>
+
+                                                            </div>
                             </div>
                         </div>
                     </div>
@@ -325,7 +329,8 @@
             title:{
                 display: true,
                 text: 'évolution des nombres de croyants'
-            }
+            },
+            responsive: true
           }
         });
         
@@ -347,7 +352,7 @@
             title:{
                 display: true,
                 text: 'évolution des nombres de croyants en confirmation'
-            }
+            },
           }
         });
         xValues = <%= repartitionFaritra[0] %>;
@@ -392,7 +397,6 @@
                 display: true,
                 text: 'Répartition Générale des croyants par Faritra'
             },
-            responsive: true,
             plugins: {
               legend: {
                 display: true,

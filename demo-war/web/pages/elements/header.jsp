@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="mg.cnaps.utilisateur.CNAPSUser"%>
 <%@page import="java.util.ResourceBundle"%>
 <%@page import="java.util.Locale"%>
 <%@page import="javax.ejb.ConcurrentAccessTimeoutException"%>
@@ -7,6 +9,7 @@
 
 <%@page import="user.UserEJB"%>
 <%@ page import="bean.Constante" %>
+<%@page import="menu.MenuDynamique" %>
 <%
     HttpSession sess = request.getSession();
     String lang = "fr";
@@ -21,6 +24,26 @@
         String awhere = " and receiver='" + receiver + "' ";
         String home_page=ue.getHome_page();
         MapUtilisateur[] u2 = (MapUtilisateur[]) (CGenUtil.rechercher(new MapUtilisateur(), null, null, ""));
+        if(sess.getAttribute("lang")!=null){
+            lang = String.valueOf(sess.getAttribute("lang"));
+        }
+        ResourceBundle RB = ResourceBundle.getBundle("text", new Locale(lang));
+        if(request.getParameter("currentMenu")!=null && request.getParameter("currentMenu")!=""){
+              session.setAttribute("currentMenu", request.getParameter("currentMenu"));
+          }
+          String  currentMenu =(String) request.getSession().getAttribute("currentMenu");  ;
+          CNAPSUser cnapsUser = ue.getCnapsUser();
+          ArrayList<ArrayList<MenuDynamique>> arbre =null;
+          if(session.getAttribute("MENU")==null){
+              arbre = MenuDynamique.getElementMenu(request, ue.getUser(), cnapsUser);
+              session.setAttribute("MENU", arbre);
+          }else{
+              arbre = (ArrayList<ArrayList<MenuDynamique>>) session.getAttribute("MENU");
+          }
+          MenuDynamique[] tabMenu = null;
+          if(request.getServletContext().getAttribute("tabMenu")!=null){
+              tabMenu=(MenuDynamique[])request.getServletContext().getAttribute("tabMenu");
+          }
 %>
 <script>
     function verifEditerTef(et, name){
@@ -61,7 +84,7 @@
     
 </style>                
                             
-    <div class="header d-flex justify-content-between p-3">
+    <div class="header d-flex justify-content-between p-3 m-0">
         <div class="d-flex">
             <div class=" logo-container d-flex align-items-end ">
                 <img src="${pageContext.request.contextPath}/assets/img/logo.png" alt="logo " srcset=" ">
@@ -99,9 +122,7 @@
     </div>
 
     <div class="header my-0 d-flex justify-content-between mb-2 p-3">
-        <div class="d-flex">
-            <%=MenuDynamique.renderMenuHorizontal(arbre,currentMenu,tabMenu,RB) %>
-        </div>
+            <%=MenuDynamique.renderMenuHorizontalVaovao(arbre,currentMenu,tabMenu,RB) %>
     </div>
                             
                     

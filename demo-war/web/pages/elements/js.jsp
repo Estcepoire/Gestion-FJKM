@@ -58,7 +58,7 @@
 <script src="${pageContext.request.contextPath}/plugins/parsley/dist/parsley.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/sparkline/jquery.sparkline.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/apj-script.js"></script>
+<!--<script src="${pageContext.request.contextPath}/assets/js/apj-script.js"></script>-->
 <script type="text/javascript">
     window.ParsleyValidator.setLocale('fr');
     $('.datepicker').datepicker({
