@@ -37,14 +37,7 @@
         tabMenu=(MenuDynamique[])request.getServletContext().getAttribute("tabMenu");
     }
  %>
- <aside class="main-sidebar">
-    <section class="sidebar">
-        <ul class="sidebar-menu" id="menuslider">
-            <li class="header">Menu</li>
-            <%=MenuDynamique.renderMenuHorizontal(arbre,currentMenu,tabMenu,RB) %> 
-        </ul>
-    </section>
-</aside>
+
   <% }
   catch(ConcurrentAccessTimeoutException e){
         out.println("<script language='JavaScript'> document.location.replace('/cnaps-war/');</script>");

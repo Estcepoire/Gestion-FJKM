@@ -99,11 +99,7 @@ public class Recensement extends ClassMAPTable {
           }
           
           public void recensementAutomatique( int annee, Connection c ) throws Exception{
-                    
-                    // Ahoana no anaovana azy
-                    // Isaina daholo ny isan'ny velona sy ny maty rehetra tao
-                    // Atramin'io annee io
-                   
+
                     String query = "with effectif_annee as(\n" +
                                                   "	select \n" +
                                                   "		coalesce(niditra.annee, maty.annee) as annee ,\n" +
@@ -155,9 +151,5 @@ public class Recensement extends ClassMAPTable {
                     rs[0].createObject( "301" , c);
                     
           }
-          
-          
-          
-          
-          
+
 }

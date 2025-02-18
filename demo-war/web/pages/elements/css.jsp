@@ -4,14 +4,14 @@
 <link href="${pageContext.request.contextPath}/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <!--<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>-->
 <link href="${pageContext.request.contextPath}/assets/css/apj-style.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/assets/apjv2/menu.css" rel="stylesheet" type="text/css"/>
+<!--<link href="${pageContext.request.contextPath}/assets/apjv2/menu.css" rel="stylesheet" type="text/css"/>-->
 <link href="${pageContext.request.contextPath}/assets/css/fontawesome.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/assets/apjv2/box.css" rel="stylesheet" type="text/css"/>
+<!--<link href="${pageContext.request.contextPath}/assets/apjv2/box.css" rel="stylesheet" type="text/css"/>-->
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
 <script src="${pageContext.request.contextPath}/assets/js/jquery3.7.0.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/apj-script.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/fjkm-menu.js"></script>
 <!-- -->
 <!-- 
 <link href="${pageContext.request.contextPath}/dist/css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" /> -->
@@ -19,17 +19,17 @@
 <link href="${pageContext.request.contextPath}/dist/css/jquery-ui-theme.css" rel="stylesheet" type="text/css" />
 
     <!-- jQuery 2.1.4 -->
-    <script src="${pageContext.request.contextPath}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!--<script src="${pageContext.request.contextPath}/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
     <link href="${pageContext.request.contextPath}/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap 3.3.4 -->
-    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
     <!-- FontAwesome 4.3.0 -->
     <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
     <link href="${pageContext.request.contextPath}/dist/js/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<!-- Ionicons 2.0.0 -->
     <link href="${pageContext.request.contextPath}/plugins/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="${pageContext.request.contextPath}/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!--<link href="${pageContext.request.contextPath}/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />-->
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="${pageContext.request.contextPath}/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" id="newskin"/>
@@ -56,9 +56,10 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<!-- fichier style a customiser !-->
-	<link href="${pageContext.request.contextPath}/dist/css/stylecustom.css" rel="stylesheet" type="text/css" />
+	<!--<link href="${pageContext.request.contextPath}/dist/css/stylecustom.css" rel="stylesheet" type="text/css" />-->
 	<link href="${pageContext.request.contextPath}/dist/css/messagestyle.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/dist/css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/css/skins/skin-yellow-light.css" >
     <script src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
 	<!-- -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/fjkm-style.css" >

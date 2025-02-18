@@ -37,7 +37,7 @@
         pi.getFormu().getChamp("idFaritra").setLibelle("Faritra");
         pi.getFormu().getChamp("etat").setVisible(false);
 
-        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idMpivavaka"),"famille.Mpivavaka","id","mpivavaka");
+        affichage.Champ.setPageAppelComplete(pi.getFormufle().getChampFille("idMpivavaka"),"croyance.Mpivavaka","id","mpivavaka");
 
         pi.getFormufle().getChamp("remarque_0").setLibelle("Remarque");
         pi.getFormufle().getChamp("idMpivavaka_0").setLibelle("Membre");
